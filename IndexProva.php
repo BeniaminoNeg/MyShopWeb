@@ -9,10 +9,12 @@ require_once 'Model/Prodotto.class.php';
 require_once 'Model/Supermercato.class.php';
 require_once 'Model/UtenteRegistrato.class.PHP';
 $Controllore = new CRicercaProdotto();
-$Risultato=$Controllore->RicercaPerNome("Insalata");
+$Risultato=$Controllore->RicercaPerNome("Arance");
+//var_dump($Risultato);
 
-$img = $Risultato[0]->getNome();
-echo ($img);
+$Name=$Risultato[0]->getNome();
+//$img = $Risultato[0]->getNome();
+//echo ($img);
 //var_dump($Risultato);
 
 /* 

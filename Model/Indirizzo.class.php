@@ -39,6 +39,17 @@ private $NumeroCivico;
     public function set($NumeroCivico) {
     $this->NumeroCivico=$NUmeroCivico;
     }
+    
+    public function toArray()
+{
+    $array = (array) $this;
+    array_walk_recursive($array, function (&$property) {
+        if ($property instanceof Indirizzo) {
+            $property = $property->toArray();
+        }
+    });
+    return $array;
+}
 
 }
 ?>

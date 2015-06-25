@@ -67,6 +67,17 @@ class UtenteRegistrato {
     public function setProdottiOsservati($ProdottiOsservati) {
         $this->ProdottiOsservati = $ProdottiOsservati;
     }
+    
+    public function toArray()
+{
+    $array = (array) $this;
+    array_walk_recursive($array, function (&$property) {
+        if ($property instanceof UtenteRegistrato) {
+            $property = $property->toArray();
+        }
+    });
+    return $array;
+}
 
 
     

@@ -81,8 +81,11 @@ class FDB {
         $result = $this->query($query);
         return $result;
     }
-    
-    public function close() {
+    public function putintoDB($tabella, $password, $email, $Nome, $cognome){
+        "INSERT INTO $tabella(`Password`, `Email`, `Nome`, `Cognome`) VALUES ($password, $email, $Nome, $cognome)";
+    }
+
+        public function close() {
         
         
         

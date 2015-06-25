@@ -25,6 +25,7 @@ class CRicercaProdotto {
         
     }
     function RicercaPerNome($nome) {
+        header('Content-Type: application/json');
         $ProdottoDAO=new FProdotto();
         $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);
         $ArrayProdotti=array();
@@ -36,20 +37,37 @@ class CRicercaProdotto {
 		//var_dump($value);
             $ArrayIds[] = $value->getSupermercatoId();     
         }
+        //var_dump($ArrayIds);
         $ArrayIds_NoDopp =  array_unique($ArrayIds);
+        //var_dump($ArrayIds_NoDopp);
         $SupermercatoDAO=new FSupermercato();
         $ArraySupermercati=array();
+        //var_dump($ArrayProdotti);
         foreach ($ArrayIds_NoDopp as $key => $value) {
             $ArrayRisultatoSup=$SupermercatoDAO->RicercaPerId($value);
-	    //var_dump($ArrayRisultatoSup);
+	    //var_dump($value);
             $Indirizzo = new Indirizzo($ArrayRisultatoSup[0][2], $ArrayRisultatoSup[0][3], $ArrayRisultatoSup[0][4]);
             $ArraySupermercati[] = new Supermercato($ArrayRisultatoSup[0][1], $ArrayRisultatoSup[0][5], $Indirizzo, $ArrayRisultatoSup[0][0]);
             
             
             
         }
-        $JsonProdotti= json_encode($ArrayProdotti);
-        $JsonSupermercati=  json_encode($ArraySupermercati);
+        
+        $ArrayProdString=array();
+        foreach ($ArrayProdotti as $key => $value) {
+            $ArrayProdString[] = $ArrayProdotti[$value]->toArray();             
+        }
+        $ArraySupString=array();
+        foreach ($ArraySupermercati as $key => $value) {
+            $ArraySupString[] = $ArraySupermercati[$value]->toArray();             
+        }
+        $ArrayRisultato =  array($ArrayProdString, $ArraySupString);
+        $JsonRisultato = json_encode($ArrayRisultato);
+        echo $JsonRisultato;
+        return $JsonRisultato;
+        
+        
+        
 	
         //return $ArrayProdotti;
     }

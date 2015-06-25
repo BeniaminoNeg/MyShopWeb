@@ -23,6 +23,7 @@ require_once './View/ViewHome.php';
 class CHome {
     
     public function ProdottiInEvidenza(){
+        header('Content-Type: application/json');
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->Conta($colonna, $tabella);
         $Indicicasuali = array();
@@ -45,9 +46,9 @@ class CHome {
         foreach ($Supermercati as $key => $value) {
             $ArrayNomiSup[]=$value->getNome();
         }*/
-        
-        $JsonProdotti= json_encode($ArrayProdotti);
-        $JsonSupermercati= json_encode($Supermercati);
+        $ArrayRisultato=  array_merge($ArrayProdotti,$Supermercati);
+        $JsonRisultato= json_encode($ArrayRisultato);
+        return $JsonRisultato;
         
         
         /*$VHome= new ViewHome();

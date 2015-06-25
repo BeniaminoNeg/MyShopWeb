@@ -137,5 +137,16 @@ class Prodotto {
     function setSupermercatoId($SupermercatoId) {
         $this->SupermercatoId = $SupermercatoId;
     }
+    
+    public function toArray()
+{
+    $array = (array) $this;
+    array_walk_recursive($array, function (&$property) {
+        if ($property instanceof Prodotto) {
+            $property = $property->toArray();
+        }
+    });
+    return $array;
+}
 
 }

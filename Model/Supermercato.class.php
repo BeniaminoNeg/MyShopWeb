@@ -134,6 +134,16 @@ class Supermercato {
     function getCatalogo() {
         return $this->Catalogo;
     }
+    public function toArray()
+{
+    $array = (array) $this;
+    array_walk_recursive($array, function (&$property) {
+        if ($property instanceof Supermercato) {
+            $property = $property->toArray();
+        }
+    });
+    return $array;
+}
 
 
     

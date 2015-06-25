@@ -12,16 +12,20 @@
  * @author beniamino
  */
 class CRegistrazione {
-    public function Registrazione($JsonUtente) {
-        $Utente=  json_decode($JsonUtente);
+    public function Registrazione() {
+        //header('Content-Type: application/json');
+        $nome = mysql_escape_string($_POST['name']);
+        $pagina = file_get_contents($url);
+        $Utente=  json_decode($pagina,true);
         $UtenteDAO = new FUtente ();
         if ($UtenteDAO->VerificaEmailUnica($Utente[1]))
         {
-            $UtenteDAO->MemorizzaUtente($Utente[0],$Utente[1],$Utente[2],$Utente[3],$Utente[4]);
+            $UtenteDAO->MemorizzaUtente($Utente[0],$Utente[1],$Utente[2],$Utente[3]);
         }
     }
     public function VerificaEmailUnica ($JsonMail)
     {
+        header('Content-Type: application/json');
         $Bool=false;
         $Mail=  json_decode($JsonMail);
         $UtenteDAO= new FUtente ();
@@ -29,6 +33,7 @@ class CRegistrazione {
         {
             $Bool=true;
         }
-        return $Bool;
+        $JsonRisultato=  json_encode($Bool);
+        return $JsonRisultato;
     }
 }

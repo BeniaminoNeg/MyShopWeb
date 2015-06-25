@@ -19,6 +19,7 @@ class FSupermercato extends FDB{
     
     function RicercaPerId($Ids) {
         $ArrayRisultati = parent::search_equals("Supermercato", "Ids", $Ids);
+        //var_dump($ArrayRisultati);
         return $ArrayRisultati;
         
     }
