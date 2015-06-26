@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Giu 24, 2015 alle 18:42
+-- Creato il: Giu 26, 2015 alle 19:38
 -- Versione del server: 5.6.24
 -- Versione PHP: 5.6.8
 
@@ -30,21 +30,18 @@ CREATE TABLE IF NOT EXISTS `UtenteRegistrato` (
   `Password` varchar(20) COLLATE armscii8_bin NOT NULL,
   `Email` varchar(60) COLLATE armscii8_bin NOT NULL DEFAULT '',
   `Nome` varchar(20) COLLATE armscii8_bin NOT NULL,
-  `Cognome` varchar(20) COLLATE armscii8_bin NOT NULL,
-  `Via` varchar(30) COLLATE armscii8_bin DEFAULT NULL,
-  `Città` varchar(20) COLLATE armscii8_bin DEFAULT NULL,
-  `NCivico` varchar(5) COLLATE armscii8_bin DEFAULT NULL
+  `Cognome` varchar(20) COLLATE armscii8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
 
 --
 -- Dump dei dati per la tabella `UtenteRegistrato`
 --
 
-INSERT INTO `UtenteRegistrato` (`Password`, `Email`, `Nome`, `Cognome`, `Via`, `Città`, `NCivico`) VALUES
-('Coppitanno993', 'beniamino.negrni@gmail.com', 'Beniamino', 'Negrini', 'Via Caporciano', 'Coppito', '2'),
-('261293', 'gaetano.fichera93@gmail.com', 'Gaetano', 'Fichera', 'Don Luigi Sturzo', 'Formia', '62'),
-('07031993', 'lordjhon16@gmail.com', 'Giovanni', 'Lezzi', 'Largo Paolo Borsellino', 'Teramo', '3'),
-('070194', 'montecchsilvia@gmail.com', 'Silvia', 'Montecchia', 'Calabria', 'Castellalto', '5');
+INSERT INTO `UtenteRegistrato` (`Password`, `Email`, `Nome`, `Cognome`) VALUES
+('Coppitanno993', 'beniamino.negrni@gmail.com', 'Beniamino', 'Negrini'),
+('261293', 'gaetano.fichera93@gmail.com', 'Gaetano', 'Fichera'),
+('07031993', 'lordjhon16@gmail.com', 'Giovanni', 'Lezzi'),
+('070194', 'montecchsilvia@gmail.com', 'Silvia', 'Montecchia');
 
 --
 -- Indici per le tabelle scaricate
