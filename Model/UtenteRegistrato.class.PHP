@@ -18,12 +18,12 @@ class UtenteRegistrato {
     private $ProdottiOsservati;
 
     
-    function __construct($Nome, $Cognome, $Username, $Password, $email) {
+    function __construct($Nome, $Cognome, $Password, $email) {
         $this->Nome = $Nome;
         $this->Cognome = $Cognome;
-        $this->Username = $Username;
         $this->Password = $Password;
         $this->email = $email;
+        $this->ProdottiOsservati=array ();
      
     }
     
@@ -64,8 +64,8 @@ class UtenteRegistrato {
         return $this->ProdottiOsservati;
     }
 
-    public function setProdottiOsservati($ProdottiOsservati) {
-        $this->ProdottiOsservati = $ProdottiOsservati;
+    public function addProdottoOsservato($ProdottoOsservato) {
+        $this->ProdottiOsservati[] = $ProdottoOsservato;
     }
     
     public function toArray()

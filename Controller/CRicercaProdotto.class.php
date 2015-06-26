@@ -53,18 +53,38 @@ class CRicercaProdotto {
             
         }
         
+        /*$ArrayProdString=array();
+        foreach ($ArrayProdotti as $prod) {
+            $ArrayProdString[]=(array)$prod;   
+        }
+        
+        $ArraySupString=array();
+        foreach ($ArraySupermercati as $sup) {
+            $ArraySupString[]=(array)$sup;   
+        }*/
+        
+        
         $ArrayProdString=array();
+        /*
         foreach ($ArrayProdotti as $key => $value) {
-            $ArrayProdString[] = $ArrayProdotti[$value]->toArray();             
+            $ArrayProdString[] = $value->toArray(); 
         }
         $ArraySupString=array();
         foreach ($ArraySupermercati as $key => $value) {
-            $ArraySupString[] = $ArraySupermercati[$value]->toArray();             
+            
+            $ArraySupString[] = $value->getNome();             
         }
+        
         $ArrayRisultato =  array($ArrayProdString, $ArraySupString);
-        $JsonRisultato = json_encode($ArrayRisultato);
+        //var_dump($ArrayRisultato);
+        //$ArrayRisultato = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($ArrayRisultato));
+         * 
+         */
+        $JsonRisultato = json_encode(serialize($ArrayProdotti[0]));
+        //echo json_last_error();
+        var_dump(serialize($ArrayProdotti[0]));
+        
         echo $JsonRisultato;
-        return $JsonRisultato;
         
         
         

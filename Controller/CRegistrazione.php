@@ -13,14 +13,20 @@
  */
 class CRegistrazione {
     public function Registrazione() {
-        //header('Content-Type: application/json');
-        $nome = mysql_escape_string($_POST['name']);
-        $pagina = file_get_contents($url);
-        $Utente=  json_decode($pagina,true);
+
+        
+        
+        $nome = mysql_escape_string($_POST['nome']);
+        $cognome= mysql_escape_string($_POST['cognome']);
+        $passwd= mysql_escape_string($_POST['password']);
+        $email= mysql_escape_string($_POST['email']);
+
+        
+        
         $UtenteDAO = new FUtente ();
-        if ($UtenteDAO->VerificaEmailUnica($Utente[1]))
+        if ($UtenteDAO->VerificaEmailUnica($email))
         {
-            $UtenteDAO->MemorizzaUtente($Utente[0],$Utente[1],$Utente[2],$Utente[3]);
+            $UtenteDAO->MemorizzaUtente($nome,$cognome,$passwd,$email);
         }
     }
     public function VerificaEmailUnica ($JsonMail)

@@ -12,7 +12,7 @@ $Controllore = new CRicercaProdotto();
 $Risultato=$Controllore->RicercaPerNome("Arance");
 //var_dump($Risultato);
 
-$Name=$Risultato[0]->getNome();
+//$Name=$Risultato[0]->getNome();
 //$img = $Risultato[0]->getNome();
 //echo ($img);
 //var_dump($Risultato);
