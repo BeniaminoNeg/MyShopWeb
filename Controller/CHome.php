@@ -16,13 +16,14 @@ require_once './Foundation/FProdotto.php';
 require_once './Foundation/FSupermercato.php';
 require_once './Model/Prodotto.class.php';
 require_once './Model/Supermercato.class.php';
-require_once './View/ViewHome.php';
+
 
 
 
 class CHome {
     
     public function ProdottiInEvidenza(){
+        session_start();
         header('Content-Type: application/json');
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->Conta($colonna, $tabella);

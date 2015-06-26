@@ -11,13 +11,13 @@
  *
  * @author juan
  */
-class FUtenteRegistrato extends FDB {
+class FUtente extends FDB {
  
      function __construct() {
 	parent::__construct();
     }
     
-     function VerificaEmailUnica($email) {
+     function VerificaEmail($email) {
          $trovato = false;
         $EmailTrovata=parent::search_contains("UtenteRegistrato", "Email", $email);
         if ($EmailTrovata= null)
@@ -29,5 +29,21 @@ class FUtenteRegistrato extends FDB {
     
     function MemorizzaUtente ($Password, $Email, $Nome, $Cognome){
         parent::putintoDB("UtenteRegistrato", $password, $email, $Nome, $cognome);
+    }
+    
+    function GetUtenteByMail($mail) {
+        $Utente=  parent::search_equals("UtenteRegistrato", "Email", $mail);
+        return $Utente;
+    }
+    
+    function VerificaPassword($mail, $passwd) {
+        $PasswdCorretta=false;
+        $passwdDB=  parent::searchColonnaSelect("UtenteRegistrato", "Password", "Email", $mail);
+        if ($passwd==$passwdDB){
+            $PasswdCorretta=true;
+            
+        }
+        return $PasswdCorretta;
+        
     }
 }

@@ -10,7 +10,7 @@
  *
  * @author Silvia
  */
-class UtenteRegistrato {
+class Utente {
     private $Nome;
     private $Cognome;
     private $Password;
@@ -69,7 +69,7 @@ class UtenteRegistrato {
     }
     
     public function toArray()
-{
+    {
     $array = (array) $this;
     array_walk_recursive($array, function (&$property) {
         if ($property instanceof UtenteRegistrato) {
@@ -77,7 +77,20 @@ class UtenteRegistrato {
         }
     });
     return $array;
-}
+    }
+    
+   public function getAsArray() {
+	$result=array();
+    	foreach($this as $key => $value) {
+    		if (!is_array($value) && !is_object($value)) {
+    			$result[$key] = $value;
+                }else if(is_object ($value)){
+                    $result[$key]=$value->getAsArray();
+                }
+    	}
+    return $result;
+    }
+
 
 
     

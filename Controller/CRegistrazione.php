@@ -13,9 +13,7 @@
  */
 class CRegistrazione {
     public function Registrazione() {
-
-        
-        
+        session_start();
         $nome = mysql_escape_string($_POST['nome']);
         $cognome= mysql_escape_string($_POST['cognome']);
         $passwd= mysql_escape_string($_POST['password']);
@@ -24,7 +22,7 @@ class CRegistrazione {
         
         
         $UtenteDAO = new FUtente ();
-        if ($UtenteDAO->VerificaEmailUnica($email))
+        if (!$UtenteDAO->VerificaEmail($email))
         {
             $UtenteDAO->MemorizzaUtente($nome,$cognome,$passwd,$email);
         }

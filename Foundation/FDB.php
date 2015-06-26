@@ -66,7 +66,9 @@ class FDB {
         
         $query = "SELECT * FROM $tabella WHERE $colonna LIKE '$tag%'";
         $result = $this->query($query);
+        
         return $result;
+        
     }
     
     public function search_equals($tabella, $colonna, $value) {
@@ -83,6 +85,12 @@ class FDB {
     }
     public function putintoDB($tabella, $password, $email, $Nome, $cognome){
         "INSERT INTO $tabella(`Password`, `Email`, `Nome`, `Cognome`) VALUES ($password, $email, $Nome, $cognome)";
+    }
+    
+    public function searchColonnaSelect($tabella,$colonna,$chiave,$valore) {
+        $query = "SELECT $colonna FROM $tabella WHERE $chiave = $value";
+        $result = $this->query($query);
+        return $result;
     }
 
         public function close() {

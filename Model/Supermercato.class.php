@@ -135,7 +135,7 @@ class Supermercato {
         return $this->Catalogo;
     }
     public function toArray()
-{
+    {
     $array = (array) $this;
     array_walk_recursive($array, function (&$property) {
         if ($property instanceof Supermercato) {
@@ -143,7 +143,19 @@ class Supermercato {
         }
     });
     return $array;
-}
+    }
+    
+    public function getAsArray() {
+	$result=array();
+    	foreach($this as $key => $value) {
+    		if (!is_array($value) && !is_object($value)) {
+    			$result[$key] = $value;
+                }else if(is_object ($value)){
+                    $result[$key]=$value->getAsArray();
+                }
+    	}
+    return $result;
+    }
 
 
     

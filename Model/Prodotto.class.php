@@ -139,7 +139,7 @@ class Prodotto {
     }
     
     public function toArray()
-{
+    {
     $array = (array) $this;
     array_walk_recursive($array, function (&$property) {
         if ($property instanceof Prodotto) {
@@ -147,6 +147,16 @@ class Prodotto {
         }
     });
     return $array;
-}
+    }
+    
+    public function getAsArray() {
+	$result=array();
+    	foreach($this as $key => $value) {
+    		if (!is_array($value) && !is_object($value)) {
+    			$result[$key] = $value;
+    		}
+    	}
+    return $result;
+    }
 
 }

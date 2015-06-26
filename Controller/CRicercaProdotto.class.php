@@ -25,9 +25,12 @@ class CRicercaProdotto {
         
     }
     function RicercaPerNome($nome) {
+        session_start();
+        //$nome = mysql_escape_string($_POST['prodotto']);
+        
         header('Content-Type: application/json');
         $ProdottoDAO=new FProdotto();
-        $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);
+        $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);//SOLO PER PROVA, ANDRÀ SOSTITUITO CON IL CAMPO DI POST
         $ArrayProdotti=array();
         foreach ($ArrayRisultatiProd as $key => $value) {
             $ArrayProdotti[]= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
@@ -53,18 +56,10 @@ class CRicercaProdotto {
             
         }
         
-        /*$ArrayProdString=array();
-        foreach ($ArrayProdotti as $prod) {
-            $ArrayProdString[]=(array)$prod;   
-        }
-        
-        $ArraySupString=array();
-        foreach ($ArraySupermercati as $sup) {
-            $ArraySupString[]=(array)$sup;   
-        }*/
         
         
-        $ArrayProdString=array();
+        
+        
         /*
         foreach ($ArrayProdotti as $key => $value) {
             $ArrayProdString[] = $value->toArray(); 
@@ -80,9 +75,12 @@ class CRicercaProdotto {
         //$ArrayRisultato = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($ArrayRisultato));
          * 
          */
-        $JsonRisultato = json_encode(serialize($ArrayProdotti[0]));
+        $JsonRisultato = json_encode($ArraySupermercati[0]);
+        //var_dump($ArraySupermercati[0]->getAsArray());
         //echo json_last_error();
-        var_dump(serialize($ArrayProdotti[0]));
+        //var_dump($JsonRisultato);
+        
+        var_dump($_SESSION);
         
         echo $JsonRisultato;
         
