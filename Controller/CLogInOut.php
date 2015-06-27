@@ -19,6 +19,12 @@ require_once './Foundation/FUtente.php';
 class CLogInOut {
     public function LogIn() {
         session_start();
+        if (!isset($_SESSION['count']))
+        {
+            $_SESSION['count']=0;
+            $_SESSION['start']=  time();
+        }
+        $_SESSION['count']++;
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
     
@@ -40,7 +46,9 @@ class CLogInOut {
     }
     
     public function LogOut() {
+        session_start();
         $_SESSION['stato_log']='out';
+        session_destroy();
     }
 
 }

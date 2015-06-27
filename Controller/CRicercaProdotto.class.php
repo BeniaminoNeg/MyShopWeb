@@ -26,6 +26,12 @@ class CRicercaProdotto {
     }
     function RicercaPerNome($nome) {
         session_start();
+        if (!isset($_SESSION['count']))
+        {
+            $_SESSION['count']=0;
+            $_SESSION['start']=  time();
+        }
+        $_SESSION['count']++;
         //$nome = mysql_escape_string($_POST['prodotto']);
         
         header('Content-Type: application/json');

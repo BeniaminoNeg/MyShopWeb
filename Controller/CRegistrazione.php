@@ -14,6 +14,12 @@
 class CRegistrazione {
     public function Registrazione() {
         session_start();
+        if (!isset($_SESSION['count']))
+        {
+            $_SESSION['count']=0;
+            $_SESSION['start']=  time();
+        }
+        $_SESSION['count']++;
         $nome = mysql_escape_string($_POST['nome']);
         $cognome= mysql_escape_string($_POST['cognome']);
         $passwd= mysql_escape_string($_POST['password']);
