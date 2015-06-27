@@ -26,7 +26,7 @@ class CLogInOut {
         if ($UtenteDAO->VerificaEmail($email))//è registrato?
         {
         
-            if ($UtenteDAO->VerificaPassword($email, $passwd))
+            if ($UtenteDAO->VerificaPassword($mail, $passwd))
             {
                 // a questo punto la la passwd corrisponde alla mail
                 $AttrUtente=$UtenteDAO->GetUtenteByMail($mail);
