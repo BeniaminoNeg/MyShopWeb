@@ -55,7 +55,9 @@ class CHome {
         }*/
         $ArrayRisultato=  array_merge($ArrayProdotti,$Supermercati);
         $JsonRisultato= json_encode($ArrayRisultato);
-        return $JsonRisultato;
+        //var_dump($ArrayRisultato);
+        //var_dump($ArrayRisultato, json_encode($ArrayRisultato));
+        //return $JsonRisultato;
         
         
         /*$VHome= new ViewHome();
