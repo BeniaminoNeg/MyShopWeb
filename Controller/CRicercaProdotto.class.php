@@ -89,6 +89,7 @@ class CRicercaProdotto {
         //$ArrayRisultato = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($ArrayRisultato));
          * 
          */
+
         $Arraytot= array_merge($arrayprodstring, $arraysuostring);
         //var_dump($Arraytot);
         $json=  json_encode($Arraytot);
@@ -98,6 +99,9 @@ class CRicercaProdotto {
         $json=  json_encode($ArraySupermercati);
         var_dump($json);
         var_dump($JsonRisultato);*/
+
+        //$JsonRisultato = json_encode($ArraySupermercati[0]->getAsArray());
+
         //var_dump($ArraySupermercati[0]->getAsArray());
         $jas= $ArraySupermercati[0]->getAsArray();
         //var_dump($jas);
@@ -106,6 +110,10 @@ class CRicercaProdotto {
         //echo json_last_error();
         //var_dump($JsonRisultato);
         
+
+
+        //var_dump($_SESSION);
+
         
         echo $jsonmm;
         //echo $json;
