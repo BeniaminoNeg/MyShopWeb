@@ -7,7 +7,7 @@ require_once 'Foundation/FSupermercato.php';
 require_once 'Model/Indirizzo.class.php';
 require_once 'Model/Prodotto.class.php';
 require_once 'Model/Supermercato.class.php';
-require_once 'Model/UtenteRegistrato.class.PHP';
+require_once 'Model/Utente.class.PHP';
 $Controllore = new CRicercaProdotto();
 $Risultato=$Controllore->RicercaPerNome("Arance");
 //var_dump($Risultato);

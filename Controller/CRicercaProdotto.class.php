@@ -62,6 +62,14 @@ class CRicercaProdotto {
             
         }
         
+        foreach ($ArraySupermercati as $key => $value) {
+            $arraysuostring= $value->getAsArray();            
+        }
+        
+        foreach ($ArrayProdotti as $key => $value) {
+            $arrayprodstring=$value->getAsArray();            
+        }
+        
         
         
         
@@ -81,14 +89,22 @@ class CRicercaProdotto {
         //$ArrayRisultato = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($ArrayRisultato));
          * 
          */
-        $JsonRisultato = json_encode($ArraySupermercati[0]);
+        $Arraytot= array_merge($arrayprodstring, $arraysuostring);
+        //var_dump($Arraytot);
+        $json=  json_encode($Arraytot);
+        //var_dump($json);
+        /*$arrayutf8=  utf8_encode($ArraySupermercati);
+        $JsonRisultato = json_encode($arrayutf8);
+        $json=  json_encode($ArraySupermercati);
+        var_dump($json);
+        var_dump($JsonRisultato);*/
         //var_dump($ArraySupermercati[0]->getAsArray());
         //echo json_last_error();
         //var_dump($JsonRisultato);
         
-        var_dump($_SESSION);
         
-        echo $JsonRisultato;
+        
+        echo $json;
         
         
         
