@@ -99,12 +99,16 @@ class CRicercaProdotto {
         var_dump($json);
         var_dump($JsonRisultato);*/
         //var_dump($ArraySupermercati[0]->getAsArray());
+        $jas= $ArraySupermercati[0]->getAsArray();
+        //var_dump($jas);
+        $jsonmm=  json_encode($jas);
+        
         //echo json_last_error();
         //var_dump($JsonRisultato);
         
         
-        
-        echo $json;
+        echo $jsonmm;
+        //echo $json;
         
         
         
