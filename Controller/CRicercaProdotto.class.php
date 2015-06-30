@@ -34,7 +34,7 @@ class CRicercaProdotto {
         $_SESSION['count']++;
         //$nome = mysql_escape_string($_POST['prodotto']);
         
-        header('Content-Type: application/json');
+        header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);//SOLO PER PROVA, ANDRÀ SOSTITUITO CON IL CAMPO DI POST
         $ArrayProdotti=array();
@@ -61,67 +61,36 @@ class CRicercaProdotto {
             
             
         }
-        
+        /*
         foreach ($ArraySupermercati as $key => $value) {
+            $value->setLogo(NULL);
             $arraysuostring= $value->getAsArray();            
         }
         
         foreach ($ArrayProdotti as $key => $value) {
+            
             $arrayprodstring=$value->getAsArray();            
-        }
+        }*/
         
         
         
         
         
-        /*
+        $ArrayProdString=array();
         foreach ($ArrayProdotti as $key => $value) {
-            $ArrayProdString[] = $value->toArray(); 
+            $value->setImmagine(NULL);
+            $ArrayProdString[] = $value->getAsArray(); 
         }
         $ArraySupString=array();
         foreach ($ArraySupermercati as $key => $value) {
-            
-            $ArraySupString[] = $value->getNome();             
+            $value->setLogo(NULL);
+            $ArraySupString[] = $value->getAsArray();             
         }
         
-        $ArrayRisultato =  array($ArrayProdString, $ArraySupString);
-        //var_dump($ArrayRisultato);
-        //$ArrayRisultato = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($ArrayRisultato));
-         * 
-         */
-
-        $Arraytot= array_merge($arrayprodstring, $arraysuostring);
-        //var_dump($Arraytot);
-        $json=  json_encode($Arraytot);
-        //var_dump($json);
-        /*$arrayutf8=  utf8_encode($ArraySupermercati);
-        $JsonRisultato = json_encode($arrayutf8);
-        $json=  json_encode($ArraySupermercati);
-        var_dump($json);
-        var_dump($JsonRisultato);*/
-
-        //$JsonRisultato = json_encode($ArraySupermercati[0]->getAsArray());
-
-        //var_dump($ArraySupermercati[0]->getAsArray());
-        $jas= $ArraySupermercati[0]->getAsArray();
-        //var_dump($jas);
-        $jsonmm=  json_encode($jas);
-        
-        //echo json_last_error();
-        //var_dump($JsonRisultato);
-        
-
-
-        //var_dump($_SESSION);
-
-        
-        echo $jsonmm;
-        //echo $json;
-        
-        
-        
-	
-        //return $ArrayProdotti;
+        //$ArrayRisultato = array($ArrayProdString, $ArraySupString);
+        $ArrayRisultato = array_merge($ArrayProdString, $ArraySupString);
+        $Json=  json_encode($ArrayRisultato);
+        echo $Json;
     }
     
 }

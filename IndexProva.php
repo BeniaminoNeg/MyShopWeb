@@ -9,7 +9,7 @@ require_once 'Model/Prodotto.class.php';
 require_once 'Model/Supermercato.class.php';
 require_once 'Model/Utente.class.PHP';
 $Controllore = new CRicercaProdotto();
-$Risultato=$Controllore->RicercaPerNome("Arance");
+$Risultato=$Controllore->RicercaPerNome("Riso");
 //var_dump($Risultato);
 
 //$Name=$Risultato[0]->getNome();
