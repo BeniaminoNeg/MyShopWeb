@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Giu 30, 2015 alle 12:19
+-- Generation Time: Giu 30, 2015 alle 14:26
 -- Versione del server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `utenteregistrato` (
-  `Email` varchar(100) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Password` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `Email` varchar(100) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` char(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Cognome` char(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Prodottiosservati` varchar(500) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `utenteregistrato` (
 -- Dump dei dati per la tabella `utenteregistrato`
 --
 
-INSERT INTO `utenteregistrato` (`Email`, `Password`, `Nome`, `Cognome`, `Prodottiosservati`) VALUES
-('beniamino.negrini@gmail.com', 'Coppitanno993', 'Beniamino', 'Negrini', '001,002,015'),
-('gaetano.fichera@gmail.com', '261293', 'Gaetano', 'Fichera', '033,032,021'),
-('lordjhon16@gmail.com', '07031993', 'Giovanni', 'Lezzi', '001,002,003,004,005,006,007'),
-('montecchsilvia@gmail.com', '070194', 'Silvia', 'Montecchia', '003,004');
+INSERT INTO `utenteregistrato` (`Password`, `Email`, `Nome`, `Cognome`, `Prodottiosservati`) VALUES
+('Coppitanno993', 'beniamino.negrini@gmail.com', 'Beniamino', 'Negrini', '001,002,015'),
+('261293', 'gaetano.fichera@gmail.com', 'Gaetano', 'Fichera', '033,032,021'),
+('07031993', 'lordjhon16@gmail.com', 'Giovanni', 'Lezzi', '001,002,003,004,005,006,007'),
+('070194', 'montecchsilvia@gmail.com', 'Silvia', 'Montecchia', '003,004');
 
 --
 -- Indexes for dumped tables
