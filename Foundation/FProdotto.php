@@ -20,9 +20,9 @@ class FProdotto extends FDB {
     
     function RicercaPerNome($tag) {
         $ArrayRisultati=parent::search_contains("Catalogo", "Nome", $tag);
-        foreach ($ArrayRisultati as $Prod) {
+        /*foreach ($ArrayRisultati as $Prod) {
                 $Prod[2]= utf8_encode($Prod[2]);
-        }
+        }*/
         return $ArrayRisultati;
         
     }
@@ -33,9 +33,10 @@ class FProdotto extends FDB {
     }
     function GetProdottiById($id) {
         $Prodotto=  parent::search_equals("Catalogo", "id", $id);
-        foreach ($ArrayRisultati as $Prod) {
+        /*foreach ($Prodotto as $Prod) {
                 $Prod[2]= utf8_encode($Prod[2]);
-        }
+        }*/
+        //var_dump($Prodotto);
         return $Prodotto;
         
     }

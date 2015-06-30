@@ -32,37 +32,34 @@ class CHome {
         $_SESSION['count']++;
         header('Content-Type: application/json');
         $ProdottoDAO= new FProdotto();
-        $risultato= $ProdottoDAO->Conta($colonna, $tabella);
+        $risultato= $ProdottoDAO->ContaProdotti();
+        $risultato=$risultato[0][0];
+        //var_dump($risultato);
         $Indicicasuali = array();
         $MaxPerPagina=6;
         for ($index = 0; $index < $MaxPerPagina; $index++) {
            
-            $ArrayIDr []=  rand(1, $risultato );          
+            $Indicicasuali []=  rand(1, $risultato );          
         }
         $ArrayRisultatiProd=array();
-        foreach ($ArrayIDr as $key => $value) {
+        foreach ($Indicicasuali as $key => $value) {
            
             $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
          }
+        // var_dump($ArrayRisultatiProd);
         foreach ($ArrayRisultatiProd as $key => $value) {
                 
             $ArrayProdotti= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
-         }         
-        $Supermercati=  $this->GetSupermercati($ArrayProdotti);
-        /*$ArrayNomiSup=array();
-        foreach ($Supermercati as $key => $value) {
-            $ArrayNomiSup[]=$value->getNome();
-        }*/
-        $ArrayRisultato=  array_merge($ArrayProdotti,$Supermercati);
-        $JsonRisultato= json_encode($ArrayRisultato);
-        //var_dump($ArrayRisultato);
-        //var_dump($ArrayRisultato, json_encode($ArrayRisultato));
-        //return $JsonRisultato;
-        
-        
-        /*$VHome= new ViewHome();
-        $VHome->PassaggioArray($ArrayProdotti, $Supermercati);
-        $VHome->mostraPagina();*/
+         }      
+         
+         
+          $ArrayProdString=array();
+        foreach ($ArrayProdotti as $key => $value) {
+            $value->setImmagine(NULL);
+            $ArrayProdString[] = $value->getAsArray(); 
+        }
+        $JsonRisultato= json_encode($ArrayProdString);
+       
         
          
     }
