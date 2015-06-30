@@ -90,7 +90,9 @@ class CRicercaProdotto {
         //$ArrayRisultato = array($ArrayProdString, $ArraySupString);
         $ArrayRisultato = array_merge($ArrayProdString, $ArraySupString);
         $Json=  json_encode($ArrayRisultato);
-        echo $Json;
+        //echo $Json;
+        $jsonpars=  parse_ini_string($Json);
+        echo $jsonpars[0];
     }
     
 }
