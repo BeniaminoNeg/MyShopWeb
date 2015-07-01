@@ -64,11 +64,35 @@ class CHome {
          
     }
     
-    public function GetSupermercati($ArrayProdotti) {
+    public function GetSupermercati() {
+        session_start();
+        if (!isset($_SESSION['count']))
+        {
+            $_SESSION['count']=0;
+            $_SESSION['start']=  time();
+        }
+        $_SESSION['count']++;
+        header('Content-Type: application/json');
+        
+        $ArrayIdp= array();
+        for ($i=0; $i<6; $i++)
+        {
+            $ArrayIdp[]=$_GET ["Id"+$i];
+        }
+        
+        $ArrayRisultatiProd=array();
+        foreach ($ArrayIdp as $key => $value) {
+           
+            $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
+         }
+        
+        foreach ($ArrayRisultatiProd as $key => $value) {
+                
+            $ArrayProdotti= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
+         }
         
         $ArrayIds=array();
         foreach ($ArrayProdotti as $key => $value) {
-		//var_dump($value);
             $ArrayIds[] = $value->getSupermercatoId();     
         }
         $ArrayIds_NoDopp =  array_unique($ArrayIds);
@@ -77,11 +101,18 @@ class CHome {
          $ArraySupermercati=array();
         foreach ($ArrayIds_NoDopp as $key => $value) {
             $ArrayRisultatoSup=$SupermercatoDAO->RicercaPerId($value);
-	    //var_dump($ArrayRisultatoSup);
             $Indirizzo = new Indirizzo($ArrayRisultatoSup[0][2], $ArrayRisultatoSup[0][3], $ArrayRisultatoSup[0][4]);
             $ArraySupermercati[] = new Supermercato($ArrayRisultatoSup[0][1], $ArrayRisultatoSup[0][5], $Indirizzo, $ArrayRisultatoSup[0][0]);
         }
-        return $ArraySupermercati; 
+         
+        $ArraySupString=array();
+        foreach ($ArraySupermercati as $key => $value) {
+            $value->setLogo(NULL);
+            $ArraySupString[] = $value->getAsArray(); 
+        }
+        $JsonRisultato= json_encode($ArraySupString);
+        echo $JsonRisultato;
+        
             
   }
   
