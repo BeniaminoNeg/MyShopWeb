@@ -33,6 +33,7 @@ class FProdotto extends FDB {
     }
     function GetProdottiById($id) {
         $Prodotto=  parent::search_equals("Catalogo", "id", $id);
+        //var_dump($Prodotto);
         /*foreach ($Prodotto as $Prod) {
                 $Prod[2]= utf8_encode($Prod[2]);
         }*/

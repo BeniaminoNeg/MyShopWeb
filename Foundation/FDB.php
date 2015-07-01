@@ -42,23 +42,14 @@ class FDB {
     }
     
     public function query($query) {
-	/*
-	var_dump($query);
-        $this->db->beginTransaction();
-        $sql = $this->db->prepare($query);
-        // esecuzione delle query
-        $sql = $this->db->query($query);
-        $this->db->commit();
-        if($sql) {
-           $result = $sql->fetchAll();
-        }
-        return $result;
-	*/
+	
 	$sql = $this->db->prepare($query);
+        //var_dump($sql);
 	$sql->execute();
 
 	/* Fetch all of the remaining rows in the result set */
 	$result = $sql->fetchAll();
+        //var_dump($result);
 	return $result;
     }
     

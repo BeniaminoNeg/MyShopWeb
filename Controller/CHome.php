@@ -23,14 +23,14 @@ require_once './Model/Supermercato.class.php';
 class CHome {
     
     public function ProdottiInEvidenza(){
-        session_start();
+        /*session_start();
         if (!isset($_SESSION['count']))
         {
             $_SESSION['count']=0;
             $_SESSION['start']=  time();
         }
         $_SESSION['count']++;
-        header('Content-Type: application/json');
+        header('Content-Type: application/json');*/
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
         $risultato=$risultato[0][0];
@@ -41,16 +41,20 @@ class CHome {
            
             $Indicicasuali []=  rand(1, $risultato );          
         }
+        //var_dump($Indicicasuali);
         $ArrayRisultatiProd=array();
         foreach ($Indicicasuali as $key => $value) {
            
             $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
          }
-        // var_dump($ArrayRisultatiProd);
+        //var_dump($ArrayRisultatiProd);
+         $ArrayProdotti = array ();
+         
         foreach ($ArrayRisultatiProd as $key => $value) {
-                
-            $ArrayProdotti= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
-         }      
+            //var_dump($value);    
+            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5]);
+         }  
+         //var_dump($ArrayProdotti);
          
          
           $ArrayProdString=array();
@@ -58,43 +62,35 @@ class CHome {
             $value->setImmagine(NULL);
             $ArrayProdString[] = $value->getAsArray(); 
         }
+        //var_dump($ArrayProdotti);
         $JsonRisultato= json_encode($ArrayProdString);
+        echo $JsonRisultato;
        
         
          
     }
     
-    public function GetSupermercati() {
-        session_start();
-        if (!isset($_SESSION['count']))
-        {
-            $_SESSION['count']=0;
-            $_SESSION['start']=  time();
-        }
-        $_SESSION['count']++;
-        header('Content-Type: application/json');
-        
-        $ArrayIdp= array();
-        for ($i=0; $i<6; $i++)
-        {
-            $ArrayIdp[]=$_GET ["Id"+$i];
-        }
-        
+    public function GetSupermercati($ArrayIdp) {
+        $ProdottoDAO= new FProdotto;
         $ArrayRisultatiProd=array();
         foreach ($ArrayIdp as $key => $value) {
            
             $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
          }
-        
+         //var_dump($ArrayRisultatiProd);
+        $ArrayProdotti= array ();
         foreach ($ArrayRisultatiProd as $key => $value) {
                 
-            $ArrayProdotti= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
+            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5]);
          }
+         //var_dump($ArrayProdotti);
         
         $ArrayIds=array();
-        foreach ($ArrayProdotti as $key => $value) {
-            $ArrayIds[] = $value->getSupermercatoId();     
+        foreach ($ArrayProdotti as $value) {
+            
+            $ArrayIds[]=$value->getSupermercatoId();
         }
+        //var_dump($ArrayIds);
         $ArrayIds_NoDopp =  array_unique($ArrayIds);
          
          $SupermercatoDAO=new FSupermercato();
@@ -111,7 +107,7 @@ class CHome {
             $ArraySupString[] = $value->getAsArray(); 
         }
         $JsonRisultato= json_encode($ArraySupString);
-        echo $JsonRisultato;
+        return $JsonRisultato;
         
             
   }
