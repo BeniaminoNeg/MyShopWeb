@@ -40,7 +40,7 @@ switch ($FunzioneRichiesta) {
     case "HomeSup":
     {
         $Controllore= new CHome();
-        $ArrayIdSString=$_GET ["array"];
+        $ArrayIdSString=$_GET ["dati"];
         $ArrayIdS= array();
         $j=0;
         for ($i=0; $i<strlen($ArrayIdSString); $i++)
