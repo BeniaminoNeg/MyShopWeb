@@ -40,15 +40,18 @@ switch ($FunzioneRichiesta) {
     case "HomeSup":
     {
         $Controllore= new CHome();
-        $ElemInHome=6;
-        $ArrayIdp= array();
-        for ($i=0; $i<$ElemInHome; $i++)
+        $ArrayIdSString=$_GET ["array"];
+        $ArrayIdS= array();
+        $j=0;
+        for ($i=0; $i<strlen($ArrayIdSString); $i++)
         {
-            $ArrayIdp[]=$_GET ["Id".$i];
-            //var_dump($ArrayIdp);
+            
+            if($ArrayIdSString[$i]==',')$j++;
+                else{$ArrayIdS[$j]=$ArrayIdSString[$i];}
+
         }
-        $Risultato=$Controllore->GetSupermercati($ArrayIdp);
-        //var_dump($Risultato);
+        //var_dump($ArrayIdS);
+        $Risultato=$Controllore->GetSupermercati($ArrayIdS);
         echo $Risultato;
     }
         break;

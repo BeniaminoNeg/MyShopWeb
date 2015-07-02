@@ -70,8 +70,8 @@ class CHome {
          
     }
     
-    public function GetSupermercati($ArrayIdp) {
-        $ProdottoDAO= new FProdotto;
+    public function GetSupermercati($ArrayIdS) {
+        /*$ProdottoDAO= new FProdotto;
         $ArrayRisultatiProd=array();
         foreach ($ArrayIdp as $key => $value) {
            
@@ -91,14 +91,18 @@ class CHome {
             $ArrayIds[]=$value->getSupermercatoId();
         }
         //var_dump($ArrayIds);
-        $ArrayIds_NoDopp =  array_unique($ArrayIds);
+        $ArrayIds_NoDopp =  array_unique($ArrayIds);*/
          
          $SupermercatoDAO=new FSupermercato();
          $ArraySupermercati=array();
-        foreach ($ArrayIds_NoDopp as $key => $value) {
+         //var_dump($ArrayIdS);
+        foreach ($ArrayIdS as $key =>$value) {
             $ArrayRisultatoSup=$SupermercatoDAO->RicercaPerId($value);
+            //var_dump($ArrayRisultatoSup);
             $Indirizzo = new Indirizzo($ArrayRisultatoSup[0][2], $ArrayRisultatoSup[0][3], $ArrayRisultatoSup[0][4]);
             $ArraySupermercati[] = new Supermercato($ArrayRisultatoSup[0][1], $ArrayRisultatoSup[0][5], $Indirizzo, $ArrayRisultatoSup[0][0]);
+            //var_dump($Indirizzo);
+            //var_dump($ArraySupermercati);
         }
          
         $ArraySupString=array();
