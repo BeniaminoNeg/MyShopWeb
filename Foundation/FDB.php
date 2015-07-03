@@ -22,17 +22,14 @@ class FDB {
     protected $db;// = new PDO("mysql:host=localhost;dbname=MyShopDB", 'username', 'password');
     //protected $db;
 
-
     function __construct() {    
         $this->connect('localhost', 'root', '', 'MyShopDB');
     }
     
     public function connect($host,$user,$password,$database) {
-        $col = "mysql:host=".$host.";dbname=".$database;
+        $col = "mysql:host=".$host.";dbname=".$database;         // connessione tramite creazione di un oggetto PDO
         try {
-        // connessione tramite creazione di un oggetto PDO
             $this->db = new PDO($col, $user, $password);
-            
         }
         // blocco catch per la gestione delle eccezioni
         catch(PDOException $e) {    
@@ -42,32 +39,21 @@ class FDB {
     }
     
     public function query($query) {
-	
 	$sql = $this->db->prepare($query);
-        //var_dump($sql);
 	$sql->execute();
-
-	/* Fetch all of the remaining rows in the result set */
-	$result = $sql->fetchAll();
-        //var_dump($result);
+	$result = $sql->fetchAll();	// Fetch all of the remaining rows in the result set 
 	return $result;
     }
     
     public function search_contains($tabella, $colonna, $tag) {
-        
         $query = "SELECT * FROM $tabella WHERE $colonna LIKE '$tag%'";
         $result = $this->query($query);
-        
         return $result;
-        
     }
     
     public function search_equals($tabella, $colonna, $value) {
-        
         $query = "SELECT * FROM $tabella WHERE $colonna = $value";
-        //var_dump($query);
         $result = $this->query($query);
-        //var_dump($result);
         return $result;
     }
     
@@ -76,6 +62,7 @@ class FDB {
         $result = $this->query($query);
         return $result;
     }
+    
     public function putintoDB($tabella, $password, $email, $Nome, $cognome){
         "INSERT INTO $tabella(`Password`, `Email`, `Nome`, `Cognome`) VALUES ($password, $email, $Nome, $cognome)";
     }
@@ -85,14 +72,8 @@ class FDB {
         $result = $this->query($query);
         return $result;
     }
-
         public function close() {
-        
-        
-        
-        
     }
-    
-    
 }
+?>
 

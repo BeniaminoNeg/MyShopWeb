@@ -16,7 +16,6 @@ class Utente {
     private $Password;
     private $email;
     private $ProdottiOsservati;
-
     
     function __construct($Nome, $Cognome, $Password, $email) {
         $this->Nome = $Nome;
@@ -26,7 +25,6 @@ class Utente {
         $this->ProdottiOsservati=array ();
      
     }
-    
     
     public function getNome() {
         return $this->Nome;
@@ -68,32 +66,26 @@ class Utente {
         $this->ProdottiOsservati[] = $ProdottoOsservato;
     }
     
-    public function toArray()
-    {
-    $array = (array) $this;
-    array_walk_recursive($array, function (&$property) {
-        if ($property instanceof UtenteRegistrato) {
-            $property = $property->toArray();
-        }
-    });
-    return $array;
+    public function toArray(){
+        $array = (array) $this;
+        array_walk_recursive($array, function (&$property) {
+            if ($property instanceof UtenteRegistrato) {
+                $property = $property->toArray();
+            }
+        });
+        return $array;
     }
     
    public function getAsArray() {
 	$result=array();
-    	foreach($this as $key => $value) {
-    		if (!is_array($value) && !is_object($value)) {
-    			$result[$key] = $value;
-                }else if(is_object ($value)){
-                    $result[$key]=$value->getAsArray();
-                }
+    foreach($this as $key => $value) {
+            if (!is_array($value) && !is_object($value)) {
+                $result[$key] = $value;
+            }else if(is_object ($value)){
+                $result[$key]=$value->getAsArray();
+            }
     	}
     return $result;
     }
-
-
-
-    
 }
-
 ?>

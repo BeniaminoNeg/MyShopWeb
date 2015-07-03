@@ -20,8 +20,7 @@ class FUtente extends FDB {
      function VerificaEmail($email) {
          $trovato = false;
         $EmailTrovata=parent::search_contains("UtenteRegistrato", "Email", $email);
-        if ($EmailTrovata= null)
-        {
+        if ($EmailTrovata= null){
             $trovato = true;
         }
         return $trovato;        
@@ -41,9 +40,8 @@ class FUtente extends FDB {
         $passwdDB=  parent::searchColonnaSelect("UtenteRegistrato", "Password", "Email", $mail);
         if ($passwd==$passwdDB){
             $PasswdCorretta=true;
-            
         }
         return $PasswdCorretta;
-        
     }
 }
+?>

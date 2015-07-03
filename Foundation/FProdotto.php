@@ -11,7 +11,6 @@
  *
  * @author beniamino
  */
-
 class FProdotto extends FDB {
 
     function __construct() {
@@ -20,25 +19,15 @@ class FProdotto extends FDB {
     
     function RicercaPerNome($tag) {
         $ArrayRisultati=parent::search_contains("Catalogo", "Nome", $tag);
-        /*foreach ($ArrayRisultati as $Prod) {
-                $Prod[2]= utf8_encode($Prod[2]);
-        }*/
         return $ArrayRisultati;
-        
     }
     function ContaProdotti() {
         $NumProdotti=  parent::Conta("Id", "Catalogo");
         return $NumProdotti;
-        
     }
     function GetProdottiById($id) {
         $Prodotto=  parent::search_equals("Catalogo", "id", $id);
-        //var_dump($Prodotto);
-        /*foreach ($Prodotto as $Prod) {
-                $Prod[2]= utf8_encode($Prod[2]);
-        }*/
-        //var_dump($Prodotto);
         return $Prodotto;
-        
     }
 }
+?>

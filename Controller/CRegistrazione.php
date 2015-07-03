@@ -24,12 +24,8 @@ class CRegistrazione {
         $cognome= mysql_escape_string($_POST['cognome']);
         $passwd= mysql_escape_string($_POST['password']);
         $email= mysql_escape_string($_POST['email']);
-
-        
-        
         $UtenteDAO = new FUtente ();
-        if (!$UtenteDAO->VerificaEmail($email))
-        {
+        if (!$UtenteDAO->VerificaEmail($email)){
             $UtenteDAO->MemorizzaUtente($nome,$cognome,$passwd,$email);
         }
     }
@@ -39,11 +35,11 @@ class CRegistrazione {
         $Bool=false;
         $Mail=  json_decode($JsonMail);
         $UtenteDAO= new FUtente ();
-        if ($UtenteDAO-> VerificaEmailUnica($Mail))
-        {
+        if ($UtenteDAO-> VerificaEmailUnica($Mail)){
             $Bool=true;
         }
         $JsonRisultato=  json_encode($Bool);
         return $JsonRisultato;
     }
 }
+?>

@@ -13,6 +13,7 @@
  */
 require_once 'Prodotto.class.php';
 require_once 'Indirizzo.class.php';
+
 class Supermercato {
     private $Nome;
     private $Catalogo;
@@ -40,7 +41,6 @@ class Supermercato {
     function getNome() {
         return $this->Nome;
     }
-    
     /**
      * 
      * @return type Immagine
@@ -76,7 +76,6 @@ class Supermercato {
     function setLogo($Logo) {
         $this->Logo = $Logo;
     }
-    
     /**
      * 
      * @param type $Indirizzo Indirizzo
@@ -88,7 +87,6 @@ class Supermercato {
      * 
      * @param type $Id String
      */
-
     function setId($Id) {
        
         $this->Id = $Id;
@@ -109,11 +107,8 @@ class Supermercato {
                     $ProdottoCercato=$value;
                 }
             }
-            
         }
         return $ProdottoCercato;
-        
-        
     }
     /**
      * 
@@ -125,7 +120,6 @@ class Supermercato {
         {
             $this->Catalogo[]=$Prodotto;
         }
-        
     }
     /**
      * 
@@ -134,32 +128,28 @@ class Supermercato {
     function getCatalogo() {
         return $this->Catalogo;
     }
+    
     public function toArray()
     {
-    $array = (array) $this;
-    array_walk_recursive($array, function (&$property) {
-        if ($property instanceof Supermercato) {
-            $property = $property->toArray();
-        }
-    });
-    return $array;
+        $array = (array) $this;
+        array_walk_recursive($array, function (&$property) {
+            if ($property instanceof Supermercato) {
+             $property = $property->toArray();
+            }
+        });
+        return $array;
     }
     
     public function getAsArray() {
 	$result=array();
     	foreach($this as $key => $value) {
-    		if (!is_array($value) && !is_object($value)) {
-    			$result[$key] = $value;
-                }else if(is_object ($value)){
-                    $result[$key]=$value->getAsArray();
-                }
+            if (!is_array($value) && !is_object($value)) {
+                $result[$key] = $value;
+            }else if(is_object ($value)){
+                $result[$key]=$value->getAsArray();
+            }
     	}
     return $result;
     }
-
-
-    
-
-
-
 }
+?>

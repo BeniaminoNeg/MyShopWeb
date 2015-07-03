@@ -15,23 +15,19 @@
 require_once './Model/Utente.class.php';
 require_once './Foundation/FUtente.php';
 
-
 class CLogInOut {
     public function LogIn() {
         session_start();
-        if (!isset($_SESSION['count']))
-        {
+        if (!isset($_SESSION['count'])){
             $_SESSION['count']=0;
             $_SESSION['start']=  time();
         }
         $_SESSION['count']++;
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
-    
         $UtenteDAO = new FUtente ();
         if ($UtenteDAO->VerificaEmail($email))//è registrato?
         {
-        
             if ($UtenteDAO->VerificaPassword($mail, $passwd))
             {
                 // a questo punto la la passwd corrisponde alla mail
@@ -41,7 +37,6 @@ class CLogInOut {
                 $_SESSION['stato_log']='in';
                 //MANCANO I PRODOTTI TENUTI SOTTO OSSERVAZIONE, NON CI SONO NEANCHE NEL DATABASE!
             }
-        
         }
     }
     
@@ -50,5 +45,5 @@ class CLogInOut {
         $_SESSION['stato_log']='out';
         session_destroy();
     }
-
 }
+?>

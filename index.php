@@ -43,25 +43,21 @@ switch ($FunzioneRichiesta) {
         $ArrayIdSString=$_GET ["dati"];
         $ArrayIdS= array();
         $j=0;
-        for ($i=0; $i<strlen($ArrayIdSString); $i++)
-        {
-            
+        for ($i=0; $i<strlen($ArrayIdSString); $i++){
             if($ArrayIdSString[$i]==',')$j++;
-                else{$ArrayIdS[$j]=$ArrayIdSString[$i];}
-
+            else $ArrayIdS[$j]=$ArrayIdSString[$i];
         }
-        //var_dump($ArrayIdS);
         $Risultato=$Controllore->GetSupermercati($ArrayIdS);
         echo $Risultato;
     }
         break;
-
     default:
     {
         echo "HAI FATTO DANNI!";
     }
         break;
 }
+?>
 
 
 
