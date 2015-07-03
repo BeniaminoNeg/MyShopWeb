@@ -36,7 +36,7 @@ class CRicercaProdotto {
         $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);//SOLO PER PROVA, ANDRÀ SOSTITUITO CON IL CAMPO DI POST
         $ArrayProdotti=array();
         foreach ($ArrayRisultatiProd as $key => $value) {
-            $ArrayProdotti[]= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
+            $ArrayProdotti[]= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5], $value[6]);
             }
         $ArrayIds=array();
         foreach ($ArrayProdotti as $key => $value) {
@@ -60,18 +60,20 @@ class CRicercaProdotto {
         }*/
         $ArrayProdString=array();
         foreach ($ArrayProdotti as $key => $value) {
-            $value->setImmagine(NULL);
+            $Immaginedacodificare=$value->getImmagine();
+            $ImmagineCodificata=  base64_encode($Immaginedacodificare);
+            $value->setImmagine($ImmagineCodificata);
             $ArrayProdString[] = $value->getAsArray(); 
         }
         $ArraySupString=array();
         foreach ($ArraySupermercati as $key => $value) {
-            $value->setLogo(NULL);
+            $Logodacodificare=$value->getLogo();
+            $Logocodificato= base64_encode($Logodacodificare);
+            $value->setLogo($Logocodificato);
             $ArraySupString[] = $value->getAsArray();             
         }
         $ArrayRisultato = array_merge($ArrayProdString, $ArraySupString);
         $Json=  json_encode($ArrayRisultato);
-        $jsonpars=  parse_ini_string($Json);
-        echo $jsonpars[0];
     }
 }
 ?>

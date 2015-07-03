@@ -42,7 +42,7 @@ class CHome {
          }
         $ArrayProdotti = array ();
         foreach ($ArrayRisultatiProd as $key => $value) {
-            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5]);
+            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5], $value[0][6]);
          }  
         $ArrayProdString=array();
         foreach ($ArrayProdotti as $key => $value) {

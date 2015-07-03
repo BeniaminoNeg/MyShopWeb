@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.4.3
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Giu 30, 2015 alle 14:26
--- Versione del server: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost
+-- Creato il: Lug 03, 2015 alle 19:30
+-- Versione del server: 5.6.24
+-- Versione PHP: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `myshopdb`
+-- Database: `MyShopDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `utenteregistrato`
+-- Struttura della tabella `UtenteRegistrato`
 --
 
-CREATE TABLE IF NOT EXISTS `utenteregistrato` (
+CREATE TABLE IF NOT EXISTS `UtenteRegistrato` (
   `Password` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Email` varchar(100) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` char(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
@@ -35,24 +35,24 @@ CREATE TABLE IF NOT EXISTS `utenteregistrato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabella degli utenti registrati';
 
 --
--- Dump dei dati per la tabella `utenteregistrato`
+-- Dump dei dati per la tabella `UtenteRegistrato`
 --
 
-INSERT INTO `utenteregistrato` (`Password`, `Email`, `Nome`, `Cognome`, `Prodottiosservati`) VALUES
+INSERT INTO `UtenteRegistrato` (`Password`, `Email`, `Nome`, `Cognome`, `Prodottiosservati`) VALUES
 ('Coppitanno993', 'beniamino.negrini@gmail.com', 'Beniamino', 'Negrini', '001,002,015'),
 ('261293', 'gaetano.fichera@gmail.com', 'Gaetano', 'Fichera', '033,032,021'),
 ('07031993', 'lordjhon16@gmail.com', 'Giovanni', 'Lezzi', '001,002,003,004,005,006,007'),
 ('070194', 'montecchsilvia@gmail.com', 'Silvia', 'Montecchia', '003,004');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `utenteregistrato`
+-- Indici per le tabelle `UtenteRegistrato`
 --
-ALTER TABLE `utenteregistrato`
- ADD PRIMARY KEY (`Email`);
+ALTER TABLE `UtenteRegistrato`
+  ADD PRIMARY KEY (`Email`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
