@@ -74,11 +74,12 @@ class CHome {
         foreach ($ArrayProdotti as $value) {
             
             $ArrayIds[]=$value->getSupermercatoId();
-        }
-        $ArrayIds_NoDopp =  array_unique($ArrayIds);*/
+        }*/
+        
+        $ArrayIds_NoDopp =  array_unique($ArrayIdS);
          $SupermercatoDAO=new FSupermercato();
          $ArraySupermercati=array();
-        foreach ($ArrayIdS as $key =>$value) {
+        foreach ($ArrayIds_NoDopp as $key =>$value) {
             $ArrayRisultatoSup=$SupermercatoDAO->RicercaPerId($value);
             $Indirizzo = new Indirizzo($ArrayRisultatoSup[0][2], $ArrayRisultatoSup[0][3], $ArrayRisultatoSup[0][4]);
             $ArraySupermercati[] = new Supermercato($ArrayRisultatoSup[0][1], $ArrayRisultatoSup[0][5], $Indirizzo, $ArrayRisultatoSup[0][0]);
