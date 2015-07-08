@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Lug 03, 2015 alle 19:30
+-- Creato il: Lug 08, 2015 alle 22:16
 -- Versione del server: 5.6.24
 -- Versione PHP: 5.6.8
 
@@ -27,22 +27,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `UtenteRegistrato` (
-  `Password` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
-  `Email` varchar(100) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` char(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Cognome` char(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `Password` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `Email` varchar(100) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Prodottiosservati` varchar(500) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabella degli utenti registrati';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `UtenteRegistrato`
 --
 
-INSERT INTO `UtenteRegistrato` (`Password`, `Email`, `Nome`, `Cognome`, `Prodottiosservati`) VALUES
-('Coppitanno993', 'beniamino.negrini@gmail.com', 'Beniamino', 'Negrini', '001,002,015'),
-('261293', 'gaetano.fichera@gmail.com', 'Gaetano', 'Fichera', '033,032,021'),
-('07031993', 'lordjhon16@gmail.com', 'Giovanni', 'Lezzi', '001,002,003,004,005,006,007'),
-('070194', 'montecchsilvia@gmail.com', 'Silvia', 'Montecchia', '003,004');
+INSERT INTO `UtenteRegistrato` (`Nome`, `Cognome`, `Password`, `Email`, `Prodottiosservati`) VALUES
+('Beniamino', 'Negrini', 'Coppitanno993', 'beniamino.negrini@gmail.com', '001,002,015'),
+('Gaetano', 'Fichera', '261293', 'gaetano.fichera93@gmail.com', '033,032,021'),
+('Giovanni', 'Lezzi', '07031993', 'lordjhon16@gmail.com', '001,002,003,004,005,006,007'),
+('Silvia', 'Montecchia', '070194', 'montecchsilvia@gmail.com', '003,004');
 
 --
 -- Indici per le tabelle scaricate

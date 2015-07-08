@@ -1,28 +1,22 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of CLogInOut
  *
- * @author root
+ * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano 
  */
 
 require_once './Model/Utente.class.php';
 require_once './Foundation/FUtente.php';
+require_once 'CSessione.php';
 
 class CLogInOut {
     public function LogIn() {
-        session_start();
-        if (!isset($_SESSION['count'])){
-            $_SESSION['count']=0;
-            $_SESSION['start']=  time();
-        }
-        $_SESSION['count']++;
+        $CSessione=new CSessione();
+        $CSessione->Session();
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $UtenteDAO = new FUtente ();

@@ -1,16 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of FDB
  *
+ * @author beniamino
  * @author juan
+ * @author Silvia
+ * @author Gaetano
  */
+
 class FDB {
         
     private $connection;

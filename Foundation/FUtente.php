@@ -1,16 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Description of FUtente
+ *
+ * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano 
  */
 
-/**
- * Description of FUtenteRegistrato
- *
- * @author juan
- */
 class FUtente extends FDB {
  
      function __construct() {
@@ -26,8 +24,8 @@ class FUtente extends FDB {
         return $trovato;        
     }
     
-    function MemorizzaUtente ($Password, $Email, $Nome, $Cognome){
-        parent::putintoDB("UtenteRegistrato", $password, $email, $Nome, $cognome);
+    function MemorizzaUtente ($Password, $Email, $Nome, $Cognome, $Prodottiosservati){
+        parent::putintoDB("UtenteRegistrato", $password, $email, $Nome, $cognome, $Prodottiosservati);
     }
     
     function GetUtenteByMail($mail) {

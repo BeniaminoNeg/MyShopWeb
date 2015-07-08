@@ -1,98 +1,50 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of CHome
  *
  * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano
  */
-require_once './Foundation/FDB.php';
+
 require_once './Foundation/FProdotto.php';
-require_once './Foundation/FSupermercato.php';
-require_once './Model/Prodotto.class.php';
-require_once './Model/Supermercato.class.php';
+require_once 'CSessione.php';
+require_once 'CRicercaProdotto.php';
+require_once 'CRicercaSupermercato.php';
 
 class CHome {
     
     public function ProdottiInEvidenza(){
-        /*session_start();
-        if (!isset($_SESSION['count']))
-        {
-            $_SESSION['count']=0;
-            $_SESSION['start']=  time();
-        }
-        $_SESSION['count']++;
-        header('Content-Type: application/json');*/
+        
+        $CSessione=new CSessione();
+        $CSessione->Session();
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
         $risultato=$risultato[0][0];
         $Indicicasuali = array();
-        $MaxPerPagina=6;
-        for ($index = 0; $index < $MaxPerPagina; $index++) {
+        for ($index = 0; $index < 6; $index++) {
             $Indicicasuali []=  rand(1, $risultato );          
         }
-        $ArrayRisultatiProd=array();
+        $CRicercaProdotto=new CRicercaProdotto();
+        $ArrayProdotti=array();
         foreach ($Indicicasuali as $key => $value) {
-            $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
+            $ArrayProdotti[]= $CRicercaProdotto->RicercaPerId($value);
          }
-        $ArrayProdotti = array ();
-        foreach ($ArrayRisultatiProd as $key => $value) {
-            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5], $value[0][6]);
-         }  
-        $ArrayProdString=array();
-        foreach ($ArrayProdotti as $key => $value) {
-            $Immaginedacodificare=$value->getImmagine();
-            $ImmagineCodificata=  base64_encode($Immaginedacodificare);
-            $value->setImmagine($ImmagineCodificata);
-            $ArrayProdString[] = $value->getAsArray(); 
-        }
-        $JsonRisultato= json_encode($ArrayProdString);
+        $JsonRisultato= json_encode($ArrayProdotti);
         echo $JsonRisultato;
     }
     
-    public function GetSupermercati($ArrayIdS) {
-        /*$ProdottoDAO= new FProdotto;
-        $ArrayRisultatiProd=array();
-        foreach ($ArrayIdp as $key => $value) {
-           
-            $ArrayRisultatiProd[]= $ProdottoDAO->GetProdottiById($value);
-         }
-         //var_dump($ArrayRisultatiProd);
-        $ArrayProdotti= array ();
-        foreach ($ArrayRisultatiProd as $key => $value) {
-                
-            $ArrayProdotti[]= new Prodotto($value[0][0], $value[0][1], $value[0][2], $value[0][3], $value[0][4], $value[0][5]);
-         }
-         //var_dump($ArrayProdotti);
-        
-        $ArrayIds=array();
-        foreach ($ArrayProdotti as $value) {
-            
-            $ArrayIds[]=$value->getSupermercatoId();
-        }*/
-        
-        $ArrayIds_NoDopp =  array_unique($ArrayIdS);
-         $SupermercatoDAO=new FSupermercato();
-         $ArraySupermercati=array();
-        foreach ($ArrayIds_NoDopp as $key =>$value) {
-            $ArrayRisultatoSup=$SupermercatoDAO->RicercaPerId($value);
-            $Indirizzo = new Indirizzo($ArrayRisultatoSup[0][2], $ArrayRisultatoSup[0][3], $ArrayRisultatoSup[0][4]);
-            $ArraySupermercati[] = new Supermercato($ArrayRisultatoSup[0][1], $ArrayRisultatoSup[0][5], $Indirizzo, $ArrayRisultatoSup[0][0]);
+    public function RicercaSupermercatiPerIds($ArrayIds) {
+       
+        $CSupermercato = new CRicercaSupermercato();  
+        $ArraySupermercati=array();
+        foreach ($ArrayIds as $key =>$value) {
+           $ArraySupermercati[] = $CSupermercato->RicercaPerIds($value);
         }
-        $ArraySupString=array();
-        foreach ($ArraySupermercati as $key => $value) {
-            $Logodacodificare=$value->getLogo();
-            $Logocodificato= base64_encode($Logodacodificare);
-            $value->setLogo($Logocodificato);
-            $ArraySupString[] = $value->getAsArray(); 
-        }
-        $JsonRisultato= json_encode($ArraySupString);
-        return $JsonRisultato;
+        $JsonRisultato= json_encode($ArraySupermercati);
+        echo $JsonRisultato;
   }
 }
 ?>

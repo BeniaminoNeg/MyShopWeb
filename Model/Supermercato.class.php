@@ -1,25 +1,22 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Supermercato
  *
  * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano 
  */
+
 require_once 'Prodotto.class.php';
 require_once 'Indirizzo.class.php';
 
 class Supermercato {
     private $Nome;
     private $Catalogo;
-    private $Logo;
     private $Indirizzo;
-    private $Id;
+    private $Ids;
     /**
      * 
      * @param type $Nome tipo Stringa
@@ -27,11 +24,10 @@ class Supermercato {
      * @param type $Indirizzo istanza della classe Indirizzo.class
      * @param type $Id Stringa
      */
-    function __construct($Nome, $Logo, $Indirizzo, $Id) {
+    function __construct($Nome, $Logo, $Indirizzo, $Ids) {
         $this->Nome = $Nome;
-        $this->Logo = $Logo;
         $this->Indirizzo = $Indirizzo;
-        $this->Id = $Id;
+        $this->Ids = $Ids;
         $this->Catalogo= array();
     }
     /**
@@ -40,13 +36,6 @@ class Supermercato {
      */
     function getNome() {
         return $this->Nome;
-    }
-    /**
-     * 
-     * @return type Immagine
-     */
-    function getLogo() {
-        return $this->Logo;
     }
     /**
      * 
@@ -59,8 +48,8 @@ class Supermercato {
      * 
      * @return type String
      */
-    function getId() {
-        return $this->Id;
+    function getIds() {
+        return $this->Ids;
     }
     /**
      * 
@@ -68,13 +57,6 @@ class Supermercato {
      */
     function setNome($Nome) {
         $this->Nome = $Nome;
-    }
-    /**
-     * 
-     * @param type $Logo Immagine
-     */
-    function setLogo($Logo) {
-        $this->Logo = $Logo;
     }
     /**
      * 
@@ -87,9 +69,9 @@ class Supermercato {
      * 
      * @param type $Id String
      */
-    function setId($Id) {
+    function setIds($Ids) {
        
-        $this->Id = $Id;
+        $this->Ids = $Ids;
     }
     /**
      * 
@@ -102,7 +84,7 @@ class Supermercato {
         foreach ($this->Catalogo as $key => $value) {
             if (gettype($value)=="Prodotto")
             {
-                if ($value->Id==$IdProd)
+                if ($value->Ids==$IdProd)
                 {
                     $ProdottoCercato=$value;
                 }
@@ -115,7 +97,7 @@ class Supermercato {
      * @param type $Prodotto Prodotto
      */
     function addProdotto($Prodotto) {
-        $IdCercato=$Prodotto->Id;
+        $IdCercato=$Prodotto->Ids;
         if($this->VerificaProdotto($IdCercato)==false)
         {
             $this->Catalogo[]=$Prodotto;

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Description of Indirizzo
+ *
+ * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano 
+ */
 
 class Indirizzo {
      
@@ -10,7 +18,7 @@ private $NumeroCivico;
     public function __construct($Via, $Città, $NumeroCivico) {
         $this->Via=$Via;
         $this->Città=$Città;
-        $this->NumeroCivico;
+        $this->NumeroCivico=$NumeroCivico;
     }
 
     public function getVia() {

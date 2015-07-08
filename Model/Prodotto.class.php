@@ -1,20 +1,17 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Prodotto
  *
  * @author beniamino
+ * @author juan
+ * @author Silvia
+ * @author Gaetano 
  */
+
 class Prodotto {
     private $Id; 
     private $Nome;
-    private $Immagine;
     private $Descrizione;
     private $Prezzo;
     private $SupermercatoId;  
@@ -29,10 +26,9 @@ class Prodotto {
     * @param type $SupermercatoId
     * @param type $Categorie
     */
-    function __construct($Id, $Nome, $Immagine, $Descrizione, $Prezzo, $SupermercatoId, $Categorie) {
+    function __construct($Id, $Nome, $Descrizione, $Prezzo, $SupermercatoId, $Categorie) {
         $this->Id = $Id;
         $this->Nome = $Nome;
-        $this->Immagine = $Immagine;
         $this->Descrizione = $Descrizione;
         $this->Prezzo = $Prezzo;
         $this->SupermercatoId = $SupermercatoId;
@@ -51,13 +47,6 @@ class Prodotto {
      */
     function getNome() {
         return $this->Nome;
-    }
-    /**
-     * 
-     * @return Immagine del Prodotto
-     */
-    function getImmagine() {
-        return $this->Immagine;
     }
     /**
      * 
@@ -100,13 +89,6 @@ class Prodotto {
      */
     function setNome($Nome) {
         $this->Nome = $Nome;
-    }
-    /**
-     * 
-     * @param type $Immagine
-     */
-    function setImmagine($Immagine) {
-        $this->Immagine = $Immagine;
     }
     /**
      * 

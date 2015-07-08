@@ -1,15 +1,14 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Utente
  *
+ * @author beniamino
+ * @author juan
  * @author Silvia
+ * @author Gaetano 
  */
+
 class Utente {
     private $Nome;
     private $Cognome;
@@ -17,12 +16,12 @@ class Utente {
     private $email;
     private $ProdottiOsservati;
     
-    function __construct($Nome, $Cognome, $Password, $email) {
+    function __construct($Nome, $Cognome, $Password, $email, $ProdottiOsservati) {
         $this->Nome = $Nome;
         $this->Cognome = $Cognome;
         $this->Password = $Password;
         $this->email = $email;
-        $this->ProdottiOsservati=array ();
+        $this->ProdottiOsservati= $ProdottiOsservati;
      
     }
     
@@ -63,7 +62,7 @@ class Utente {
     }
 
     public function addProdottoOsservato($ProdottoOsservato) {
-        $this->ProdottiOsservati[] = $ProdottoOsservato;
+        $this->ProdottiOsservati += $ProdottoOsservato + ',';
     }
     
     public function toArray(){
