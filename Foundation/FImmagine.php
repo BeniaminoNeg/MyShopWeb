@@ -15,13 +15,10 @@ class FImmagine extends FDB {
 	parent::__construct();
     }
     
-    function RicercaPerNome($tag) {
-        $ArrayRisultati=parent::search_contains("Immagine", "Nome", $tag);
-        return $ArrayRisultati;
-    }
-    
-    function RicercaPerId($Id) {
-        $ArrayRisultati=parent::search_equals("Immagine", "Id", $Id);
-        return $ArrayRisultati;
+    function RicercaImmagine($Idp) {
+        
+        
     }
 }
+
+?>
