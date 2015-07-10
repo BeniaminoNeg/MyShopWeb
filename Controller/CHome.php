@@ -29,7 +29,12 @@ class CHome {
         $CRicercaProdotto=new CRicercaProdotto();
         $ArrayProdotti=array();
         foreach ($Indicicasuali as $key => $value) {
-            $ArrayProdotti[]= $CRicercaProdotto->RicercaPerId($value);
+        	for($i = 0; $i < 2 - log10($value); $i++){
+        		$value = "0".$value;
+        	}
+        	$value = "P".$value;
+        	//$value = "P" + $value;
+            $ArrayProdotti[]= $CRicercaProdotto->RicercaPerId($value);            
          }
         $JsonRisultato= json_encode($ArrayProdotti);
         return $JsonRisultato;
