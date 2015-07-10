@@ -18,42 +18,23 @@ foreach (glob("Model/*.php") as $filename){
 foreach (glob("Foundation/*.php") as $filename){
     require_once $filename;
 }
-require_once 'CSessione.php';
 
-class CRicercaImmaginiLoghi {
-    function RicercaImmagine($Idp,$Size) {
-        $ImmagineDAO= new FImmagine();
-        switch ($Size) {
-            case "Piccola":
-            {
-                $Immagine=$ImmagineDAO->RicercaImgPiccola($Idp);
-            }
-                break;
-            
-            case "Media":
-            {
-                $Immagine
-            }
-                break;
-            
-            case "Grande":
-            {
-                
-            }
-                break;
-            
-            case "Originale":
-            {
-                
-            }
-                break;
 
-            default:
-                break;
-        }
+class CRicercaImmagini  {
+    public function RicercaImmagine($Id) {
+        
+        header('Content-Type: application/json; charset=UTF-8');
+        $Immagine=new Immagine();
+        $Immagine->fetchDB($Id);
+        //var_dump($Immagine);
+        
+        $Risultato=$Immagine->getImmagine();
+        //var_dump($Risultato);
+        $Risultato=  utf8_encode($Risultato);
+        $JsonRisultato= json_encode($Risultato);
+        //var_dump($JsonRisultato);
+        echo $JsonRisultato;
         
         
-        
-        
-    }
+    } 
 }
