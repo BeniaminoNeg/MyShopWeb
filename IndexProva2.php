@@ -21,4 +21,4 @@ require_once 'Controller/CMarket.php';
 require_once 'Controller/CCategoria.php';
 
 $Controllore=new CRicercaImmagini();
-$Controllore->RicercaImmagine("P001");
+echo $Controllore->RicercaImmagine("P001");

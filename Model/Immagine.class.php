@@ -152,9 +152,9 @@ class Immagine {
         public function fetchDB($Id) {
             $ImmagineDAO= new FImmagine();
             $ImgRisult=$ImmagineDAO->RicercaImmagine($Id);
-            $this->setId($ImgRisult[0][2]);
-            $this->setSize($ImgRisult[0][0]);
-            $this->setType($ImgRisult[0][1]);
+            $this->setId($ImgRisult[0][0]);
+            $this->setSize($ImgRisult[0][1]);
+            $this->setType($ImgRisult[0][2]);
             $this->setImmagine($ImgRisult[0][3]);
         }
 	/**
