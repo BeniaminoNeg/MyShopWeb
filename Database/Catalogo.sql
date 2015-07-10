@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `catalogo`
 --
 
-CREATE TABLE IF NOT EXISTS `catalogo` (
+CREATE TABLE IF NOT EXISTS `Catalogo` (
   `Id` varchar(4) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` varchar(40) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Descrizione` varchar(1000) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `catalogo` (
 -- Dump dei dati per la tabella `catalogo`
 --
 
-INSERT INTO `catalogo` (`Id`, `Nome`, `Descrizione`, `Prezzo`, `Ids`, `Categoria`) VALUES
+INSERT INTO `Catalogo` (`Id`, `Nome`, `Descrizione`, `Prezzo`, `Ids`, `Categoria`) VALUES
 ('P001', 'Arance Navel', 'Arance navel di origine controllata al kg', 13.45, 'S00001', 'Frutta'),
 ('P002', 'Pomodori pachino', 'Pomodori pachino al kg', 1.4, 'S00002', 'Ortaggi'),
 ('P003', 'Banane', 'Banane siciliane al kg', 1.67, 'S00002', 'Frutta'),
@@ -99,7 +99,7 @@ INSERT INTO `catalogo` (`Id`, `Nome`, `Descrizione`, `Prezzo`, `Ids`, `Categoria
 --
 -- Indexes for table `catalogo`
 --
-ALTER TABLE `catalogo`
+ALTER TABLE `Catalogo`
  ADD PRIMARY KEY (`Id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

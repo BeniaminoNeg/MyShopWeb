@@ -21,6 +21,7 @@ class CHome {
         
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
+        
         $risultato=$risultato[0][0];
         $Indicicasuali = array();
         for ($index = 0; $index < 6; $index++) {
