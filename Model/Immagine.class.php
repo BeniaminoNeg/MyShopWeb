@@ -10,11 +10,7 @@
  */
 
 class Immagine {
-    //put your code here
-    	/**
-	 * @var string $nome Nome dell'immagine
-	 */	
-	private $Nome;
+    
         
 	/**
 	 * @var int $size Dimensione dell'immagine in byte
@@ -31,6 +27,10 @@ class Immagine {
 	 */
 	private $Immagine;
         
+        /**
+         *
+         * @var string
+         */
         private $Id;
 
 
@@ -41,12 +41,18 @@ class Immagine {
 	 * @param string $_type
 	 * @param string $_file_temp
 	 */
-	public function __construct($_nome,$_size,$_type,$_file_temp) {
-		$this->setNome($_nome);
-		$this->setSize($_size);
-		$this->setType($_type);
-		$this->setImmagine($_file_temp);
-	}
+	/*public function __construct($_id,$_size,$_type,$_file_temp) {
+            $this->setId($_id);
+            $this->setSize($_size);
+            $this->setType($_type);
+            $this->setImmagine($_file_temp);
+	}*/
+        
+     public function __construct() {
+         //ho creato il fetchDB
+         
+     }
+        
 	
 	/**
 	 * Setta il nome dell'immagine
@@ -80,7 +86,9 @@ class Immagine {
 	 * @param string $_file_temp Path temporaneo dell'immagine
 	 */
 	public function setImmagine($_file_temp) {
-		$this->Immagine_Originale = file_get_contents($_file_temp);
+            $this->Immagine=$_file_temp;
+            /*
+		$this->Immagine = file_get_contents($_file_temp);
 		if ($this->Type == "image/jpeg" || $this->Type == "image/jpg" || $this->Type == "image/pjpeg") {
 			$src = imagecreatefromjpeg($_file_temp);
 		} elseif ($this->Type == "image/gif") {
@@ -100,7 +108,7 @@ class Immagine {
 			imagepng($immagine,$path."_".$this->nome);
 		}
 		$this->Immagine = file_get_contents($path."_".$this->Nome);
-		unlink($path."_".$this->Nome);
+		unlink($path."_".$this->Nome);*/
 	}
 	
 	/**
@@ -140,6 +148,15 @@ class Immagine {
                 return $this->Id;
 
 	}
+        
+        public function fetchDB($Id) {
+            $ImmagineDAO= new FImmagine();
+            $ImgRisult=$ImmagineDAO->RicercaImmagine($Id);
+            $this->setId($ImgRisult[0][2]);
+            $this->setSize($ImgRisult[0][0]);
+            $this->setType($ImgRisult[0][1]);
+            $this->setImmagine($ImgRisult[0][3]);
+        }
 	/**
 	 *funzione che restituisce l'array associativo associato all'oggetto immagine
 	 * @return array Trasforma l'oggetto in una array associativo
@@ -154,6 +171,16 @@ class Immagine {
 		}
 		return $result;
 	}
+        
+        public function toArray(){
+        $array = (array) $this;
+        array_walk_recursive($array, function (&$property) {
+            if ($property instanceof Immagine) {
+                $property = $property->toArray();
+            }
+        });
+        return $array;
+    }
 }
 
 ?>

@@ -15,9 +15,12 @@ class FImmagine extends FDB {
 	parent::__construct();
     }
     
-    function RicercaImmagine($Idp) {
-        
-        
+    function RicercaImmagine($Id) {
+        //var_dump($Id);
+        $Id="'$Id'";
+        //var_dump($Id);
+        $Risultato= parent::search_equals("Immagine", "Id", $Id);
+        return $Risultato;   
     }
 }
 

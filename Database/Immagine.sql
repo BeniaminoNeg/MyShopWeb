@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Lug 09, 2015 alle 10:47
+-- Creato il: Lug 09, 2015 alle 19:49
 -- Versione del server: 5.6.24
 -- Versione PHP: 5.6.8
 
@@ -27,14 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Immagine` (
-  `Size` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `Type` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `Immagine_Piccola` mediumblob NOT NULL,
-  `Immagine_Media` mediumblob NOT NULL,
-  `Immagine_Grande` mediumblob NOT NULL,
-  `Immagine_Originale` mediumblob NOT NULL,
-  `Id` varchar(5) COLLATE utf8_unicode_ci NOT NULL
+  `Size` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Type` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Id` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `Immagine_Originale` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `Immagine`
+--
+
+INSERT INTO `Immagine` (`Size`, `Type`, `Id`, `Immagine_Originale`) VALUES
+('33b', 'jpg', 'P001', 0xa9a92f46696c652f496d6d6167696e695f50726f646f7474692f303031a96a7067);
 
 --
 -- Indici per le tabelle scaricate
