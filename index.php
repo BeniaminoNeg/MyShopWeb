@@ -10,6 +10,7 @@
 
 require_once 'Controller/CRicercaProdotto.class.php';
 require_once 'Controller/CHome.php';
+require_once 'Cintroller/CRicercaImmagini.php';
 require_once 'Foundation/FDB.php';
 require_once 'Foundation/FProdotto.php';
 require_once 'Foundation/FSupermercato.php';
@@ -50,6 +51,13 @@ switch ($FunzioneRichiesta) {
             else $ArrayIdS[$j]=$ArrayIdSString[$i];
         }
         $Risultato=$Controllore->GetSupermercati($ArrayIdS);
+        echo $Risultato;
+    }
+    case "GetImmagine":
+    {
+        $Controllore= new CRicercaImmagini();
+        $IdImmagine=$_GET ["Id"];
+        $Risultato=$Controllore->RicercaImmagine($IdImmagine);
         echo $Risultato;
     }
         break;

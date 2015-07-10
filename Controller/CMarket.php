@@ -31,7 +31,7 @@ class CMarket {
             $ArraySup[] = $CSupermercato->RicercaPerIds($i);
         }
         $json= json_encode($ArraySup);
-        echo $json;
+        return $json;
     }
     
     function CatalogoSup($Ids) {
@@ -39,7 +39,7 @@ class CMarket {
         $Catalogo = array ();
         $Catalogo[] = $CricercaProdotti->RicercaPerIds($Ids);
         $Json = json_encode($Catalogo);
-        echo $Json;
+        return $Json;
         
         
         

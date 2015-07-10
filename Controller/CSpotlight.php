@@ -36,7 +36,7 @@ class CSpotlight {
             $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($IdProdotto);
         }
         $Json=  json_encode($ProdottiOsservati);
-        echo $Json;
+        return $Json;
     }
     
     function RicercaProdottiById($IdProdottiOsservati) {
@@ -47,7 +47,7 @@ class CSpotlight {
             $ProdottiOsservati[] = $CRicercaProdotto->RicercaPerId($IdProdotto);
         }
         $Json=  json_encode($ProdottiOsservati);
-        echo $Json;
+        return $Json;
     }
     
 }

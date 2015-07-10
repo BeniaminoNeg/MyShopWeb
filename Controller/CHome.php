@@ -33,7 +33,7 @@ class CHome {
             $ArrayProdotti[]= $CRicercaProdotto->RicercaPerId($value);
          }
         $JsonRisultato= json_encode($ArrayProdotti);
-        echo $JsonRisultato;
+        return $JsonRisultato;
     }
     
     public function RicercaSupermercatiPerIds($ArrayIds) {
@@ -44,7 +44,7 @@ class CHome {
            $ArraySupermercati[] = $CSupermercato->RicercaPerIds($value);
         }
         $JsonRisultato= json_encode($ArraySupermercati);
-        echo $JsonRisultato;
+        return $JsonRisultato;
   }
 }
 ?>

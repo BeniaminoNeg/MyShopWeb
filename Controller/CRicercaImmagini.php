@@ -33,7 +33,7 @@ class CRicercaImmagini  {
         $Risultato=  utf8_encode($Risultato);
         $JsonRisultato= json_encode($Risultato);
         //var_dump($JsonRisultato);
-        echo $JsonRisultato;
+        return $JsonRisultato;
         
         
     } 

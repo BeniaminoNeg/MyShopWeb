@@ -24,6 +24,6 @@ class CCategoria {
         $CRicercaProdotto = new CRicercaProdotto();
         $Prodotti = $CRicercaProdotto->RicercaPerCategoria($Categoria);
         $Json = json_encode($Prodotti);
-        echo $Json;
+        return $Json;
     }
 }
