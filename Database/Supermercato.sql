@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Creato il: Lug 08, 2015 alle 22:16
--- Versione del server: 5.6.24
--- Versione PHP: 5.6.8
+-- Host: 127.0.0.1
+-- Generation Time: Lug 10, 2015 alle 12:20
+-- Versione del server: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,17 +17,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `MyShopDB`
+-- Database: `myshopdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Supermercato`
+-- Struttura della tabella `supermercato`
 --
 
-CREATE TABLE IF NOT EXISTS `Supermercato` (
-  `Ids` varchar(5) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+CREATE TABLE IF NOT EXISTS `supermercato` (
+  `Ids` varchar(7) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Via` varchar(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Città` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
@@ -35,26 +35,26 @@ CREATE TABLE IF NOT EXISTS `Supermercato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dump dei dati per la tabella `Supermercato`
+-- Dump dei dati per la tabella `supermercato`
 --
 
-INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
-('00001', 'Conad', 'Via Giuseppe Saragat', 'L''Aquila', ''),
-('00002', 'Tigre', 'Via Preturo', 'Coppito', '33'),
-('00003', 'In''s', 'Via Giuseppe Saragat', 'L''Aquila', ''),
-('00004', 'Eurospin', 'Via Mulino di Pile', 'L''Aquila', '64'),
-('00005', 'Di Meglio', 'Via Toscana', 'Teramo', '29'),
-('00006', 'Coop', 'Via Calabria', 'Roma', '59');
+INSERT INTO `supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
+('S00001', 'Conad', 'Via Giuseppe Saragat', 'L''Aquila', ''),
+('S00002', 'Tigre', 'Via Preturo', 'Coppito', '33'),
+('S00003', 'In''s', 'Via Giuseppe Saragat', 'L''Aquila', ''),
+('S00004', 'Eurospin', 'Via Mulino di Pile', 'L''Aquila', '64'),
+('S00005', 'Di Meglio', 'Via Toscana', 'Teramo', '29'),
+('S00006', 'Coop', 'Via Calabria', 'Roma', '59');
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `Supermercato`
+-- Indexes for table `supermercato`
 --
-ALTER TABLE `Supermercato`
-  ADD PRIMARY KEY (`Ids`);
+ALTER TABLE `supermercato`
+ ADD PRIMARY KEY (`Ids`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
