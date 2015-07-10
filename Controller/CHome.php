@@ -18,8 +18,7 @@ class CHome {
     
     public function ProdottiInEvidenza(){
         
-        $CSessione=new CSessione();
-        $CSessione->Session();
+        
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
         $risultato=$risultato[0][0];

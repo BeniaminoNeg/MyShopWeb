@@ -8,9 +8,9 @@
  * @author Gaetano 
  */
 
-require_once 'Controller/CRicercaProdotto.class.php';
+require_once 'Controller/CRicercaProdotto.php';
 require_once 'Controller/CHome.php';
-require_once 'Cintroller/CRicercaImmagini.php';
+require_once 'Controller/CRicercaImmagini.php';
 require_once 'Foundation/FDB.php';
 require_once 'Foundation/FProdotto.php';
 require_once 'Foundation/FSupermercato.php';
@@ -20,13 +20,8 @@ require_once 'Model/Supermercato.class.php';
 require_once 'Model/Utente.class.PHP';
 
 
-session_start();
-if (!isset($_SESSION['count']))
-{
-    $_SESSION['count']=0;
-    $_SESSION['start']=  time();
-}
-$_SESSION['count']++;
+$Sess=new CSessione();
+$Sess->Session();
 header('Content-Type: application/json');
 
 $FunzioneRichiesta=$_GET ["func"];

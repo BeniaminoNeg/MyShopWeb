@@ -15,8 +15,7 @@ class CRegistrazione {
     
     public function Registrazione() {
        
-       $CSessione=new CSessione();
-       $CSessione->Session();
+       
        $nome = mysql_escape_string($_POST['nome']);
        $cognome= mysql_escape_string($_POST['cognome']);
        $passwd= mysql_escape_string($_POST['password']);

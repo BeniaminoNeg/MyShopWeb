@@ -15,8 +15,7 @@ require_once 'CSessione.php';
 
 class CLogInOut {
     public function LogIn() {
-        $CSessione=new CSessione();
-        $CSessione->Session();
+        
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $UtenteDAO = new FUtente ();

@@ -24,8 +24,7 @@ class CRicercaProdotto {
     
     function RicercaPerNome($nome) {
         
-       $CSessione=new CSessione();
-       $CSessione->Session();
+       
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);//SOLO PER PROVA, ANDRÀ SOSTITUITO CON IL CAMPO DI POST
