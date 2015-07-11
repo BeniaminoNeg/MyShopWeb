@@ -86,7 +86,7 @@ switch ($FunzioneRichiesta) {
         break;
     default:
     {
-        echo "HAI FATTO DANNI!";
+        echo "SAVE GIULANO!";
     }
         break;
 }

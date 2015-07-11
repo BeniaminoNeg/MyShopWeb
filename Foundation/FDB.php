@@ -21,7 +21,7 @@ class FDB {
     //protected $db;
 
     function __construct() {    
-        $this->connect('localhost', 'root', '', 'MyShopDB');
+        $this->connect('localhost', 'root', '', 'my_myshopp');
     }
     
     public function connect($host,$user,$password,$database) {
