@@ -8,10 +8,9 @@
  * @author Gaetano 
  */
 
-require_once 'Controller/CRicercaProdotto.php';
-require_once 'Controller/CHome.php';
-require_once 'Controller/CRicercaImmagini.php';
-require_once 'Controller/CSpotlight.php';
+foreach (glob("Controller/*.php") as $filename){
+    require_once $filename;
+}
 require_once 'Foundation/FDB.php';
 require_once 'Foundation/FProdotto.php';
 require_once 'Foundation/FSupermercato.php';
@@ -24,8 +23,11 @@ require_once 'Model/Utente.class.PHP';
 $Sess=new CSessione();
 $Sess->Session();
 header('Content-Type: application/json');
+echo'HOME PAGE PROVVISORIA DI MYSHOP             ';
+echo 'Gateano Fichera, Beniamino Negrini, Giovanni Lezzi, Silvia Montecchia          ';
+echo 'Progetto di Programmazione Web              ';
 
-$FunzioneRichiesta=$_GET ["func"];
+$FunzioneRichiesta=  mysql_escape_string($_GET ["func"]);
 
 
 switch ($FunzioneRichiesta) {
@@ -39,7 +41,7 @@ switch ($FunzioneRichiesta) {
     case "HomeSup":
     {
         $Controllore= new CHome();
-        $ArrayIdSString=$_GET ["dati"];
+        $ArrayIdSString=mysql_escape_string($_GET ["dati"]);
         $ArrayIdS= array();
         $j=0;
         $IdS = "";
@@ -58,7 +60,7 @@ switch ($FunzioneRichiesta) {
     	case "SpotProdApp":
     		{
     			$Controllore= new CSpotlight();
-    			$ArrayIdString=$_GET ["dati"];
+    			$ArrayIdString=  mysql_escape_string($_GET ["dati"]);
     			$ArrayId= array();
     			$j=0;
     			$Id = "";
@@ -84,9 +86,28 @@ switch ($FunzioneRichiesta) {
         //echo $Risultato;
     }
         break;
+    
+    case "SpotProdWeb":
+    {
+        $Controllore= new CSpotlight();
+        $Risultato=$Controllore->RicercaProdottiOsservati();
+        echo $Risultato;
+    }
+        break;
+    
+    case "LogIn":
+    {
+        $email= mysql_escape_string($_GET['email']);
+        $passwd= mysql_escape_string($_GET['password']);
+        $Controllore= new CLogInOut();
+        $Controllore->LogIn($email, $passwd);
+        
+    }
+        break;
+    
     default:
     {
-        echo "SAVE GIULANO!";
+        echo "HAI FATTO DANNI!";
     }
         break;
 }

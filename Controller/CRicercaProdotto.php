@@ -44,6 +44,7 @@ class CRicercaProdotto {
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ProdTrovato= $ProdottoDAO->RicercaPerId($Id);
+        //var_dump($ProdTrovato);
         $Prodotto =new Prodotto($ProdTrovato[0]["Id"], $ProdTrovato[0]["Nome"], $ProdTrovato[0]["Descrizione"], $ProdTrovato[0]["Prezzo"], $ProdTrovato[0]["Ids"], $ProdTrovato[0]["Categoria"]);  
         $ProdString = $Prodotto->getAsArray();
         return $ProdString;

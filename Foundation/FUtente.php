@@ -17,9 +17,11 @@ class FUtente extends FDB {
     
      function VerificaEmail($email) {
          $trovato = false;
-        $EmailTrovata=parent::search_contains("UtenteRegistrato", "Email", $email);
-        if ($EmailTrovata= null){
+        $EmailTrovata=parent::search_equals("UtenteRegistrato", "Email", $email);
+        //var_dump($EmailTrovata);
+        if ($EmailTrovata != null){
             $trovato = true;
+            
         }
         return $trovato;        
     }
@@ -35,10 +37,15 @@ class FUtente extends FDB {
     
     function VerificaPassword($mail, $passwd) {
         $PasswdCorretta=false;
-        $passwdDB=  parent::searchColonnaSelect("UtenteRegistrato", "Password", "Email", $mail);
+        $arrpasswdDB=  parent::searchColonnaSelect("UtenteRegistrato", "Password", "Email", $mail);
+        $passwdDB=$arrpasswdDB [0]["Password"];
+        /*var_dump($passwdDB);
+        echo '   ';
+        var_dump($passwd);*/
         if ($passwd==$passwdDB){
             $PasswdCorretta=true;
         }
+        //var_dump($PasswdCorretta);
         return $PasswdCorretta;
     }
 }

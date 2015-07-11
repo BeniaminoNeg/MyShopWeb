@@ -26,13 +26,17 @@ class CSpotlight {
         return $Utente;
     }
     
-    function RicercaProdottiOsservati($Email) {
-        $Utente=$this->RicercaUtente($Email);
+    function RicercaProdottiOsservati() {
+        
+        $Utente= $_SESSION ['oggetto_utente_loggato'];
         $IdProdottiOsservati=$Utente->getProdottiOsservati();
+        //var_dump($IdProdottiOsservati);
         $CRicercaProdotto=new CRicercaProdotto();
         $ProdottiOsservati=array();
-        for ($i = 0; $i <  strlen($IdProdottiOsservati)/4; $i++) {
-            $IdProdotto = $IdProdottiOsservati[$i]+$IdProdottiOsservati[$i+1]+$IdProdottiOsservati[$i+2];
+     
+        for ($i = 0; $i <  strlen($IdProdottiOsservati)/5; $i++) {
+            $IdProdotto = $IdProdottiOsservati[$i]+$IdProdottiOsservati[$i+1]+$IdProdottiOsservati[$i+2]+$IdProdottiOsservati[$i+3];
+            var_dump($IdProdotto);
             $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($IdProdotto);
         }
         $Json=  json_encode($ProdottiOsservati);

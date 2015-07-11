@@ -66,7 +66,7 @@ class FDB {
     }
     
     public function searchColonnaSelect($tabella,$colonna,$chiave,$valore) {
-        $query = "SELECT $colonna FROM $tabella WHERE $chiave = $value";
+        $query = "SELECT $colonna FROM $tabella WHERE $chiave = $valore";
         $result = $this->query($query);
         return $result;
     }
