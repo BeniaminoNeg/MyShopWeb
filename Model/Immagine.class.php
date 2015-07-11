@@ -152,10 +152,12 @@ class Immagine {
         public function fetchDB($Id) {
             $ImmagineDAO= new FImmagine();
             $ImgRisult=$ImmagineDAO->RicercaImmagine($Id);
+            var_dump($ImgRisult);
             $this->setId($ImgRisult[0][0]);
             $this->setSize($ImgRisult[0][1]);
             $this->setType($ImgRisult[0][2]);
             $this->setImmagine($ImgRisult[0][3]);
+            //$this->Immagine=  base64_encode($this->Immagine);
         }
 	/**
 	 *funzione che restituisce l'array associativo associato all'oggetto immagine

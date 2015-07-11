@@ -79,11 +79,9 @@ switch ($FunzioneRichiesta) {
         $Controllore= new CRicercaImmagini();
         $IdImmagine=$_GET ["Id"];
         $Risultato=$Controllore->RicercaImmagine($IdImmagine);
-        $html = "<div><img src=\"";
-        $html2 = "\">";
-        $html3 = "</div>";
-        $Risultato = $html.$Risultato.$html2.$Risultato.$html3;
+        //var_dump($Risultato);
         echo $Risultato;
+        //echo $Risultato;
     }
         break;
     default:

@@ -26,14 +26,13 @@ class CRicercaImmagini  {
         header('Content-Type: application/json; charset=UTF-8');
         $Immagine=new Immagine();
         $Immagine->fetchDB($Id);
-        //var_dump($Immagine);
-        
+        var_dump($Immagine);
         $Risultato=$Immagine->getImmagine();
-        //var_dump($Risultato);
+       
         $Risultato=  utf8_encode($Risultato);
         $JsonRisultato= json_encode($Risultato);
-        //var_dump($JsonRisultato);
         return $JsonRisultato;
+        
         
         
     } 
