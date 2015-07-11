@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Lug 11, 2015 alle 10:49
+-- Generation Time: Lug 11, 2015 alle 10:54
 -- Versione del server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Supermercato` (
   `Ids` varchar(7) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Via` varchar(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
-  `Città` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `Citta` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Civico` varchar(5) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `Supermercato` (
 -- Dump dei dati per la tabella `Supermercato`
 --
 
-INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
+INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Citta`, `Civico`) VALUES
 ('S00001', 'Conad', 'Via Giuseppe Saragat', 'L''Aquila', ''),
 ('S00002', 'Tigre', 'Via Preturo', 'Coppito', '33'),
 ('S00003', 'In''s', 'Via Giuseppe Saragat', 'L''Aquila', ''),
