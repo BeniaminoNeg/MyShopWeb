@@ -21,8 +21,7 @@ class CHome {
         
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
-        
-        $risultato=$risultato[0][0];
+        $risultato = $risultato[0]["COUNT(Id)"];
         $Indicicasuali = array();
         for ($index = 0; $index < 6; $index++) {
             $Indicicasuali []=  rand(1, $risultato );          
@@ -34,7 +33,6 @@ class CHome {
         		$value = "0".$value;
         	}
         	$value = "P".$value;
-        	//$value = "P" + $value;
             $ArrayProdotti[]= $CRicercaProdotto->RicercaPerId($value);            
          }
         $JsonRisultato= json_encode($ArrayProdotti);

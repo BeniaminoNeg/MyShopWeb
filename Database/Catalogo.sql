@@ -2,8 +2,8 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Lug 10, 2015 alle 12:57
+-- Host: localhost
+-- Generation Time: Lug 10, 2015 alle 20:43
 -- Versione del server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `myshopdb`
+-- Database: `MyShopDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `catalogo`
+-- Struttura della tabella `Catalogo`
 --
 
 CREATE TABLE IF NOT EXISTS `Catalogo` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Catalogo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dump dei dati per la tabella `catalogo`
+-- Dump dei dati per la tabella `Catalogo`
 --
 
 INSERT INTO `Catalogo` (`Id`, `Nome`, `Descrizione`, `Prezzo`, `Ids`, `Categoria`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `Catalogo` (`Id`, `Nome`, `Descrizione`, `Prezzo`, `Ids`, `Categoria
 --
 
 --
--- Indexes for table `catalogo`
+-- Indexes for table `Catalogo`
 --
 ALTER TABLE `Catalogo`
  ADD PRIMARY KEY (`Id`);

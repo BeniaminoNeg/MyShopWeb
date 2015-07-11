@@ -22,9 +22,9 @@ class Supermercato {
      * @param type $Nome tipo Stringa
      * @param type $Logo Immagine
      * @param type $Indirizzo istanza della classe Indirizzo.class
-     * @param type $Id Stringa
+     * @param type $Ids Stringa
      */
-    function __construct($Nome, $Logo, $Indirizzo, $Ids) {
+    function __construct($Nome, $Indirizzo, $Ids) {
         $this->Nome = $Nome;
         $this->Indirizzo = $Indirizzo;
         $this->Ids = $Ids;

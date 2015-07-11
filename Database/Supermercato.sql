@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `supermercato`
 --
 
-CREATE TABLE IF NOT EXISTS `Supermercato` (
+CREATE TABLE IF NOT EXISTS `supermercato` (
   `Ids` varchar(7) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Via` varchar(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `Supermercato` (
 -- Dump dei dati per la tabella `supermercato`
 --
 
-INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
+INSERT INTO `supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
 ('S00001', 'Conad', 'Via Giuseppe Saragat', 'L''Aquila', ''),
 ('S00002', 'Tigre', 'Via Preturo', 'Coppito', '33'),
 ('S00003', 'In''s', 'Via Giuseppe Saragat', 'L''Aquila', ''),
@@ -53,7 +53,7 @@ INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
 --
 -- Indexes for table `supermercato`
 --
-ALTER TABLE `Supermercato`
+ALTER TABLE `supermercato`
  ADD PRIMARY KEY (`Ids`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

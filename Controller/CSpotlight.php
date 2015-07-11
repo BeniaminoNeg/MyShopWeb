@@ -42,9 +42,8 @@ class CSpotlight {
     function RicercaProdottiById($IdProdottiOsservati) {
         $CRicercaProdotto=new CRicercaProdotto();
         $ProdottiOsservati=array();
-        for ($i = 0; $i <  strlen($IdProdottiOsservati)/4; $i++) {
-            $IdProdotto = $IdProdottiOsservati[$i]+$IdProdottiOsservati[$i+1]+$IdProdottiOsservati[$i+2];
-            $ProdottiOsservati[] = $CRicercaProdotto->RicercaPerId($IdProdotto);
+        for ($i = 0; $i < count($IdProdottiOsservati) ; $i++) {
+            $ProdottiOsservati[] = $CRicercaProdotto->RicercaPerId($IdProdottiOsservati[$i]);
         }
         $Json=  json_encode($ProdottiOsservati);
         return $Json;

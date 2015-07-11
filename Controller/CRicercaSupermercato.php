@@ -23,15 +23,10 @@ class CRicercaSupermercato {
        
         header('Content-Type: application/json; charset=UTF-8');
         $SupermercatoDAO=new FSupermercato();
-        $ArayRisultatiSup= $SupermercatoDAO->RicercaPerIds($Ids);
-        $ArraySup=array();
-        foreach ($ArayRisultatiSup as $key => $value) {
-            $ArraySup[]=new Supermercato($value[0], $value[1], $value[2], $value[3], $value[4]);  
-        }
-        $ArraySupString=array();
-        foreach ($ArraySup as $key => $value) {
-            $ArraySupString[] = $value->getAsArray(); 
-        }
-        return $ArraySupString;
+        $SupTrovato= $SupermercatoDAO->RicercaPerIds($Ids);
+        $Indirizzo = new Indirizzo($SupTrovato[0]["Via"], $SupTrovato[0]["Citta"], $SupTrovato[0]["Civico"]);
+        $Supermercato =new Supermercato($SupTrovato[0]["Nome"], $Indirizzo, $SupTrovato[0]["Ids"]);  
+        $SupString = $Supermercato->getAsArray();
+        return $SupString;
     }
 }

@@ -39,7 +39,7 @@ class FDB {
     public function query($query) {
 	$sql = $this->db->prepare($query);
 	$sql->execute();
-	$result = $sql->fetchAll();	// Fetch all of the remaining rows in the result set 
+	$result = $sql->fetchAll();// Fetch all of the remaining rows in the result set 
 	return $result;
     }
     
@@ -51,9 +51,7 @@ class FDB {
     
     public function search_equals($tabella, $colonna, $value) {
         $query = "SELECT * FROM $tabella WHERE $colonna = $value";
-        //var_dump($query);
         $result = $this->query($query);
-        //var_dump($result);
         return $result;
     }
     

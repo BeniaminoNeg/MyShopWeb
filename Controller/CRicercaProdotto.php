@@ -43,17 +43,10 @@ class CRicercaProdotto {
         
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
-        $ArayRisultatiProd= $ProdottoDAO->RicercaPerId($Id);
-        $ArrayProd=array();
-        foreach ($ArayRisultatiProd as $key => $value) {
-            $ArrayProd[]=new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);  
-            //var_dump($ArrayProd);
-        }
-        $ArrayProdString=array();
-        foreach ($ArrayProd as $key => $value) {
-            $ArrayProdString[] = $value->getAsArray(); 
-        }
-        return $ArrayProdString;
+        $ProdTrovato= $ProdottoDAO->RicercaPerId($Id);
+        $Prodotto =new Prodotto($ProdTrovato[0]["Id"], $ProdTrovato[0]["Nome"], $ProdTrovato[0]["Descrizione"], $ProdTrovato[0]["Prezzo"], $ProdTrovato[0]["Ids"], $ProdTrovato[0]["Categoria"]);  
+        $ProdString = $Prodotto->getAsArray();
+        return $ProdString;
     }
     
     function RicercaPerCategoria($Categoria){//lo chiama ccategoria
