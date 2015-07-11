@@ -2,8 +2,8 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Lug 10, 2015 alle 12:20
+-- Host: localhost
+-- Generation Time: Lug 11, 2015 alle 10:49
 -- Versione del server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -17,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `myshopdb`
+-- Database: `MyShopDB`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `supermercato`
+-- Struttura della tabella `Supermercato`
 --
 
-CREATE TABLE IF NOT EXISTS `supermercato` (
+CREATE TABLE IF NOT EXISTS `Supermercato` (
   `Ids` varchar(7) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Nome` varchar(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
   `Via` varchar(30) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `supermercato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dump dei dati per la tabella `supermercato`
+-- Dump dei dati per la tabella `Supermercato`
 --
 
-INSERT INTO `supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
+INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
 ('S00001', 'Conad', 'Via Giuseppe Saragat', 'L''Aquila', ''),
 ('S00002', 'Tigre', 'Via Preturo', 'Coppito', '33'),
 ('S00003', 'In''s', 'Via Giuseppe Saragat', 'L''Aquila', ''),
@@ -51,9 +51,9 @@ INSERT INTO `supermercato` (`Ids`, `Nome`, `Via`, `Città`, `Civico`) VALUES
 --
 
 --
--- Indexes for table `supermercato`
+-- Indexes for table `Supermercato`
 --
-ALTER TABLE `supermercato`
+ALTER TABLE `Supermercato`
  ADD PRIMARY KEY (`Ids`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

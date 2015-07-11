@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Lug 08, 2015 alle 22:16
--- Versione del server: 5.6.24
--- Versione PHP: 5.6.8
+-- Generation Time: Lug 11, 2015 alle 10:49
+-- Versione del server: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,20 +39,20 @@ CREATE TABLE IF NOT EXISTS `UtenteRegistrato` (
 --
 
 INSERT INTO `UtenteRegistrato` (`Nome`, `Cognome`, `Password`, `Email`, `Prodottiosservati`) VALUES
-('Beniamino', 'Negrini', 'Coppitanno993', 'beniamino.negrini@gmail.com', '001,002,015'),
-('Gaetano', 'Fichera', '261293', 'gaetano.fichera93@gmail.com', '033,032,021'),
-('Giovanni', 'Lezzi', '07031993', 'lordjhon16@gmail.com', '001,002,003,004,005,006,007'),
-('Silvia', 'Montecchia', '070194', 'montecchsilvia@gmail.com', '003,004');
+('Beniamino', 'Negrini', 'Coppitanno993', 'beniamino.negrini@gmail.com', 'P001,P002,P015'),
+('Gaetano', 'Fichera', '261293', 'gaetano.fichera93@gmail.com', 'P033,P032,P021'),
+('Giovanni', 'Lezzi', '07031993', 'lordjhon16@gmail.com', 'P001,P002,P003,P004,P005,P006,P007'),
+('Silvia', 'Montecchia', '070194', 'montecchsilvia@gmail.com', 'P003,P004');
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `UtenteRegistrato`
+-- Indexes for table `UtenteRegistrato`
 --
 ALTER TABLE `UtenteRegistrato`
-  ADD PRIMARY KEY (`Email`);
+ ADD PRIMARY KEY (`Email`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
