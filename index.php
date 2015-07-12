@@ -23,9 +23,7 @@ require_once 'Model/Utente.class.PHP';
 $Sess=new CSessione();
 $Sess->Session();
 header('Content-Type: application/json');
-echo'HOME PAGE PROVVISORIA DI MYSHOP             ';
-echo 'Gateano Fichera, Beniamino Negrini, Giovanni Lezzi, Silvia Montecchia          ';
-echo 'Progetto di Programmazione Web              ';
+
 
 $FunzioneRichiesta=  mysql_escape_string($_GET ["func"]);
 

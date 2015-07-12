@@ -40,7 +40,7 @@ class CRicercaProdotto {
     }
     
     function RicercaPerId($Id){
-        
+        //var_dump($Id);
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ProdTrovato= $ProdottoDAO->RicercaPerId($Id);
