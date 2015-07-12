@@ -26,4 +26,20 @@ class CCategoria {
         $Json = json_encode($Prodotti);
         return $Json;
     }
+    
+    function Categorie() {
+        $ProdottoDAO = new FProdotto();
+        $NumProdotti = $ProdottoDAO->ContaProdotti();
+        $NumProdotti = $NumProdotti[0][0];
+        $CRicercaProdotto = new CRicercaProdotto();
+        $ArrayProd = array();
+        for ($i = 0; $i < $NumProdotti; $i++) {
+            
+            $ArrayProd [] = $CRicercaProdotto->RicercaPerId($i);
+        }
+        $ArrayCategorie = array();
+    }
+        
+        
+    
 }

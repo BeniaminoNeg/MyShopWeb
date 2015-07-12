@@ -34,8 +34,7 @@ switch ($FunzioneRichiesta) {
     case "HomeProd":
     {
         $Controllore= new CHome();
-        $Risultato=$Controllore->ProdottiInEvidenza();
-        echo $Risultato;
+        echo $Controllore->ProdottiInEvidenza();
     }
         break;
     case "HomeSup":
@@ -53,8 +52,7 @@ switch ($FunzioneRichiesta) {
             	$j++;
             }
         }
-        $Risultato=$Controllore->RicercaSupermercatiPerIds($ArrayIdS);
-        echo $Risultato;
+        echo $Controllore->RicercaSupermercatiPerIds($ArrayIdS);
     }
     	break;
     	case "SpotProdApp":
@@ -72,18 +70,14 @@ switch ($FunzioneRichiesta) {
     					$j++;
     				}
     			}
-    			$Risultato=$Controllore->RicercaProdottiById($ArrayId);
-    			echo $Risultato;
+    			echo $Controllore->RicercaProdottiById($ArrayId);
     		}
     		break;
     case "GetImmagine":
     {
         $Controllore= new CRicercaImmagini();
         $IdImmagine=$_GET ["Id"];
-        $Risultato=$Controllore->RicercaImmagine($IdImmagine);
-        //var_dump($Risultato);
-        echo $Risultato;
-        //echo $Risultato;
+        echo $Controllore->RicercaImmagine($IdImmagine);
     }
         break;
     
@@ -104,7 +98,18 @@ switch ($FunzioneRichiesta) {
         
     }
         break;
-    
+    case "Sup":
+    {
+        $CSupermercato = new CMarket();
+        echo $CSupermercato->RicercaMarket();
+    }
+        break;
+    case "Catalogo":
+    {
+        $CMarket = new CMarket();
+        $Ids = $_GET["Ids"];
+        echo $CMarket->CatalogoSup($Ids);
+    }
     default:
     {
         echo "HAI FATTO DANNI!";

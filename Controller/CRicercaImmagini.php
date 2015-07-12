@@ -26,10 +26,9 @@ class CRicercaImmagini  {
         header('Content-Type: application/json; charset=UTF-8');
         $Immagine=new Immagine();
         $Immagine->fetchDB($Id);
-        //var_dump($Immagine);
         $Risultato=$Immagine->getImmagine();
        
-        $Risultato=  utf8_encode($Risultato);
+        $Risultato= base64_encode($Risultato);
         $JsonRisultato= json_encode($Risultato);
         return $JsonRisultato;
         

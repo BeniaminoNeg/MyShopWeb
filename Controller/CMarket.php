@@ -28,7 +28,8 @@ class CMarket {
         $CSupermercato = new CRicercaSupermercato();
         $ArraySup = array ();
         for ($i = 1; $i <= $numeroSup; $i++) {
-            $ArraySup[] = $CSupermercato->RicercaPerIds($i);
+            $j = "S0000".$i;
+            $ArraySup[] = $CSupermercato->RicercaPerIds($j);
         }
         $json= json_encode($ArraySup);
         return $json;

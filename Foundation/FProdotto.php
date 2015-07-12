@@ -34,8 +34,7 @@ class FProdotto extends FDB {
     }
     
     function RicercaPerIds($Ids) {
-        
-        $ArrayRisultati=parent::search_equals("Catalogo", "Ids", $Ids);
+        $ArrayRisultati=parent::search_contains("Catalogo", "Ids", $Ids);
         return $ArrayRisultati;
     }
     
