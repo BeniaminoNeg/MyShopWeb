@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.4.3
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Lug 11, 2015 alle 10:54
--- Versione del server: 5.6.21
--- PHP Version: 5.6.3
+-- Creato il: Lug 12, 2015 alle 16:30
+-- Versione del server: 5.6.24
+-- Versione PHP: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `MyShopDB`
+-- Database: `my_myshopp`
 --
 
 -- --------------------------------------------------------
@@ -47,14 +47,14 @@ INSERT INTO `Supermercato` (`Ids`, `Nome`, `Via`, `Citta`, `Civico`) VALUES
 ('S00006', 'Coop', 'Via Calabria', 'Roma', '59');
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `Supermercato`
+-- Indici per le tabelle `Supermercato`
 --
 ALTER TABLE `Supermercato`
- ADD PRIMARY KEY (`Ids`);
+  ADD PRIMARY KEY (`Ids`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
