@@ -16,7 +16,6 @@ foreach (glob("Model/*.php") as $filename){
 foreach (glob("Foundation/*.php") as $filename){
     require_once $filename;
 }
-require_once 'CSessione.php';
 
 class CRicercaProdotto {
     function __construct() {
@@ -40,11 +39,9 @@ class CRicercaProdotto {
     }
     
     function RicercaPerId($Id){
-        //var_dump($Id);
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ProdTrovato= $ProdottoDAO->RicercaPerId($Id);
-        //var_dump($ProdTrovato);
         $Prodotto =new Prodotto($ProdTrovato[0]["Id"], $ProdTrovato[0]["Nome"], $ProdTrovato[0]["Descrizione"], $ProdTrovato[0]["Prezzo"], $ProdTrovato[0]["Ids"], $ProdTrovato[0]["Categoria"]);  
         $ProdString = $Prodotto->getAsArray();
         return $ProdString;

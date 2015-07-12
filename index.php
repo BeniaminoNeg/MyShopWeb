@@ -11,13 +11,13 @@
 foreach (glob("Controller/*.php") as $filename){
     require_once $filename;
 }
-require_once 'Foundation/FDB.php';
-require_once 'Foundation/FProdotto.php';
-require_once 'Foundation/FSupermercato.php';
-require_once 'Model/Indirizzo.class.php';
-require_once 'Model/Prodotto.class.php';
-require_once 'Model/Supermercato.class.php';
-require_once 'Model/Utente.class.PHP';
+foreach (glob("Model/*.php") as $filename){
+    require_once $filename;
+
+}
+foreach (glob("Foundation/*.php") as $filename){
+    require_once $filename;
+}
 
 
 $Sess=new CSessione();
@@ -35,7 +35,7 @@ switch ($FunzioneRichiesta) {
         echo $Controllore->ProdottiInEvidenza();
     }
         break;
-    case "HomeSup":
+    case "RicercaSup":
     {
         $Controllore= new CHome();
         $ArrayIdSString=mysql_escape_string($_GET ["dati"]);
@@ -108,6 +108,14 @@ switch ($FunzioneRichiesta) {
         $Ids = $_GET["Ids"];
         echo $CMarket->CatalogoSup($Ids);
     }
+        break;
+    case "RicercaPerCategoria":
+    {
+        $CCategoria = new CCategoria();
+        $Categoria = $_GET["Categoria"];
+        echo $CCategoria->RicercaPerCategoria($Categoria);
+    }
+        break;
     default:
     {
         echo "HAI FATTO DANNI!";
