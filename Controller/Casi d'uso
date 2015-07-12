@@ -1,6 +1,6 @@
 CHome: estrae 6 prodotti a caso dal database e ne cerca i supermercati correlati
 CSpotlight: caso Web: estrae dal db degli utenti i prodotti seguiti, li estrae dal db di prodotti e ne cerca i supermercati correlati 
-					 caso App: li arriva una stringa del tipo "xxx,xxx,xxx,...,xxx," e estrae dal db i prodotti con quei id e ne cerca i supermercati correlati
+            caso App: li arriva una stringa del tipo "xxx,xxx,xxx,...,xxx," e estrae dal db i prodotti con quei id e ne cerca i supermercati correlati
 CCategoria: estrae tutte le categorie presenti nel db e per ogni categoria, quando richiesto, estrae prodotti di quella specifica categoria e ne cerca i supermercati correlati
 CMarket: estrae tutti i market presenti nel db e per ognuno, quando richiesto, estrae tutti i prodotti presenti in quel supermercato
 CRicerca: estrae tutti i prodotti che nel nome contengono il valore inviato dalla ricerca e e ne cerca i supermercati correlati 
