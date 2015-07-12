@@ -29,23 +29,12 @@ class CSpotlight {
     function RicercaProdottiOsservati() {
         
         $Utente= $_SESSION ['oggetto_utente_loggato'];
-        $IdProdottiOsservati=$Utente->getProdottiOsservati();
+        $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
+        $IdProdotti = explode(",", $StringaIdProdottiOsservati);
         $CRicercaProdotto=new CRicercaProdotto();
         $ProdottiOsservati=array();
-        /*var_dump($IdProdottiOsservati);
-        echo '    ';*/
-        var_dump(strlen($IdProdottiOsservati));
-        for ($i = 0; $i <  strlen($IdProdottiOsservati); $i+5) {
-            /*var_dump($IdProdottiOsservati[$i]);
-            echo '   ';
-            var_dump($IdProdottiOsservati[$i+1]);
-            echo '   ';
-            var_dump($IdProdottiOsservati[$i+2]);
-            echo '   ';
-            var_dump($IdProdottiOsservati[$i+3]);*/
-            $IdProdotto = $IdProdottiOsservati[$i].$IdProdottiOsservati[$i+1].$IdProdottiOsservati[$i+2].$IdProdottiOsservati[$i+3];
-            var_dump($IdProdotto);
-            $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($IdProdotto);
+        foreach ($IdProdotti as $value) {
+            $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($value);
         }
         $Json=  json_encode($ProdottiOsservati);
         return $Json;
