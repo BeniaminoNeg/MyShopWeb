@@ -11,10 +11,12 @@
 foreach (glob("Controller/*.php") as $filename){
     require_once $filename;
 }
+
 foreach (glob("Model/*.php") as $filename){
     require_once $filename;
 
 }
+
 foreach (glob("Foundation/*.php") as $filename){
     require_once $filename;
 }
@@ -87,21 +89,50 @@ switch ($FunzioneRichiesta) {
     }
         break;
     
+    case "Reg":
+    {//FARE IL POST!!!!!!!!!
+        $nome= mysql_escape_string($_GET['nome']);
+        $cognome= mysql_escape_string($_GET['cognome']);
+        $email= mysql_escape_string($_GET['email']);
+        $passwd= mysql_escape_string($_GET['password']);
+        $Controllore= new CRegistrazione();
+        $Controllore->Registrazione($nome, $cognome, $passwd, $email);  
+    }
+        break;
+
     case "LogIn":
-    {
+    {//FARE IL POST!!!!!!!!!
         $email= mysql_escape_string($_GET['email']);
         $passwd= mysql_escape_string($_GET['password']);
         $Controllore= new CLogInOut();
-        $Controllore->LogIn($email, $passwd);
-        
+        $Controllore->LogIn($email, $passwd);  
     }
         break;
+    
+    case "LogOut":
+    {
+        $Controllore= new CLogInOut();
+        $Controllore->LogOut();
+    }
+        break;
+    
+    case "MailUnica":
+    {//FARE IL POST
+        $email= mysql_escape_string($_GET['email']);
+        $Controllore= new CRegistrazione();
+        $Risultato=$Controllore->VerificaEmailUnica($email);
+        echo $Risultato;
+    }
+        break;
+    
+    
     case "Sup":
     {
         $CSupermercato = new CMarket();
         echo $CSupermercato->RicercaMarket();
     }
         break;
+    
     case "Catalogo":
     {
         $CMarket = new CMarket();

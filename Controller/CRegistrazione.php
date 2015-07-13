@@ -13,25 +13,24 @@ require_once 'CSessione.php';
 
 class CRegistrazione {
     
-    public function Registrazione() {
-       
-       
-       $nome = mysql_escape_string($_POST['nome']);
-       $cognome= mysql_escape_string($_POST['cognome']);
-       $passwd= mysql_escape_string($_POST['password']);
-       $email= mysql_escape_string($_POST['email']);
+    public function Registrazione($nome,$cognome,$passwd,$email) {
+      
        $UtenteDAO = new FUtente ();
        if (!$UtenteDAO->VerificaEmail($email)){
-           $UtenteDAO->MemorizzaUtente($nome,$cognome,$passwd,$email);
+           $UtenteDAO->MemorizzaUtente($passwd, $email, $nome, $cognome);
        }
     }
-    public function VerificaEmailUnica ($JsonMail)
+    /**
+     * 
+     * @param type $email
+     * @return type boolean ritorna true se l' email non è già nel database
+     */
+    public function VerificaEmailUnica ($email)
     {
-        header('Content-Type: application/json');
+        
         $Bool=false;
-        $Mail=  json_decode($JsonMail);
         $UtenteDAO= new FUtente ();
-        if ($UtenteDAO-> VerificaEmailUnica($Mail)){
+        if (!$UtenteDAO->VerificaEmail($email)){//la funz è true se l' email c'è >> voglio invertire il risultao
             $Bool=true;
         }
         $JsonRisultato=  json_encode($Bool);

@@ -34,15 +34,15 @@ class CLogInOut {
                 $_SESSION['oggetto_utente_loggato']=$Utente;
                 $_SESSION['stato_log']='in';
                 
-                var_dump($_SESSION);
+                
                 
             }
         }
     }
     
     public function LogOut() {
-        session_start();
         $_SESSION['stato_log']='out';
+        
         session_destroy();
     }
 }

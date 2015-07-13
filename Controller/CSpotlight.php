@@ -27,7 +27,7 @@ class CSpotlight {
     }
     
     function RicercaProdottiOsservati() {
-        
+        var_dump($_SESSION);
         $Utente= $_SESSION ['oggetto_utente_loggato'];
         $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
         $IdProdotti = explode(",", $StringaIdProdottiOsservati);
