@@ -60,9 +60,32 @@ class FDB {
         $result = $this->query($query);
         return $result;
     }
+    /**
+     * 
+     * @param type $NomeTabella
+     * @param type $ElencoColonne del tipo: `Nome`, `Cognome`, `Password`, `Email`, `Prodottiosservati`
+     * @param type $TuplaValori del tipo 'peppe', 'esempio', 'gda', 'fweff', ''
+     */
+    public function putintoDB($NomeTabella,$ElencoColonne,$TuplaValori){
+        $query="INSERT INTO `my_myshopp`.`$NomeTabella` ($ElencoColonne) "
+                . "VALUES ($TuplaValori);";
+        $result=$this->query($query);
+        return $result;
+    }
     
-    public function putintoDB($tabella, $password, $email, $Nome, $cognome){
-        "INSERT INTO $tabella(`Password`, `Email`, `Nome`, `Cognome`) VALUES ($password, $email, $Nome, $cognome)";
+    /**
+     * 
+     * @param type $NomeTabella
+     * @param type $Colonna
+     * @param type $Valore attributo aggiornato
+     * @param type $Chiave chiave primaria
+     * @param type $ValChiave valore della chiave primaria
+     */
+    public function UpdateAttributo($NomeTabella,$Colonna,$Valore,$Chiave,$ValChiave) {
+        $query="UPDATE `my_myshopp`.`$NomeTabella` 
+                SET `$Colonna` = '$Valore' 
+                WHERE `UtenteRegistrato`.`$Chiave` = '$ValChiave';";
+        
     }
     
     public function searchColonnaSelect($tabella,$colonna,$chiave,$valore) {

@@ -14,7 +14,11 @@ class FUtente extends FDB {
      function __construct() {
 	parent::__construct();
     }
-    
+    /**
+     * 
+     * @param type $email
+     * @return boolean vede se nel database c'è l' email del parametro
+     */
      function VerificaEmail($email) {
          $trovato = false;
         $EmailTrovata=parent::search_equals("UtenteRegistrato", "Email", $email);
@@ -26,8 +30,10 @@ class FUtente extends FDB {
         return $trovato;        
     }
     
-    function MemorizzaUtente ($Password, $Email, $Nome, $Cognome, $Prodottiosservati){
-        parent::putintoDB("UtenteRegistrato", $password, $email, $Nome, $cognome, $Prodottiosservati);
+    function MemorizzaUtente ($Password, $Email, $Nome, $Cognome){
+        $ElencoColonne="`Nome`, `Cognome`, `Password`, `Email`, `Prodottiosservati`";
+        $TuplaValori= "'$Nome', '$Cognome', '$Password', '$Email', ''";
+        $result=parent::putintoDB("UtenteRegistrato", $ElencoColonne, $TuplaValori);
     }
     
     function GetUtenteByMail($mail) {
