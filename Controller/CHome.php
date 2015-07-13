@@ -31,7 +31,7 @@ class CHome {
         {
             $Indicicasuali [] = rand(1, $risultato );
             $Indicicasuali=array_unique($Indicicasuali);
-        }
+        } 
         $CRicercaProdotto=new CRicercaProdotto();
         $ArrayProdotti=array();
         foreach ($Indicicasuali as $key => $value) {

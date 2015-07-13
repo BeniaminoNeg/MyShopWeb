@@ -51,6 +51,7 @@ class FDB {
     
     public function search_equals($tabella, $colonna, $value) {
         $query = "SELECT * FROM $tabella WHERE $colonna = '$value'";
+        var_dump($query);
         $result = $this->query($query);
         return $result;
     }
@@ -97,6 +98,17 @@ class FDB {
         
         return $result;
     }
+
+    public function EliminaTupla($tabella, $Chiave, $Id) {
+        $query= "DELETE FROM `my_myshopp`.`$tabella` WHERE `$tabella`.`$Chiave` = '$Id'";
+        $this->query($query);
+    }
+    
+    public function AddTupla($NomeTabella,$ElencoColonne,$TuplaValori) {
+        $query = "INSERT INTO `$NomeTabella` ($ElencoColonne)Values($TuplaValori)";
+        $this->query($query);
+    }
+    
         public function close() {
     }
 }

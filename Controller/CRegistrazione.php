@@ -30,9 +30,13 @@ class CRegistrazione {
         
         $Bool=false;
         $UtenteDAO= new FUtente ();
-        if (!$UtenteDAO->VerificaEmail($email)){//la funz è true se l' email c'è >> voglio invertire il risultao
-            $Bool=true;
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL) === false )
+        {
+                if (!$UtenteDAO->VerificaEmail($email)){//la funz è true se l' email c'è >> voglio invertire il risultao
+                $Bool=true;
+            }
         }
+        
         $JsonRisultato=  json_encode($Bool);
         return $JsonRisultato;
     }
