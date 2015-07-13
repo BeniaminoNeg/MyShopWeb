@@ -26,7 +26,7 @@ class CRicercaProdotto {
        
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
-        $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);//SOLO PER PROVA, ANDRÀ SOSTITUITO CON IL CAMPO DI POST
+        $ArrayRisultatiProd=$ProdottoDAO->RicercaPerNome($nome);
         $ArrayProdotti=array();
         foreach ($ArrayRisultatiProd as $key => $value) {
             $ArrayProdotti[]= new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);
@@ -35,7 +35,8 @@ class CRicercaProdotto {
         foreach ($ArrayProdotti as $key => $value) {
             $ArrayProdString[] = $value->getAsArray(); 
         }
-        return $ArrayProdString;
+        $JSonRisultato=  json_encode($ArrayProdString);
+        return $JSonRisultato;
     }
     
     function RicercaPerId($Id){

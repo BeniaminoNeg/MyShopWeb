@@ -16,7 +16,7 @@ class FProdotto extends FDB {
     }
     
     function RicercaPerNome($tag) {
-        
+        $tag=  strtoupper($tag); //Nel DB sono tutte maiuscole
         $ArrayRisultati=parent::search_contains("Catalogo", "Nome", $tag);
         return $ArrayRisultati;
     }

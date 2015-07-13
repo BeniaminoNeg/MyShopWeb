@@ -133,11 +133,22 @@ switch ($FunzioneRichiesta) {
         echo $CMarket->CatalogoSup($Ids);
     }
         break;
+    
     case "RicercaPerCategoria":
     {
         $CCategoria = new CCategoria();
         $Categoria = $_GET["Categoria"];
         echo $CCategoria->RicercaPerCategoria($Categoria);
+    }
+        break;
+    
+    
+    case "RicercaPerNome":
+    {
+        $Controllore = new CRicercaProdotto();
+        $tag=mysql_escape_string($_GET['nome']);
+        $Risultato=$Controllore->RicercaPerNome($tag);
+        echo $Risultato;
     }
         break;
     

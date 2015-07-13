@@ -12,6 +12,9 @@ index.php?func= {
                     MailUnica     ---------->  POST email
                     AddPref       ---------->  &Idp=P001
                     RemPref       ---------->  &Idp=P001
-   
-                    AddPreferito da implementare
+                    RicercaPerCategoria ---->  &Categoria=Pasta
+                    Catalogo
+                    Sup
+                    RicercaPerNome --------->  &nome=Riso
+                    
                 }

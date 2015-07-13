@@ -50,7 +50,7 @@ class FDB {
     }
     
     public function search_equals($tabella, $colonna, $value) {
-        $query = "SELECT * FROM $tabella WHERE $colonna = $value";
+        $query = "SELECT * FROM $tabella WHERE $colonna = '$value'";
         $result = $this->query($query);
         return $result;
     }
@@ -84,7 +84,7 @@ class FDB {
     public function UpdateAttributo($NomeTabella,$Colonna,$Valore,$Chiave,$ValChiave) {
         $query="UPDATE `my_myshopp`.`$NomeTabella` 
                 SET `$Colonna` = '$Valore' 
-                WHERE `UtenteRegistrato`.`$Chiave` = '$ValChiave'";
+                WHERE $NomeTabella.`$Chiave` = '$ValChiave'";
         $result = $this->query($query);
         return $result;
         
@@ -92,7 +92,6 @@ class FDB {
     
     public function searchColonnaSelect($tabella,$colonna,$chiave,$valore) {
         $query = "SELECT $colonna FROM $tabella WHERE $chiave = '$valore'";
-        //var_dump($query);
         $result = $this->query($query);
         
         

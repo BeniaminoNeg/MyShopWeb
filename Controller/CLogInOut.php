@@ -20,8 +20,7 @@ class CLogInOut {
         //$passwd= mysql_escape_string($_POST['password']);
         
         $UtenteDAO = new FUtente ();
-        $email="'$email'";
-        //var_dump($email);
+        
         if ($UtenteDAO->VerificaEmail($email))//è registrato?
         {
             if ($UtenteDAO->VerificaPassword($email, $passwd))

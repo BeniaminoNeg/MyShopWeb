@@ -55,6 +55,7 @@ class CSpotlight {
         $email=$Utente->getEmail();
         $UtenteDAO= new FUtente();
         $UtenteDAO->addPreferito($Idp, $email);
+        $this->updateOggettoSessione($email); 
     }
     
     function remPref ($Idp) {
@@ -62,6 +63,14 @@ class CSpotlight {
         $email=$Utente->getEmail();
         $UtenteDAO= new FUtente();
         $UtenteDAO->removePreferito($Idp, $email);
+        $this->updateOggettoSessione($email);
+    }
+    
+    function updateOggettoSessione($email) {
+        $UtenteDAO= new FUtente();
+        $Risult=$UtenteDAO->searchColonnaSelect("UtenteRegistrato", "Prodottiosservati", "Email", $email);
+        $ProdottiOsservati=$Risult[0]["Prodottiosservati"];
+        $_SESSION ['oggetto_utente_loggato']->setProdottiOsservati($ProdottiOsservati);
     }
     
 }

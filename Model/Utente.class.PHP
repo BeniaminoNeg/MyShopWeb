@@ -61,8 +61,8 @@ class Utente {
         return $this->ProdottiOsservati;
     }
 
-    public function addProdottoOsservato($ProdottoOsservato) {
-        $this->ProdottiOsservati += $ProdottoOsservato + ',';
+    public function setProdottiOsservati($ProdottiOsservati) {
+        $this->ProdottiOsservati= $ProdottiOsservati;
     }
     
     public function toArray(){
