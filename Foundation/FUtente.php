@@ -56,19 +56,32 @@ class FUtente extends FDB {
     }
     
     function addPreferito($IdpPreferito,$email) {
-        $StringaPreferiti=  parent::searchColonnaSelect("UtenteRegistrato", "ProdottiOsservati", "Email", $email);
-        $StringaPreferiti=$StringaPreferiti.",".$IdpPreferito;
+     
+        $Risult=  parent::searchColonnaSelect("UtenteRegistrato", "Prodottiosservati", "Email", $email);
+        $StringaPreferiti=$Risult [0]["Prodottiosservati"];
+        if($StringaPreferiti=="")
+        {
+            $StringaPreferiti="$IdpPreferito";
+        }
+        else
+        {
+            $StringaPreferiti=$StringaPreferiti.",".$IdpPreferito;
+        }
         parent::UpdateAttributo("UtenteRegistrato", "Prodottiosservati", $StringaPreferiti, "Email", $email);    
     }
     
     function removePreferito($IdpPreferito,$email) {
-        $StringaPreferiti=  parent::searchColonnaSelect("UtenteRegistrato", "ProdottiOsservati", "Email", $email);
+        $Risult=  parent::searchColonnaSelect("UtenteRegistrato", "ProdottiOsservati", "Email", $email);
+        $StringaPreferiti=$Risult [0]["ProdottiOsservati"];
         $ArrayPreferiti=  explode(",", $StringaPreferiti);
+        //var_dump($ArrayPreferiti);
         if (in_array($IdpPreferito, $ArrayPreferiti))
         {
             unset($ArrayPreferiti[array_search($IdpPreferito, $ArrayPreferiti)]);
         }
-        $StringaPreferiti= implode(",", $pieces);
+        //var_dump($ArrayPreferiti);
+        $StringaPreferiti= implode(",", $ArrayPreferiti);
+        //var_dump($StringaPreferiti);
         parent::UpdateAttributo("UtenteRegistrato", "Prodottiosservati", $StringaPreferiti, "Email", $email);
             
     }

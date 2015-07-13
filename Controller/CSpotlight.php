@@ -27,7 +27,7 @@ class CSpotlight {
     }
     
     function RicercaProdottiOsservati() {
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
         $Utente= $_SESSION ['oggetto_utente_loggato'];
         $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
         $IdProdotti = explode(",", $StringaIdProdottiOsservati);
@@ -48,6 +48,20 @@ class CSpotlight {
         }
         $Json=  json_encode($ProdottiOsservati);
         return $Json;
+    }
+    
+    function addPref ($Idp) {
+        $Utente= $_SESSION ['oggetto_utente_loggato'];
+        $email=$Utente->getEmail();
+        $UtenteDAO= new FUtente();
+        $UtenteDAO->addPreferito($Idp, $email);
+    }
+    
+    function remPref ($Idp) {
+        $Utente= $_SESSION ['oggetto_utente_loggato'];
+        $email=$Utente->getEmail();
+        $UtenteDAO= new FUtente();
+        $UtenteDAO->removePreferito($Idp, $email);
     }
     
 }

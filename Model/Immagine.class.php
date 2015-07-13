@@ -15,23 +15,23 @@ class Immagine {
 	/**
 	 * @var int $size Dimensione dell'immagine in byte
 	 */
-	private $Size;
+	public $Size;
 	/**
 	 * 
 	 * @var string $type Mime-Type dell'immagine
 	 */
-	private $Type;
+	public $Type;
 	
 	/**
 	 * @var string $immagine_originale Immagine originale
 	 */
-	private $Immagine;
+	public $Immagine;
         
         /**
          *
          * @var string
          */
-        private $Id;
+        public $Id;
 
 
         /**
@@ -87,28 +87,7 @@ class Immagine {
 	 */
 	public function setImmagine($_file_temp) {
             $this->Immagine=$_file_temp;
-            /*
-		$this->Immagine = file_get_contents($_file_temp);
-		if ($this->Type == "image/jpeg" || $this->Type == "image/jpg" || $this->Type == "image/pjpeg") {
-			$src = imagecreatefromjpeg($_file_temp);
-		} elseif ($this->Type == "image/gif") {
-			$src = imagecreatefromgif($_file_temp);
-		} else {
-			$src = imagecreatefrompng($_file_temp);			
-		}
-		list($width,$height)=getimagesize($_file_temp);
-		$immagine=imagecreatetruecolor(182,114);
-		imagecopyresampled($immagine,$src,0,0,0,0,182,114,$width,$height);
-		$path="./tmp/";
-		if ($this->Type == "image/jpeg" || $this->Type == "image/jpg" || $this->Type == "image/pjpeg") {
-			imagejpeg($immagine,$path."_".$this->Nome);
-		} elseif ($this->Type == "image/gif") {
-			imagegif($immagine,$path."_".$this->Nome);
-		} else {
-			imagepng($immagine,$path."_".$this->nome);
-		}
-		$this->Immagine = file_get_contents($path."_".$this->Nome);
-		unlink($path."_".$this->Nome);*/
+          
 	}
 	
 	/**
@@ -152,12 +131,10 @@ class Immagine {
         public function fetchDB($Id) {
             $ImmagineDAO= new FImmagine();
             $ImgRisult=$ImmagineDAO->RicercaImmagine($Id);
-            //var_dump($ImgRisult);
             $this->setId($ImgRisult[0][0]);
             $this->setSize($ImgRisult[0][1]);
             $this->setType($ImgRisult[0][2]);
-            $this->setImmagine($ImgRisult[0][3]);
-            //$this->Immagine=  base64_encode($this->Immagine);
+            $this->setImmagine(base64_encode(($ImgRisult[0][3])));
         }
 	/**
 	 *funzione che restituisce l'array associativo associato all'oggetto immagine

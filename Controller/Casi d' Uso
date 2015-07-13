@@ -10,6 +10,8 @@ index.php?func= {
                     LogOut
                     Reg           ---------->  POST email password nome cognome
                     MailUnica     ---------->  POST email
+                    AddPref       ---------->  &Idp=P001
+                    RemPref       ---------->  &Idp=P001
    
                     AddPreferito da implementare
                 }

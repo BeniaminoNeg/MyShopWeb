@@ -40,18 +40,10 @@ switch ($FunzioneRichiesta) {
     case "RicercaSup":
     {
         $Controllore= new CHome();
-        $ArrayIdSString=mysql_escape_string($_GET ["dati"]);
+        $StringIdS=mysql_escape_string($_GET ["dati"]);
         $ArrayIdS= array();
         $j=0;
-        $IdS = "";
-        for ($i=0; $i<strlen($ArrayIdSString); $i++){
-            if($ArrayIdSString[$i] !=',') $IdS = $IdS.$ArrayIdSString[$i];
-            else {
-            	$ArrayIdS[$j] = $IdS;
-            	$IdS = "";
-            	$j++;
-            }
-        }
+        $ArrayIdS=  explode(",", $StringIdS);
         echo $Controllore->RicercaSupermercatiPerIds($ArrayIdS);
     }
     	break;
@@ -75,9 +67,10 @@ switch ($FunzioneRichiesta) {
     		break;
     case "GetImmagine":
     {
-        $Controllore= new CRicercaImmagini();
-        $IdImmagine=$_GET ["Id"];
-        echo $Controllore->RicercaImmagine($IdImmagine);
+        $ric = new CRicercaImmagini();
+        $IdImmagine=mysql_escape_string($_GET["Id"]);
+        $Risultato = $ric->RicercaImmagine($IdImmagine);
+        echo $Risultato;   
     }
         break;
     
@@ -147,6 +140,26 @@ switch ($FunzioneRichiesta) {
         echo $CCategoria->RicercaPerCategoria($Categoria);
     }
         break;
+    
+    case "AddPref":
+    {
+        $Idp = $_GET["Idp"];
+        $Controllore=new CSpotlight();
+        $Controllore->addPref($Idp);
+    }
+        break;
+    
+    case "RemPref":
+    {
+        $Idp = $_GET["Idp"];
+        $Controllore=new CSpotlight();
+        $Controllore->remPref($Idp);
+    }
+        break;
+    
+    
+    
+    
     default:
     {
         echo "HAI FATTO DANNI!";

@@ -84,13 +84,18 @@ class FDB {
     public function UpdateAttributo($NomeTabella,$Colonna,$Valore,$Chiave,$ValChiave) {
         $query="UPDATE `my_myshopp`.`$NomeTabella` 
                 SET `$Colonna` = '$Valore' 
-                WHERE `UtenteRegistrato`.`$Chiave` = '$ValChiave';";
+                WHERE `UtenteRegistrato`.`$Chiave` = '$ValChiave'";
+        $result = $this->query($query);
+        return $result;
         
     }
     
     public function searchColonnaSelect($tabella,$colonna,$chiave,$valore) {
-        $query = "SELECT $colonna FROM $tabella WHERE $chiave = $valore";
+        $query = "SELECT $colonna FROM $tabella WHERE $chiave = '$valore'";
+        //var_dump($query);
         $result = $this->query($query);
+        
+        
         return $result;
     }
         public function close() {
