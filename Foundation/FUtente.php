@@ -54,5 +54,23 @@ class FUtente extends FDB {
         //var_dump($PasswdCorretta);
         return $PasswdCorretta;
     }
+    
+    function addPreferito($IdpPreferito,$email) {
+        $StringaPreferiti=  parent::searchColonnaSelect("UtenteRegistrato", "ProdottiOsservati", "Email", $email);
+        $StringaPreferiti=$StringaPreferiti.",".$IdpPreferito;
+        parent::UpdateAttributo("UtenteRegistrato", "Prodottiosservati", $StringaPreferiti, "Email", $email);    
+    }
+    
+    function removePreferito($IdpPreferito,$email) {
+        $StringaPreferiti=  parent::searchColonnaSelect("UtenteRegistrato", "ProdottiOsservati", "Email", $email);
+        $ArrayPreferiti=  explode(",", $StringaPreferiti);
+        if (in_array($IdpPreferito, $ArrayPreferiti))
+        {
+            unset($ArrayPreferiti[array_search($IdpPreferito, $ArrayPreferiti)]);
+        }
+        $StringaPreferiti= implode(",", $pieces);
+        parent::UpdateAttributo("UtenteRegistrato", "Prodottiosservati", $StringaPreferiti, "Email", $email);
+            
+    }
 }
 ?>
