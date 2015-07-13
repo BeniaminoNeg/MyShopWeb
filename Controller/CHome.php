@@ -21,10 +21,16 @@ class CHome {
         
         $ProdottoDAO= new FProdotto();
         $risultato= $ProdottoDAO->ContaProdotti();
-        $risultato = $risultato[0]["COUNT(Id)"];
+        $risultato = $risultato[0]["COUNT(Id)"];//Risultato contiene il num di prodotti presenti nel Catalogo
         $Indicicasuali = array();
         for ($index = 0; $index < 6; $index++) {
             $Indicicasuali []=  rand(1, $risultato );          
+        }
+        $Indicicasuali=array_unique($Indicicasuali);
+        while(count($Indicicasuali)<5)
+        {
+            $Indicicasuali [] = rand(1, $risultato );
+            $Indicicasuali=array_unique($Indicicasuali);
         }
         $CRicercaProdotto=new CRicercaProdotto();
         $ArrayProdotti=array();
