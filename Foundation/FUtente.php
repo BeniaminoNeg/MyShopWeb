@@ -19,13 +19,11 @@ class FUtente extends FDB {
      * @param type $email
      * @return boolean vede se nel database c'è l' email del parametro
      */
-     function VerificaEmail($email) {
-         $trovato = false;
-        $EmailTrovata=parent::search_equals("UtenteRegistrato", "Email", $email);
-        //var_dump($EmailTrovata);
+    function VerificaEmail($email) {
+        $trovato = false;
+        $EmailTrovata = parent::search_equals("UtenteRegistrato", "Email", $email);
         if ($EmailTrovata != null){
             $trovato = true;
-            
         }
         return $trovato;        
     }

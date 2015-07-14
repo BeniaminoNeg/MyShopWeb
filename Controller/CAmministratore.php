@@ -20,14 +20,20 @@ foreach (glob("Foundation/*.php") as $filename){
 
 class CAmministratore {
     
-    function AddImmagine($Dati, $Password, $Email) {
+    function AddImmagine($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Username = $Admin->getUsername();
+        $Password = $Admin->getPassword();
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
+        $Amministratore = new Amministratore($Password, $Username);
         $Amministratore->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3]);
     }
     
-    function UpdateImmagine($Dati, $Password, $Email) {
+    function UpdateImmagine($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Email = $Admin->getEmail();
+        $Password = $Admin->getPassword();
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);

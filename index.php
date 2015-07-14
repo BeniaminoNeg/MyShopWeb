@@ -88,6 +88,15 @@ switch ($FunzioneRichiesta) {
     }
         break;
     
+    case "LogInAdmin":
+    {//FARE IL POST!!!!!!!!!
+        $Username= mysql_escape_string($_GET['username']);
+        $password= mysql_escape_string($_GET['password']);
+        $Controllore= new CLogInOut();
+        $Controllore->LoginAdmin($Username, $password) ; 
+    }
+        break;
+    
     case "LogOut":
     {
         $Controllore= new CLogInOut();

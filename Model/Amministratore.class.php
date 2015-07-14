@@ -16,11 +16,11 @@
 class Amministratore {
     
     private $Password;
-    private $email;
+    private $Username;
     
-    function __construct($Password, $email) {
+    function __construct($Password, $Username) {
         $this->Password = $Password;
-        $this->email = $email;
+        $this->Username = $Username;
     }
     
     public function getPassword() {
@@ -31,12 +31,12 @@ class Amministratore {
         $this->Password = $Password;
     }
 
-    public function getEmail() {
-        return $this->email;
+    public function getUsername() {
+        return $this->Username;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setUsername($Username) {
+        $this->Username = $Username;
     }
     
     function AddImmagine($Id, $Size, $Type, $Immagine_originale){
