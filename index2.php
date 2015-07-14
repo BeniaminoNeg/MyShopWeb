@@ -11,12 +11,11 @@ foreach (glob("Controller/*.php") as $filename){
 
 foreach (glob("Model/*.php") as $filename){
     require_once $filename;
-
 }
 
 foreach (glob("Foundation/*.php") as $filename){
     require_once $filename;
 }
 
-$Amministratore = new Amministratore();
-$Amministratore->UpdateUtente("Email", "Figa", "lordjhon16@gmail.com");
+$Amministratore = new Amministratore("Cazzo", "Figa", "Fregna", "BHo", "");
+$Amministratore->UpdateUtente("Password", "12345", "lordjhon16@gmail.com");

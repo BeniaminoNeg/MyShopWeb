@@ -12,9 +12,12 @@
  * @author juan
  */
 
-class Amministratore  {
+require_once 'Utente.class.PHP';
+
+class Amministratore extends Utente {
     
     function _construct() {
+        parent::__construct($Nome, $Cognome, $Password, $email, $ProdottiOsservati);
     }
     
     function AddImmagine($Id, $Size, $Type, $Immagine_originale){
@@ -77,6 +80,4 @@ class Amministratore  {
         $Fdb = new FDB();
         $Fdb->UpdateAttributo("UtenteRegistrato", $Colonna, $Valore, "Email", "$ValChiave");
     }
-    
-    
 }
