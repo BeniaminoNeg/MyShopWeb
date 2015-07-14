@@ -41,7 +41,7 @@ class CLogInOut {
         $AdminDAO = new FAmministratore();
         if($AdminDAO->VerificaUsername($Username))
         {
-            if($AdminDAO->VerificaPassword($Username, $passwd))
+            if($AdminDAO->VerificaPassword($Username, $password))
             {
                 $AttrAmministratore = $AdminDAO->GetUtenteByUsername($Username);
                 $Amministratore = new Amministratore($AttrAmministratore[0]["Password"], $AttrAmministratore[0]["Username"]);

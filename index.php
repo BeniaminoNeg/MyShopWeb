@@ -166,101 +166,79 @@ switch ($FunzioneRichiesta) {
 
     case "AdminAddImg":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->AddImmagine($Dati, $Password, $Email);
+        $Controllore->AddImmagine($Dati);
     }
         break;
     case "AdminUpdateImg":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateImmagine($Dati, $Password, $Email);
+        $Controllore->UpdateImmagine($Dati);
     }
         break;
     case "AdminRemoveImg":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Id =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->RemoveImmagine($Id, $Password, $Email);
+        $Controllore->RemoveImmagine($Id);
     }
         break;
     case "AdminAddProd":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->AddProdotto($Dati, $Password, $Email);
+        $Controllore->AddProdotto($Dati);
     }
         break;
     case "AdminUpdateProd":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateProdotto($Dati, $Password, $Email);
+        $Controllore->UpdateProdotto($Dati);
     }
         break;
     case "AdminRemoveProd":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Id =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->RemoveProdotto($Id, $Password, $Email);
+        $Controllore->RemoveProdotto($Id);
     }
         break;
     case "AdminAddSup":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->AddSupermercato($Dati, $Password, $Email);
+        $Controllore->AddSupermercato($Dati );
     }
         break;
     case "AdminUpdateSup":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateSupermercato($Dati, $Password, $Email);
+        $Controllore->UpdateSupermercato($Dati);
     }
         break;
     case "AdminRemoveSup":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Id =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->RemoveSupermercato($Id, $Password, $Email);
+        $Controllore->RemoveSupermercato($Id);
     }
         break;
     case "AdminUpdateUtente":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateUtente($Dati, $Password, $Email);
+        $Controllore->UpdateUtente($Dati);
     }
         break;
     case "AdminRemoveUtente":
     {
-        $Email = mysql_escape_string($_POST['email']);
-        $Password = mysql_escape_string($_POST['password']);
         $Id =  mysql_escape_string($_GET['dati']);
         $Controllore= new CAmministratore();
-        $Controllore->RemoveUtente($Id, $Password, $Email);
+        $Controllore->RemoveUtente($Id);
     }
         break;
     

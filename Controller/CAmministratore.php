@@ -22,76 +22,70 @@ class CAmministratore {
     
     function AddImmagine($Dati) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $Username = $Admin->getUsername();
-        $Password = $Admin->getPassword();
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Username);
-        $Amministratore->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3]);
+        $Admin->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3]);
     }
     
     function UpdateImmagine($Dati) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $Email = $Admin->getEmail();
-        $Password = $Admin->getPassword();
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
-    function RemoveImmagine($Id, $Password, $Email) {
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->RemoveImmagine($Id);        
+    function RemoveImmagine($Id) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Admin->RemoveImmagine($Id);        
     }
     
-    function AddProdotto($Dati, $Password, $Email) {
+    function AddProdotto($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->AddProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $ArrayDati[5]);        
+        $Admin->AddProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $ArrayDati[5]);        
     }
     
-    function UpdateProdotto($Dati, $Password, $Email) {
+    function UpdateProdotto($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
-    function RemoveProdotto($Id, $Password, $Email) {
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->RemoveProdotto($Id);        
+    function RemoveProdotto($Id) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Admin->RemoveProdotto($Id);        
     }
     
-    function AddSupermercato($Dati, $Password, $Email) {
+    function AddSupermercato($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->AddSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4]);
+        $Admin->AddSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4]);
     }
     
-    function UpdateSupermercato($Dati, $Password, $Email) {
+    function UpdateSupermercato($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
-    function RemoveSupermercato($Id, $Password, $Email) {
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->RemoveSupermercato($Id);        
+    function RemoveSupermercato($Id) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Admin->RemoveSupermercato($Id);        
     }
     
-    function UpdateUtente($Dati, $Password, $Email) {
+    function UpdateUtente($Dati) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
         $ArrayDati = array();
         $ArrayDati = explode(",", $Dati);
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateUtente($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateUtente($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
-    function RemoveUtente($Id, $Password, $Email) {
-        $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->RemoveUtente($Id);        
+    function RemoveUtente($Id) {
+        $Admin= $_SESSION ['oggetto_admin_loggato'];
+        $Admin->RemoveUtente($Id);        
     } 
 }
