@@ -51,7 +51,6 @@ class FDB {
     
     public function search_equals($tabella, $colonna, $value) {
         $query = "SELECT * FROM $tabella WHERE $colonna = '$value'";
-        var_dump($query);
         $result = $this->query($query);
         return $result;
     }

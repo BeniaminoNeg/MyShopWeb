@@ -12,12 +12,31 @@
  * @author juan
  */
 
-require_once 'Utente.class.PHP';
 
-class Amministratore extends Utente {
+class Amministratore {
     
-    function _construct() {
-        parent::__construct($Nome, $Cognome, $Password, $email, $ProdottiOsservati);
+    private $Password;
+    private $email;
+    
+    function __construct($Password, $email) {
+        $this->Password = $Password;
+        $this->email = $email;
+    }
+    
+    public function getPassword() {
+        return $this->Password;
+    }
+
+    public function setPassword($Password) {
+        $this->Password = $Password;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
     }
     
     function AddImmagine($Id, $Size, $Type, $Immagine_originale){
@@ -32,9 +51,9 @@ class Amministratore extends Utente {
         $Fdb->UpdateAttributo("Immagine", $Colonna, $Valore, "Id", "$ValChiave");
     }
     
-    function RemoveImmagine($Chiave, $Id) {
+    function RemoveImmagine($Id) {
         $Fdb = new FDB();
-        $Fdb->EliminaTupla("Immagine", $Chiave, $Id);
+        $Fdb->EliminaTupla("Immagine", "Id", $Id);
     }
    
     function AddProdotto($Id, $Nome, $Descrizione, $Prezzo, $Ids, $Categoria) {
@@ -49,9 +68,9 @@ class Amministratore extends Utente {
         $Fdb->UpdateAttributo("Catalogo", $Colonna, $Valore, "Id", "$ValChiave");
     }
     
-    function RemoveProdotto($Chiave, $Id) {
+    function RemoveProdotto($Id) {
         $Fdb = new FDB();
-        $Fdb->EliminaTupla("Catalogo", $Chiave, $Id);
+        $Fdb->EliminaTupla("Catalogo", "Id", $Id);
     }
     
     function AddSupermercato($Ids, $Nome, $Via, $Città, $Civico) {
@@ -66,14 +85,14 @@ class Amministratore extends Utente {
         $Fdb->UpdateAttributo("Supermercato", $Colonna, $Valore, "Ids", "$ValChiave");
     }
     
-    function RemoveSupermercato($Chiave, $Id) {
+    function RemoveSupermercato($Id) {
         $Fdb = new FDB();
-        $Fdb->EliminaTupla("Supermercato", $Chiave, $Id);
+        $Fdb->EliminaTupla("Supermercato", "Ids", $Id);
     }
     
-    function RemoveUtente($Chiave, $Email) {
+    function RemoveUtente($Email) {
         $Fdb = new FDB();
-        $Fdb->EliminaTupla("UtenteRegistrato", $Chiave, $Email);
+        $Fdb->EliminaTupla("UtenteRegistrato", "Email", $Email);
     }
     
     Function UpdateUtente($Colonna, $Valore, $ValChiave){
