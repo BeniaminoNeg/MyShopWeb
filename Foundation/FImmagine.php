@@ -10,15 +10,25 @@
  */
 
 class FImmagine extends FDB {
-    //put your code here
+    
+    /**
+     * Eredita il costruttore
+     * di FDB
+     */
     function __construct() {
 	parent::__construct();
     }
-    
+    /**
+     * Ricerca un immagine
+     * sulla Tabella Immgine
+     * tramite l'id
+     * 
+     * @param type $Id
+     * @return type
+     */
     function RicercaImmagine($Id) {
-        //var_dump($Id);
+        
         $Id="'$Id'";
-        //var_dump($Id);
         $Risultato= parent::search_equals("Immagine", "Id", $Id);
         return $Risultato;   
     }
