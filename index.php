@@ -41,19 +41,15 @@ switch ($FunzioneRichiesta) {
     {
         $Controllore= new CHome();
         $StringIdS=mysql_escape_string($_GET ["dati"]);
-        $ArrayIdS= array();
-        $ArrayIdS=  explode(",", $StringIdS);
-        echo $Controllore->RicercaSupermercatiPerIds($ArrayIdS);
+        echo $Controllore->RicercaSupermercatiPerIds($StringIdS);
     }
     	break;
     	case "SpotProdApp":
-    		{
-    			$Controllore= new CSpotlight();
-    			$ArrayIdString=  mysql_escape_string($_GET ["dati"]);
-    			$ArrayId= array();
-    			$ArrayId= explode(",", $ArrayIdString);
-    			echo $Controllore->RicercaProdottiById($ArrayId);
-    		}
+        {
+            $Controllore= new CSpotlight();
+            $ArrayIdString=  mysql_escape_string($_GET ["dati"]);
+            echo $Controllore->RicercaProdottiById($ArrayIdString);
+        }
     		break;
     case "GetImmagine":
     {
@@ -120,6 +116,7 @@ switch ($FunzioneRichiesta) {
     {
         $CMarket = new CMarket();
         $Ids = $_GET["Ids"];
+        //var_dump($Ids);
         echo $CMarket->CatalogoSup($Ids);
     }
         break;
@@ -163,10 +160,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $Password, $Email);
+        $Controllore->AddImmagine($Dati, $Password, $Email);
     }
         break;
     case "AdminUpdateImg":
@@ -174,10 +169,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $Password, $Email);
+        $Controllore->UpdateImmagine($Dati, $Password, $Email);
     }
         break;
     case "AdminRemoveImg":
@@ -194,10 +187,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->AddProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $ArrayDati[5], $Password, $Email);
+        $Controllore->AddProdotto($Dati, $Password, $Email);
     }
         break;
     case "AdminUpdateProd":
@@ -205,10 +196,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $Password, $Email);
+        $Controllore->UpdateProdotto($Dati, $Password, $Email);
     }
         break;
     case "AdminRemoveProd":
@@ -225,10 +214,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->AddSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $Password, $Email);
+        $Controllore->AddSupermercato($Dati, $Password, $Email);
     }
         break;
     case "AdminUpdateSup":
@@ -236,10 +223,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $Password, $Email);
+        $Controllore->UpdateSupermercato($Dati, $Password, $Email);
     }
         break;
     case "AdminRemoveSup":
@@ -256,10 +241,8 @@ switch ($FunzioneRichiesta) {
         $Email = mysql_escape_string($_POST['email']);
         $Password = mysql_escape_string($_POST['password']);
         $Dati =  mysql_escape_string($_GET['dati']);
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
         $Controllore= new CAmministratore();
-        $Controllore->UpdateUtente($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $Password, $Email);
+        $Controllore->UpdateUtente($Dati, $Password, $Email);
     }
         break;
     case "AdminRemoveUtente":

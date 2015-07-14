@@ -23,18 +23,18 @@ class FProdotto extends FDB {
     
     function RicercaPerId($Id) {
         
-        $ArrayRisultati=parent::search_contains("Catalogo", "Id", $Id);
+        $ArrayRisultati=parent::search_equals("Catalogo", "Id", $Id);
         return $ArrayRisultati;
     }
     
     function RicercaPerCategoria($Categoria) {
        
-        $ArrayRisultati=parent::search_contains("Catalogo", "Categoria", $Categoria);
+        $ArrayRisultati=parent::search_equals("Catalogo", "Categoria", $Categoria);
         return $ArrayRisultati;
     }
     
     function RicercaPerIds($Ids) {
-        $ArrayRisultati=parent::search_contains("Catalogo", "Ids", $Ids);
+        $ArrayRisultati=parent::search_equals("Catalogo", "Ids", $Ids);
         return $ArrayRisultati;
     }
     

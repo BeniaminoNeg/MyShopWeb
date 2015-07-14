@@ -18,7 +18,7 @@ foreach (glob("Foundation/*.php") as $filename){
 }
 
 class CSpotlight {
-    //put your code here
+
     function RicercaUtente($Email) {
         $UtenteDAO = new FUtente();
         $UtenteDB = $UtenteDAO->GetUtenteByMail($Email);
@@ -27,7 +27,7 @@ class CSpotlight {
     }
     
     function RicercaProdottiOsservati() {
-        //var_dump($_SESSION);
+
         $Utente= $_SESSION ['oggetto_utente_loggato'];
         $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
         $IdProdotti = explode(",", $StringaIdProdottiOsservati);
@@ -40,11 +40,13 @@ class CSpotlight {
         return $Json;
     }
     
-    function RicercaProdottiById($IdProdottiOsservati) {
+    function RicercaProdottiById($ArrayIdString) {
+        $ArrayId= array();
+        $ArrayId= explode(",", $ArrayIdString);
         $CRicercaProdotto=new CRicercaProdotto();
         $ProdottiOsservati=array();
-        for ($i = 0; $i < count($IdProdottiOsservati) ; $i++) {
-            $ProdottiOsservati[] = $CRicercaProdotto->RicercaPerId($IdProdottiOsservati[$i]);
+        for ($i = 0; $i < count($ArrayId) ; $i++) {
+            $ProdottiOsservati[] = $CRicercaProdotto->RicercaPerId($ArrayId[$i]);
         }
         $Json=  json_encode($ProdottiOsservati);
         return $Json;
@@ -72,6 +74,5 @@ class CSpotlight {
         $ProdottiOsservati=$Risult[0]["Prodottiosservati"];
         $_SESSION ['oggetto_utente_loggato']->setProdottiOsservati($ProdottiOsservati);
     }
-    
 }
 ?>

@@ -69,6 +69,7 @@ class CRicercaProdotto {
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
         $ArayRisultatiProd= $ProdottoDAO->RicercaPerIds($Ids);
+        //var_dump($ArayRisultatiProd);
         $ArrayProd=array();
         foreach ($ArayRisultatiProd as $key => $value) {
             $ArrayProd[]=new Prodotto($value[0], $value[1], $value[2], $value[3], $value[4], $value[5]);            

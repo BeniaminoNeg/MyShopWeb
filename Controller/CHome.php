@@ -45,11 +45,13 @@ class CHome {
         return $JsonRisultato;
     }
     
-    public function RicercaSupermercatiPerIds($ArrayIds) {
-       
+    public function RicercaSupermercatiPerIds($StringIdS) {
+        $ArrayIdS= array();
+        $ArrayIdS=  explode(",", $StringIdS);
         $CSupermercato = new CRicercaSupermercato();  
         $ArraySupermercati=array();
-        foreach ($ArrayIds as $key =>$value) {
+        foreach ($ArrayIdS as $key =>$value) {
+            var_dump($value);
            $ArraySupermercati[] = $CSupermercato->RicercaPerIds($value);
         }
         $JsonRisultato= json_encode($ArraySupermercati);

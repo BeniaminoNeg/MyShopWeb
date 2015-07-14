@@ -20,14 +20,18 @@ foreach (glob("Foundation/*.php") as $filename){
 
 class CAmministratore {
     
-    function AddImmagine($Id, $Size, $Type, $Immagine_originale, $Password, $Email) {
+    function AddImmagine($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->AddImmagine($Id, $Size, $Type, $Immagine_originale);
+        $Amministratore->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3]);
     }
     
-    function UpdateImmagine($Colonna, $Valore, $ValChiave, $Password, $Email) {
+    function UpdateImmagine($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateImmagine($Colonna, $Valore, $ValChiave);
+        $Amministratore->UpdateImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
     function RemoveImmagine($Id, $Password, $Email) {
@@ -35,14 +39,18 @@ class CAmministratore {
         $Amministratore->RemoveImmagine($Id);        
     }
     
-    function AddProdotto($Id, $Nome, $Descrizione, $Prezzo, $Ids, $Categoria, $Password, $Email) {
+    function AddProdotto($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->AddProdotto($Id, $Nome, $Descrizione, $Prezzo, $Ids, $Categoria);        
+        $Amministratore->AddProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $ArrayDati[5]);        
     }
     
-    function UpdateProdotto($Colonna, $Valore, $ValChiave, $Password, $Email) {
+    function UpdateProdotto($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateProdotto($Colonna, $Valore, $ValChiave);
+        $Amministratore->UpdateProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
     function RemoveProdotto($Id, $Password, $Email) {
@@ -50,14 +58,18 @@ class CAmministratore {
         $Amministratore->RemoveProdotto($Id);        
     }
     
-    function AddSupermercato($Ids, $Nome, $Via, $Città, $Civico, $Password, $Email) {
+    function AddSupermercato($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->AddSupermercato($Ids, $Nome, $Via, $Città, $Civico);
+        $Amministratore->AddSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4]);
     }
     
-    function UpdateSupermercato($Colonna, $Valore, $ValChiave, $Password, $Email) {
+    function UpdateSupermercato($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateSupermercato($Colonna, $Valore, $ValChiave);
+        $Amministratore->UpdateSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
     function RemoveSupermercato($Id, $Password, $Email) {
@@ -65,9 +77,11 @@ class CAmministratore {
         $Amministratore->RemoveSupermercato($Id);        
     }
     
-    function UpdateUtente($Colonna, $Valore, $ValChiave, $Password, $Email) {
+    function UpdateUtente($Dati, $Password, $Email) {
+        $ArrayDati = array();
+        $ArrayDati = explode(",", $Dati);
         $Amministratore = new Amministratore($Password, $Email);
-        $Amministratore->UpdateUtente($Colonna, $Valore, $ValChiave);
+        $Amministratore->UpdateUtente($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
     }
     
     function RemoveUtente($Id, $Password, $Email) {
