@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Lug 13, 2015 alle 17:59
+-- Creato il: Lug 14, 2015 alle 10:00
 -- Versione del server: 5.6.24
 -- Versione PHP: 5.6.8
 
@@ -27,12 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Catalogo` (
-  `Id` varchar(4) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
-  `Nome` varchar(40) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
-  `Descrizione` varchar(1000) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
+  `Id` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Nome` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `Descrizione` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `Prezzo` float NOT NULL,
-  `Ids` varchar(6) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL,
-  `Categoria` char(20) CHARACTER SET armscii8 COLLATE armscii8_bin NOT NULL
+  `Ids` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
+  `Categoria` char(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
