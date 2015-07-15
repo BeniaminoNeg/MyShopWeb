@@ -38,7 +38,7 @@ class CMarket {
     function CatalogoSup($Ids) {
         $CricercaProdotti = new CRicercaProdotto();
         $Catalogo = array ();
-        $Catalogo[] = $CricercaProdotti->RicercaPerIds($Ids);
+        $Catalogo = $CricercaProdotti->RicercaPerIds($Ids);
         $Json = json_encode($Catalogo);
         return $Json;
         
