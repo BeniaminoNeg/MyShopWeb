@@ -25,19 +25,28 @@ class CSpotlight {
         $Utente = new Utente($UtenteDB[0][0], $UtenteDB[0][1], $UtenteDB[0][2], $UtenteDB[0][3], $UtenteDB[0][4]);
         return $Utente;
     }
-    
+    /**
+     * Per il lato Web
+     * @return type Json dei prodotti osservati
+     */
     function RicercaProdottiOsservati() {
-
-        $Utente= $_SESSION ['oggetto_utente_loggato'];
-        $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
-        $IdProdotti = explode(",", $StringaIdProdottiOsservati);
-        $CRicercaProdotto=new CRicercaProdotto();
-        $ProdottiOsservati=array();
-        foreach ($IdProdotti as $value) {
-            $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($value);
+        if (isset($_SESSION ['oggetto_utente_loggato']))
+        {
+            $Utente= $_SESSION ['oggetto_utente_loggato'];
+            $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
+            $IdProdotti = explode(",", $StringaIdProdottiOsservati);
+            $CRicercaProdotto=new CRicercaProdotto();
+            $ProdottiOsservati=array();
+            foreach ($IdProdotti as $value) {
+                $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($value);
+            }
+            $Json=  json_encode($ProdottiOsservati);
+            return $Json;
         }
-        $Json=  json_encode($ProdottiOsservati);
-        return $Json;
+        else 
+        {
+            echo 'SESSIONE SCADUTA'; //RIMEDIO PROVVISORIO
+        }
     }
     
     function RicercaProdottiById($ArrayIdString) {

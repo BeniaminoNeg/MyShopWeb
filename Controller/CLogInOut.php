@@ -24,10 +24,8 @@ class CLogInOut {
         
         if ($UtenteDAO->VerificaEmail($email))//è registrato?
         {
-            echo 'è registrato    ';
             if ($UtenteDAO->VerificaPassword($email, $passwd))
             {
-                echo 'passwd corrisponde    ';
                 $AttrUtente=$UtenteDAO->GetUtenteByMail($email);
                 $Utente = new Utente($AttrUtente[0]["Nome"], $AttrUtente[0]["Cognome"], $AttrUtente[0]["Password"], $AttrUtente[0]["Email"], $AttrUtente[0]["Prodottiosservati"]);
                 $_SESSION['oggetto_utente_loggato']=$Utente;
