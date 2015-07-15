@@ -139,7 +139,6 @@ switch ($FunzioneRichiesta) {
     {
         $CMarket = new CMarket();
         $Ids = $_GET["Ids"];
-        //var_dump($Ids);
         echo $CMarket->CatalogoSup($Ids);
     }
         break;
