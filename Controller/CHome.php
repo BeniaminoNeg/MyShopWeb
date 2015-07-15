@@ -51,7 +51,6 @@ class CHome {
         $CSupermercato = new CRicercaSupermercato();  
         $ArraySupermercati=array();
         foreach ($ArrayIdS as $key =>$value) {
-            var_dump($value);
            $ArraySupermercati[] = $CSupermercato->RicercaPerIds($value);
         }
         $JsonRisultato= json_encode($ArraySupermercati);

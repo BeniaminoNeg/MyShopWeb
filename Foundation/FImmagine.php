@@ -28,7 +28,6 @@ class FImmagine extends FDB {
      */
     function RicercaImmagine($Id) {
         
-        $Id="'$Id'";
         $Risultato= parent::search_equals("Immagine", "Id", $Id);
         return $Risultato;   
     }

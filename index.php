@@ -289,9 +289,6 @@ switch ($FunzioneRichiesta) {
     }
         break;
 }
-
-
-var_dump($_SESSION);
 ?>
 
 
