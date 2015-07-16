@@ -284,7 +284,7 @@ switch ($FunzioneRichiesta) {
     
     default:
     {
-        echo "HAI FATTO DANNI!";
+        echo "PAGE NOT FOUND - MYSHOP - PROGETTO DI PROGRAMMAZIONE WEB";
     }
         break;
 }

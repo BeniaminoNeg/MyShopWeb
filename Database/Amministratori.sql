@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Creato il: Lug 14, 2015 alle 18:03
+-- Creato il: Lug 16, 2015 alle 10:20
 -- Versione del server: 5.6.24
 -- Versione PHP: 5.6.8
 
@@ -27,26 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Amministratori` (
-  `Username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin;
-
---
--- Dump dei dati per la tabella `Amministratori`
---
-
-INSERT INTO `Amministratori` (`Username`, `Password`) VALUES
-('admin', 'admin');
-
---
--- Indici per le tabelle scaricate
---
-
---
--- Indici per le tabelle `Amministratori`
---
-ALTER TABLE `Amministratori`
-  ADD PRIMARY KEY (`Username`);
+  `Username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Password` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
