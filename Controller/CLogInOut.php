@@ -30,6 +30,7 @@ class CLogInOut {
                 $Utente = new Utente($AttrUtente[0]["Nome"], $AttrUtente[0]["Cognome"], $AttrUtente[0]["Password"], $AttrUtente[0]["Email"], $AttrUtente[0]["Prodottiosservati"]);
                 $_SESSION['oggetto_utente_loggato']=$Utente;
                 $_SESSION['stato_log']='in';
+                echo 'LOGGATO';
             }
         }
     }
@@ -53,5 +54,7 @@ class CLogInOut {
         
         session_destroy();
     }
+    
+    
 }
 ?>

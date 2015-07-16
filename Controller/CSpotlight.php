@@ -30,8 +30,8 @@ class CSpotlight {
      * @return type Json dei prodotti osservati
      */
     function RicercaProdottiOsservati() {
-        if (isset($_SESSION ['oggetto_utente_loggato']))
-        {
+        //if (isset($_SESSION ['oggetto_utente_loggato']))
+        //{
             $Utente= $_SESSION ['oggetto_utente_loggato'];
             $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
             $IdProdotti = explode(",", $StringaIdProdottiOsservati);
@@ -42,11 +42,11 @@ class CSpotlight {
             }
             $Json=  json_encode($ProdottiOsservati);
             return $Json;
-        }
-        else 
-        {
-            echo 'SESSIONE SCADUTA'; //RIMEDIO PROVVISORIO
-        }
+        //}
+        //else 
+        //{
+          //  echo 'SESSIONE SCADUTA'; //RIMEDIO PROVVISORIO
+        //}
     }
     
     function RicercaProdottiById($ArrayIdString) {

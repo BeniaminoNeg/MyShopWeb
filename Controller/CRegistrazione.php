@@ -37,8 +37,7 @@ class CRegistrazione {
             }
         }
         
-        $JsonRisultato=  json_encode($Bool);
-        return $JsonRisultato;
+        return $Bool;
     }
 }
 ?>
