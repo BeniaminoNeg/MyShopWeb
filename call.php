@@ -77,16 +77,6 @@ switch ($FunzioneRichiesta) {
         break;
     
     //func=Reg ---->  tramite POST email password nome cognome
-    case "Reg":
-    {
-        $nome= mysql_escape_string($_POST['nome']);
-        $cognome= mysql_escape_string($_POST['cognome']);
-        $email= mysql_escape_string($_POST['email']);
-        $passwd= mysql_escape_string($_POST['password']);
-        $Controllore= new CRegistrazione();
-        $Controllore->Registrazione($nome, $cognome, $passwd, $email);  
-    }
-        break;
     
     //func=LogIn -----> tramite POST email e password
     case "LogIn":
