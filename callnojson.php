@@ -27,16 +27,26 @@ $FunzioneRichiesta=  mysql_escape_string($_GET ["func"]);
 switch ($FunzioneRichiesta) {
     case "Reg":
     {
-        header('Warning: 200');
+        header('Content-Type: text/html');
         $nome= mysql_escape_string($_POST['nome']);
         $cognome= mysql_escape_string($_POST['cognome']);
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CRegistrazione();
         $Controllore->Registrazione($nome, $cognome, $passwd, $email); 
-        http_response_code(200);
+        echo 1;
     }
         break;
+    case "LogIn":
+    {
+        header('Content-Type: text/html');
+        $email= mysql_escape_string($_POST['email']);
+        $passwd= mysql_escape_string($_POST['password']);
+        $Controllore= new CLogInOut();
+        $Controllore->LogIn($email, $passwd);  
+    }
+        break;
+    
     default:
     {
         echo "PAGE NOT FOUND - MYSHOP - PROGETTO DI PROGRAMMAZIONE WEB";
