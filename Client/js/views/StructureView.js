@@ -9,13 +9,13 @@ define(function(require) {
 		id: 'main',
 	
 		events: {
-			'tap #nav1': 'goToHome',
-			'tap #nav2': 'goToSpotlight',
-			'tap #nav3': 'goToCategorie',
-			'tap #nav4': 'goToMarket',
-			'tap #nav5': 'goToRicerca',
-	    	  
-			'tap #back': 'goBack'
+			'click #nav1': 'goToHome',
+			'click #nav2': 'goToSpotlight',
+			'click #nav3': 'goToCategorie',
+			'click #nav4': 'goToMarket',
+			'click #nav5': 'goToRicerca',
+            'click #nav6': 'goToSignIn',
+            'click #nav7': 'goToLogIn',
 		},
 	
 	    initialize: function(options) {
@@ -64,33 +64,30 @@ define(function(require) {
 			});
 		},
 		
-		//generic go-back function
-		goBack: function() {
-			window.history.back();
+        goToSignIn : function(e) {
+			Backbone.history.navigate('signin', {
+				trigger: true
+			});
 		},
+                
+		goToLogIn : function(e) {
+			Backbone.history.navigate('login', {
+				trigger: true
+			});
+		},		
 	
 	    setActiveTabBarElement: function(elementId) {
 	    	// here we assume that at any time at least one tab bar element is active
 	    	document.getElementsByClassName('active')[0].classList.remove('active');
 	    	document.getElementsByClassName('active')[0].classList.remove('active');
-	    	document.getElementsByClassName('active')[0].classList.remove('active');
 	    	document.getElementById(elementId).classList.add('active');
-	    	document.getElementById(elementId).getElementsByClassName('icon')[0].classList.add('active');
 	    	document.getElementById(elementId).getElementsByClassName('tab-label')[0].classList.add('active');
 	    },
-	    
-	    setTitleContentElement: function(title) {
-	    	document.getElementById('title').innerHTML= title;
-	    },
-	    
-	    setDisplayBackBtnElement: function() {
-	    	document.getElementById('back').classList.remove('displaynone');
-	    },
-	    
-	    setDisplayNoneBackBtnElement: function() {
-	    	if(document.getElementById('back').classList){
-	    		document.getElementById('back').classList.add('displaynone');
-	    	}
+		
+		removeElementById: function(id) {
+			if(document.getElementById(id)){
+				document.getElementById(id).remove();
+			}
 		}
 	});
 	

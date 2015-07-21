@@ -21,23 +21,28 @@ define (function(require) {
 			this.Supermercato = options.Supermercato;
 		},
       
-		tagName: 'li',
-		className: 'table-view-cell media',
+		tagName: 'div',
+		id: 'prodotto',
 
 		events: {
-			'tap #dettagli': 'Dettagli',
-			'tap #tofollow': 'Follow'
+			//'tap #dettagli': 'Dettagli',
+			'click #tofollow': 'Follow'
 		},
        
 		render: function() {
 			var JSON = this.Prodotto.toJSON();
 			JSON['Supermercato'] = this.Supermercato.toJSON();
+/*
+ * prova inserire immagini nei model
+			JSON['Immagine'] = this.Prodotto.get('Immagine').toJSON();
+			JSON['Supermercato']['Logo'] = this.Supermercato.get('Logo').toJSON();
+*/
 			this.$el.html(this.template(JSON));
 			this.checkPreferitoLocally();
 			this.getImmagini();
 			return this;
 		},       
-       
+       /*
 		Dettagli: function (e) {
 			if($(this.el).find('#dettagli').attr('class') == 'no') {
 				$(this.el).find('#dettagli').children('.icon').removeClass('icon-down-nav');
@@ -53,6 +58,7 @@ define (function(require) {
 				$(this.el).find('#dettagli').addClass('no');
 			}
 		},
+		*/
        
 		Follow: function (e) {
 			if($(this.el).find('#tofollow').attr('class') == 'followed') {
@@ -70,6 +76,9 @@ define (function(require) {
        
 		addPreferitoLocally: function(toFollow) {
 			var currentFollowed = window.localStorage.getItem('followed');
+			if (currentFollowed == null){
+				currentFollowed = '';
+			}
 			currentFollowed += toFollow;
 			currentFollowed += ',';
 			window.localStorage.setItem('followed', currentFollowed);

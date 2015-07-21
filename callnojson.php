@@ -27,14 +27,12 @@ $FunzioneRichiesta=  mysql_escape_string($_GET ["func"]);
 switch ($FunzioneRichiesta) {
     case "Reg":
     {
-        header('Content-Type: text/html');
         $nome= mysql_escape_string($_POST['nome']);
         $cognome= mysql_escape_string($_POST['cognome']);
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CRegistrazione();
-        $Controllore->Registrazione($nome, $cognome, $passwd, $email); 
-        echo 1;
+        $Controllore->Registrazione($nome, $cognome, $passwd, $email);
     }
         break;
     case "LogIn":

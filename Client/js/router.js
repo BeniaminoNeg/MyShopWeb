@@ -7,10 +7,13 @@ define(function(require) {
 	  
 	var StructureView = require('views/StructureView');
 	var VHome = require('views/pages/VHome');
-	var VSpotlight = require('views/pages/VSpotlight');
+	//var VSpotlight = require('views/pages/VSpotlight');
 	var VCategorie = require('views/pages/VCategorie');
 	var VMarkets = require('views/pages/VMarkets');
 	var VRicerca = require('views/pages/VRicerca');
+	var VOffline = require('views/pages/VOffline');
+    var VSignIn = require('views/pages/VSignIn');
+    var VLogIn = require('views/pages/VLogIn');
 	
 	var AppRouter = Backbone.Router.extend({
 		constructorName: 'AppRouter',
@@ -25,7 +28,11 @@ define(function(require) {
 			'categorie/:categoria': 'ProdottiCategoria',
 			'markets': 'Markets',
 			'markets/:market': 'ProdottiMarket',
-			'ricerca' : 'Ricerca',
+			'ricerca': 'Ricerca',
+			'ricerca/:value': 'ProdottiRicerca', 
+			'offline': 'Offline',
+            'signin': 'Signin',
+            'login':'LogIn',
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
@@ -33,9 +40,36 @@ define(function(require) {
 		firstView: 'home',
 	
 		initialize: function(options) {
+			document.addEventListener('offline', this.onOffline, false);
 			this.currentView = undefined;
 		},
+		
+		Home: function() {
+			// highlight the nav1 tab bar element as the current one
+			this.structureView.setActiveTabBarElement('nav1');
 	
+			var listaProdotti = new CollProdotti();
+			var listaSupermercati = new CollSupermercati();
+	  
+			var thisRouter = this;
+			
+			listaProdotti.setProdottiHome();
+			listaProdotti.fetch().done(function(data) {
+				var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+				listaSupermercati.setSupHome(IdsProdotti);
+				listaSupermercati.fetch().done(function(data) {
+					// create the view
+					var page = new VHome({
+						listaProdotti: listaProdotti,
+						listaSupermercati: listaSupermercati
+					});
+					// show the view
+					thisRouter.changePage(page);
+				})
+			});
+		},
+/*
+ * prova inserire immagini nei model
 		Home: function() {
 			// highlight the nav1 tab bar element as the current one
 			this.structureView.setActiveTabBarElement('nav1');
@@ -51,30 +85,38 @@ define(function(require) {
 	  
 			listaProdotti.setProdottiHome();
 			listaProdotti.fetch().done(function(data) {
-				var IdsProdotti = listaProdotti.getIdsProdotti();    	  
-				listaSupermercati.setSupHome(IdsProdotti);
-				listaSupermercati.fetch().done(function(data) {
-					// create the view
-					var page = new VHome({
-						listaProdotti: listaProdotti,
-						listaSupermercati: listaSupermercati
-					});
-					// show the view
-					thisRouter.changePage(page);
+				var IdsProdotti = listaProdotti.getIdsProdotti();
+				$.when(listaProdotti.getImmagini()).then(function(){
+					listaSupermercati.setSupHome(IdsProdotti);
+					listaSupermercati.fetch().done(function(data) {
+						$.when(listaSupermercati.getImmagini()).then(function(){
+							// create the view
+							var page = new VHome({
+								listaProdotti: listaProdotti,
+								listaSupermercati: listaSupermercati
+							});
+							// show the view
+							thisRouter.changePage(page);
+						})
+					})
 				})
 			});
 	  },
-	
+*/
 	  Spotlight: function() {
+		  console.log(this);
 		  this.structureView.setActiveTabBarElement('nav2');
-		  this.structureView.setTitleContentElement('Spotlight');
-		  this.structureView.setDisplayBackBtnElement();
 	
 		  var currentFollowed = window.localStorage.getItem('followed');
-	   
+		  
 		  var thisRouter = this;
-	   
-		  if(currentFollowed != ''){
+		  
+		  if(currentFollowed == null || currentFollowed == ''){
+			  var page = new VHome({
+				  result : 'empty',
+			  });
+			  thisRouter.changePage(page);
+		  } else {
 			  var listaProdotti = new CollProdotti();
 			  var listaSupermercati = new CollSupermercati();    	   
 	   
@@ -89,28 +131,18 @@ define(function(require) {
 					  });
 					  thisRouter.changePage(page);
 				  })
-			  });   	   
-		  } else {
-			  var page = new VSpotlight({
-				  currentFollowed : "niente",
-			  });
-			  thisRouter.changePage(page);
+			  }); 
 		  }
 	  },
 	
 	  Categorie: function() {
 		  this.structureView.setActiveTabBarElement('nav3');
-		  this.structureView.setTitleContentElement('Categorie');
-		  this.structureView.setDisplayBackBtnElement();
 
 			  var page = new VCategorie({});
 			  this.changePage(page);
 	  },
 	  
-	  ProdottiCategoria: function(categoria){
-		  this.structureView.setTitleContentElement(categoria);
-			this.structureView.setDisplayBackBtnElement();
-	
+	  ProdottiCategoria: function(categoria){	
 			var listaProdotti = new CollProdotti();
 			var listaSupermercati = new CollSupermercati();
 	  
@@ -133,9 +165,7 @@ define(function(require) {
 	  },
 	
 		Markets: function() {
-			this.structureView.setActiveTabBarElement('nav4');
-			this.structureView.setTitleContentElement('Markets');
-			this.structureView.setDisplayBackBtnElement();
+			this.structureView.setActiveTabBarElement('nav4');;
 		 
 			var thisRouter = this;
 		 
@@ -150,11 +180,8 @@ define(function(require) {
 		},
 		
 		  ProdottiMarket: function(market){
-			  console.log(market);
 			  var nomeSup = market.substring(7);
 			  var Ids = market.substring(0,6);
-				this.structureView.setTitleContentElement(nomeSup);
-				this.structureView.setDisplayBackBtnElement();
 		
 				var listaProdotti = new CollProdotti();
 				var listaSupermercati = new CollSupermercati();
@@ -183,11 +210,57 @@ define(function(require) {
 	
 		Ricerca: function() {
 			this.structureView.setActiveTabBarElement('nav5');
-			this.structureView.setTitleContentElement('Ricerca');
-		    this.structureView.setDisplayBackBtnElement();
 		    
 		    var page = new VRicerca();
 		    this.changePage(page);    	
+		},
+		
+		ProdottiRicerca: function(value){	
+			var listaProdotti = new CollProdotti();
+			var listaSupermercati = new CollSupermercati();
+	  
+			var thisRouter = this;
+	  
+			listaProdotti.setProdottiRicerca(value);
+			listaProdotti.fetch().done(function(data) {
+				if(listaProdotti.getIdsProdotti() != ''){
+					var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+					listaSupermercati.setSupHome(IdsProdotti);
+					listaSupermercati.fetch().done(function(data) {
+						// create the view
+						var page = new VHome({
+							listaProdotti: listaProdotti,
+							listaSupermercati: listaSupermercati
+						});
+						thisRouter.addToPage(page, 'tabella')
+					})
+				} else {
+					var page = new VHome({
+						result: 'empty',
+					});
+					thisRouter.addToPage(page, 'tabella')
+				}
+				// show the view removing an elementById
+			});
+		},
+		
+        Signin : function() {
+            this.structureView.setActiveTabBarElement('nav6');
+    
+            var page = new VSignIn();
+            this.changePage(page);
+        },
+        
+        LogIn : function() {
+            this.structureView.setActiveTabBarElement('nav7');
+    
+            var page = new VLogIn();
+            this.changePage(page);
+        },
+		
+		Offline: function() {		    
+		    var page = new VOffline();
+		    this.changePage(page);
 		},
 		
 		// load the structure view
@@ -200,9 +273,15 @@ define(function(require) {
 			}
 			// go to first view
 			this.navigate(this.firstView, {trigger: true});
+		},
+		
+		onOffline: function(){
+			console.log('offline');
+	    	Backbone.history.navigate('offline', {
+	    		trigger: true
+	    	});
 		}
 	});
-	
 	return AppRouter;
 });
 

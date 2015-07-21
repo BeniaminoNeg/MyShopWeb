@@ -14,4 +14,7 @@ define({
     market:  '../templates/market.html',
     prodotto:  '../templates/prodotto.html',
     ricerca: '../templates/ricerca.html',
+    offline: '../templates/offline.html',
+    signin: '../templates/signin.html',
+    login:'../templates/login.html',
 });
