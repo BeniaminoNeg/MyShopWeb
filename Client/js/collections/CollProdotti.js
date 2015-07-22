@@ -14,8 +14,8 @@ define(function(require){
         
         setProdottiSpotlight : function(followed) {
         	followed = followed.slice(0, -1);
-        	this.url='http://localhost/MyShopWeb/call.php?func=SpotProdApp&dati=' + followed;
-        	//this.url='http://myshopp.altervista.org/call.php?func=SpotProdApp&dati=' + followed;
+        	this.url="http://localhost/MyShopWeb/call.php?func=SpotProdWeb";
+        	//this.url="http://myshopp.altervista.org/call.php?func=SpotProdWeb";
         },
         
         setProdottiCategoria: function(categoria) {

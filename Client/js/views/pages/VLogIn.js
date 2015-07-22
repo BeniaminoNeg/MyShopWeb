@@ -7,51 +7,89 @@ define (function(require) {
 
 	var VLogIn = Utils.Page.extend({
 		constructorName: 'VLogIn',
-            
+        
+        utente: '',
+        erroreDati: '',
+
 		initialize: function(options) {
-			this.template=Utils.templates.login;
+			this.template = Utils.templates.login;
+			if(options != undefined){
+				if(options.utente != undefined){
+					this.utente = options.utente;
+				}else if(options.erroreDati != undefined){
+					this.erroreDati = options.erroreDati;}
+			}
 		},
       
-		tagName: 'form',
-		classsName: "input-group",
+        tagName: 'div',
+        className: 'bar bar-standard bar-header-secondary scrollable',
 
 		events: {
-			'click #btnLoggati': 'Loggati',
+			'click .loggati': 'Loggati',
+            'click .redirect': 'Redirect',
+
 		},
-                
-                Loggati: function() {
-                    var email = this.$el.find('#email').attr('value');
-                    var password = this.$el.find('#password').attr('value');
-                    var data = "email="+email+"&password="+password;
-                    $("#btnLoggati").click(function(){
-                        console.log("Log effettuata");
-                        $.ajax({
-                        type: "POST",
-                        url: "https://localhost/MyShopWeb/callnojson.php?func=LogIn",
-                        data: data,
-                        dataType: "html",
-                        success: function(){
-                        console.log("Log effettuata");
-                    }
-                        /*if(risposta=== '1') {
-                        thisView.$el.find("#formSignin").children().remove();
-                        thisView.$el.find("#formSignin").append(
-                        '<div class="content-padded"> <h1> Login Effettuato con Successo!</h1></div>'
-                        );}
-                       Backbone.history.navigate('home' , {
-		        trigger: true,
-		        });}
-                    })*/})
-		});
-            },
-       
+        
 		render: function() {
-			this.$el.html(this.template());
+			if(this.erroreDati == 'sbagliato'){
+				this.$el.html(this.template());
+                this.showErrore();
+		    } else if (this.utente != '') {
+				this.$el.html(this.template(this.utente));
+			} else { this.$el.html(this.template());}
 			return this;
 		},
-       
-		
-       
+
+        Loggati: function() {
+
+            var utente = {
+            		email: this.$el.find('.emailUtente').attr('value'), 
+            		password: this.$el.find('.passwordUtente').attr('value'),
+            }
+
+            var B = Backbone;
+
+            Backbone.ajax({
+            	url: "http://localhost/MyShopWeb/callnojson.php?func=LogIn",
+            	data: utente,
+            	type: 'POST',
+                success: function(response){
+                    if(response != false){
+                        window.localStorage.setItem('utenteNome', utente['nome']);
+                        window.localStorage.setItem('utenteCognome', utente['cognome']);
+                        window.localStorage.setItem('utenteEmail', utente['email']);
+                        window.localStorage.setItem('utentePassword', utente['password']);
+
+                        B.history.navigate('home', {
+                            trigger: true,
+                            replace: true,
+                        }); 
+                    } else {
+                        B.history.navigate('loginErroreDati', {
+                            trigger: true,
+                            replace: true
+                        });
+                    }
+                }, 
+                error: function(errorType){
+                	B.history.navigate('login', {
+	                    trigger: true,
+	                    replace: true,
+	                }); 
+                }       
+            });
+		},
+
+		showErrore: function(){
+            this.$el.find('#errore').removeClass('displaynone');
+        },
+
+        Redirect: function(){
+            Backbone.history.navigate('signin', {
+                trigger: true,
+                replace: true
+            });
+        }
 	});
   
 	return VLogIn;

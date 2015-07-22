@@ -68,7 +68,14 @@ switch ($FunzioneRichiesta) {
         break;
     
     //func=SpotProdWeb   PER WEB: Restituisce i prodotti osservati dell' utente Loggato
-    case "SpotProdWeb":
+    case "SpotProdWeb": //da sistemare, deve ridarmi una stringa di id del tipo P001,P002,P003
+    {
+        $Controllore= new CSpotlight();
+        echo $Controllore->RicercaProdottiOsservati();
+    }
+        break;
+    
+    case "GetNomeCognome":
     {
         $Controllore= new CSpotlight();
         $Risultato=$Controllore->RicercaProdottiOsservati();
@@ -77,14 +84,25 @@ switch ($FunzioneRichiesta) {
         break;
     
     //func=Reg ---->  tramite POST email password nome cognome
-    
+    case "Reg":
+    {
+        $nome= mysql_escape_string($_POST['nome']);
+        $cognome= mysql_escape_string($_POST['cognome']);
+        $email= mysql_escape_string($_POST['email']);
+        $passwd= mysql_escape_string($_POST['password']);
+        $Controllore= new CRegistrazione();
+        echo $Controllore->Registrazione($nome, $cognome, $passwd, $email);
+    }
+        break;
+
     //func=LogIn -----> tramite POST email e password
     case "LogIn":
     {
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CLogInOut();
-        $Controllore->LogIn($email, $passwd);  
+        $Controllore->LogIn($email, $passwd);
+        var_dump($_POST);
     }
         break;
     
@@ -94,7 +112,7 @@ switch ($FunzioneRichiesta) {
         $Username= mysql_escape_string($_POST['username']);
         $password= mysql_escape_string($_POST['password']);
         $Controllore= new CLogInOut();
-        $Controllore->LoginAdmin($Username, $password) ; 
+        echo $Controllore->LoginAdmin($Username, $password) ; 
     }
         break;
     
@@ -111,8 +129,7 @@ switch ($FunzioneRichiesta) {
     {
         $email= mysql_escape_string($_GET['email']);
         $Controllore= new CRegistrazione();
-        $Risultato=$Controllore->VerificaEmailUnica($email);
-        echo $Risultato;
+        echo $Controllore->VerificaEmailUnica($email);
     }
         break;
     

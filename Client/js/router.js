@@ -32,7 +32,10 @@ define(function(require) {
 			'ricerca/:value': 'ProdottiRicerca', 
 			'offline': 'Offline',
             'signin': 'Signin',
+            'signinErroreDati': 'SignInErroreDati',
             'login':'LogIn',
+            'loginAppenaRegistrato': 'LogInConDati',
+            'loginErroreDati': 'LogInErroriDati'
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
@@ -41,9 +44,6 @@ define(function(require) {
 	
 		initialize: function(options) {
 			document.addEventListener('offline', this.onOffline, false);
-	        document.onkeydown = function (e) {
-	            return (e.which || e.keyCode) != 116;
-	        };
 			this.currentView = undefined;
 		},
 		
@@ -106,37 +106,54 @@ define(function(require) {
 			});
 	  },
 */
-	  Spotlight: function() {
-		  console.log(this);
-		  this.structureView.setActiveTabBarElement('nav2');
-	
-		  var currentFollowed = window.localStorage.getItem('followed');
-		  
-		  var thisRouter = this;
-		  
-		  if(currentFollowed == null || currentFollowed == ''){
-			  var page = new VHome({
-				  result : 'empty',
-			  });
-			  thisRouter.changePage(page);
-		  } else {
-			  var listaProdotti = new CollProdotti();
-			  var listaSupermercati = new CollSupermercati();    	   
-	   
-			  listaProdotti.setProdottiSpotlight(currentFollowed);
-			  listaProdotti.fetch().done(function(data) {
-				  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
-				  listaSupermercati.setSupHome(IdsProdotti);
-				  listaSupermercati.fetch().done(function(data) {
-					  var page = new VHome({
-						  listaProdotti: listaProdotti,
-						  listaSupermercati: listaSupermercati
-					  });
-					  thisRouter.changePage(page);
-				  })
-			  }); 
-		  }
-	  },
+		Spotlight: function() {
+			this.structureView.setActiveTabBarElement('nav2');
+
+			var currentFollowed = window.localStorage.getItem('followed');
+
+			var thisRouter = this;
+
+			var B = Backbone;
+
+			Backbone.ajax({
+				url: "http://localhost/MyShopWeb/call.php?func=SpotProdWeb",
+				type: 'POST',
+			    success: function(response){
+			    	console.log(response)
+			        if(response != false){
+			            window.localStorage.setItem('currentFollowed', response);
+
+			            var currentFollowed = window.localStorage.getItem('currentFollowed');
+
+			            var listaProdotti = new CollProdotti();
+			  			var listaSupermercati = new CollSupermercati();    	   
+
+						listaProdotti.setProdottiSpotlight(currentFollowed);
+						listaProdotti.fetch().done(function(data) {
+						  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+						  listaSupermercati.setSupHome(IdsProdotti);
+						  listaSupermercati.fetch().done(function(data) {
+							  var page = new VHome({
+								  listaProdotti: listaProdotti,
+								  listaSupermercati: listaSupermercati
+							  });
+							  thisRouter.changePage(page);
+						  })
+						});
+			        } else {
+						var page = new VHome({
+						  result : 'empty',
+						});
+						thisRouter.changePage(page);
+			        }
+			    },
+			    error: function(){
+			        B.history.navigate('signin', {
+			            trigger: true,
+			        });
+			    }
+			});
+		},
 	
 	  Categorie: function() {
 		  this.structureView.setActiveTabBarElement('nav3');
@@ -182,34 +199,34 @@ define(function(require) {
 			});
 		},
 		
-		  ProdottiMarket: function(market){
-			  var nomeSup = market.substring(7);
-			  var Ids = market.substring(0,6);
-		
-				var listaProdotti = new CollProdotti();
-				var listaSupermercati = new CollSupermercati();
-		  
-				var thisRouter = this;
-		  
-				listaProdotti.setProdottiMarket(Ids);
-				listaProdotti.fetch().done(function(data) {
+		ProdottiMarket: function(market){
+		  var nomeSup = market.substring(7);
+		  var Ids = market.substring(0,6);
+
+			var listaProdotti = new CollProdotti();
+			var listaSupermercati = new CollSupermercati();
+
+			var thisRouter = this;
+
+			listaProdotti.setProdottiMarket(Ids);
+			listaProdotti.fetch().done(function(data) {
+				console.log(listaProdotti);
+				var IdsProdotti = listaProdotti.getIdsProdotti();  
+				console.log(IdsProdotti);
+				listaSupermercati.setSupHome(IdsProdotti);
+				listaSupermercati.fetch().done(function(data) {
+					// create the view
 					console.log(listaProdotti);
-					var IdsProdotti = listaProdotti.getIdsProdotti();  
-					console.log(IdsProdotti);
-					listaSupermercati.setSupHome(IdsProdotti);
-					listaSupermercati.fetch().done(function(data) {
-						// create the view
-						console.log(listaProdotti);
-						console.log(listaSupermercati);
-						var page = new VHome({
-							listaProdotti: listaProdotti,
-							listaSupermercati: listaSupermercati
-						});
-						// show the view
-						thisRouter.changePage(page);
-					})
-				});
-		  },
+					console.log(listaSupermercati);
+					var page = new VHome({
+						listaProdotti: listaProdotti,
+						listaSupermercati: listaSupermercati
+					});
+					// show the view
+					thisRouter.changePage(page);
+				})
+			});
+		},
 	
 		Ricerca: function() {
 			this.structureView.setActiveTabBarElement('nav5');
@@ -247,20 +264,54 @@ define(function(require) {
 			});
 		},
 		
-        Signin : function() {
+        Signin: function() {
             this.structureView.setActiveTabBarElement('nav6');
     
             var page = new VSignIn();
             this.changePage(page);
         },
-        
-        LogIn : function() {
-            this.structureView.setActiveTabBarElement('nav7');
+
+		SignInErroreDati: function(){
+			this.structureView.setActiveTabBarElement('nav6');
     
+            var page = new VSignIn({
+            	erroreDati: 'sbagliato'
+            });
+            this.changePage(page)
+		},
+
+        LogIn: function() {
+            this.structureView.setActiveTabBarElement('nav7');
+    		
             var page = new VLogIn();
             this.changePage(page);
         },
-		
+
+        LogInConDati: function(){
+        	this.structureView.setActiveTabBarElement('nav7');
+
+        	var utente = {
+        		nome: window.localStorage.getItem('utenteNome'),
+                cognome: window.localStorage.getItem('utenteCognome'),                
+                email: window.localStorage.getItem('utenteEmail'),
+                password: window.localStorage.getItem('utentePassword'),
+        	}
+
+            var page = new VLogIn({
+            	utente: utente,
+            });
+            this.changePage(page);
+        },
+
+        LogInErroriDati: function(){
+        	this.structureView.setActiveTabBarElement('nav7');
+
+            var page = new VLogIn({
+            	erroreDati: 'sbagliato'
+            });
+            this.changePage(page);
+        },
+
 		Offline: function() {		    
 		    var page = new VOffline();
 		    this.changePage(page);
@@ -283,7 +334,7 @@ define(function(require) {
 	    	Backbone.history.navigate('offline', {
 	    		trigger: true
 	    	});
-		}
+		},
 	});
 	return AppRouter;
 });

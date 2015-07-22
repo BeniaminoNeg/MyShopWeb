@@ -1,8 +1,13 @@
-      <!--   <div>
-            <form class="input-group" id="formLogin">--> 
-            <input placeholder="Email" name="email" id="email" value="" type="email">
-            <input placeholder="Password" name="password" id="password" value="" type="password">
-            <button class="btn btn-positive btn-block" id="btnLoggati">Loggati!</button>         
-          </form>
-
- <!--        </div>--> 
+<div class="input-row">
+  <label>Email</label>
+  <input type="email" class = 'emailUtente' value="{{ email }}" placeholder="Inserisci la tua email">
+</div>
+<div class="input-row">
+  <label>Password</label>
+  <input type="password" class = 'passwordUtente' value="{{ password }}" placeholder="Inserisci la tua password">
+</div>
+<button class='btn btn-negative btn-block loggati' id='ricerca'>Loggati!</button>
+<div class='displaynone' id='errore'>
+  <label>Errore: hai inserito dei dati sbagliati, riprova!</label>
+</div>
+<button class='btn btn-negative btn-block redirect' id='ricerca'>Se non sei ancora registrato vai alla SignIn </button>

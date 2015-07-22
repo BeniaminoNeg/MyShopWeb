@@ -30,7 +30,7 @@ define (function(require) {
 	    	Backbone.history.navigate('ricerca/' + this.$el.find('#value').attr('value') , {
 		        trigger: true,
 		        replace: true,
-		        });		
+		    });		
 			/*
 			this.$el.find('#tabella').remove();
     	   

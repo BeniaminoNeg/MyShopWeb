@@ -32,7 +32,7 @@ switch ($FunzioneRichiesta) {
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CRegistrazione();
-        $Controllore->Registrazione($nome, $cognome, $passwd, $email);
+        echo $Controllore->Registrazione($nome, $cognome, $passwd, $email);
     }
         break;
     case "LogIn":
@@ -41,7 +41,7 @@ switch ($FunzioneRichiesta) {
         $email= mysql_escape_string($_POST['email']);
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CLogInOut();
-        $Controllore->LogIn($email, $passwd);  
+        echo $Controllore->LogIn($email, $passwd);  
     }
         break;
     

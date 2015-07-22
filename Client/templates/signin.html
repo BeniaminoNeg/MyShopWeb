@@ -1,28 +1,21 @@
-<!--  <div id="PgRegistrazione">
-    <div id="formSignin">
-        <form class="input-group"> <!--action="http://localhost/MyShopWeb/callnojson.php?func=Reg" method="post"--> -->
-                <div class="input-row">
-                  <label>Nome</label>
-                  <input name="nome" type="text" id="nome" value="" placeholder="NomeEsempio">
-                </div>
-                <div class="input-row">
-                  <label>Cognome</label>
-                  <input name="cognome" type="text" id="cognome" value="" placeholder="CognomeEsempio">
-                </div>
-                <div class="input-row">
-                  <label>Email</label>
-                  <input name="email" type="email" id="email" value="" placeholder="tuamail@esempio.com">
-                </div>
-                <div class="input-row">
-                  <label>Password</label>
-                  <input name="password" type="password" id="password" value="" placeholder="xxxxxxxx">
-                </div>
-                <div>
-                    <button name="Submit" id="btnRegistrati"  class="btn btn-primary btn-block">Registrati!</button>
-                </div>
-     <!--         </form>
-
-
-        </div>
-</div>  -->
-        
+<div class="input-row">
+  <label>Nome</label>
+  <input type="text" class = 'nomeUtente' placeholder="Inserisci il tuo nome">
+</div>
+<div class="input-row">
+  <label>Cognome</label>
+  <input type="text" class = 'cognomeUtente' placeholder="Inserisci il tuo cognome">
+</div>
+<div class="input-row">
+  <label>Email</label>
+  <input type="email" class = 'emailUtente' placeholder="Inserisci la tua email">
+</div>
+<div class="input-row">
+  <label>Password</label>
+  <input type="password" class = 'passwordUtente' placeholder="Inserisci la tua password">
+</div>
+<button class='btn btn-negative btn-block registrati' id='ricerca'>Registrati</button>
+<div class='displaynone' id='errore'>
+  <label>Errore: hai inserito dei dati sbagliati, riprova!</label>
+</div>
+<button class='btn btn-negative btn-block redirect' id='ricerca'>Se sei gia registrato vai alla LogIn</button>

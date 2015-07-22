@@ -185,6 +185,9 @@ body {
 	display: inline;
 	float: right;}
 
+.registrati{
+	width: 100%;}
+
 #tabella{
 	top:200px;
 }
@@ -324,6 +327,11 @@ body {
 	
 #nav{
 	top: 0px;}
+
+.bar.bar-tab{
+	color: #FF4500;
+	text-align: center;
+	}
 
 /* END STRUCTURE */
 #mappa {

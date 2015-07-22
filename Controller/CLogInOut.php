@@ -19,7 +19,7 @@ class CLogInOut {
         
         //$email= mysql_escape_string($_POST['email']);
         //$passwd= mysql_escape_string($_POST['password']);
-        
+        $Log=false;
         $UtenteDAO = new FUtente ();
         
         if ($UtenteDAO->VerificaEmail($email))//è registrato?
@@ -30,14 +30,19 @@ class CLogInOut {
                 $Utente = new Utente($AttrUtente[0]["Nome"], $AttrUtente[0]["Cognome"], $AttrUtente[0]["Password"], $AttrUtente[0]["Email"], $AttrUtente[0]["Prodottiosservati"]);
                 $_SESSION['oggetto_utente_loggato']=$Utente;
                 $_SESSION['stato_log']='in';
-                echo 'LOGGATO';
+                $Log= array();
+                $Log ['Nome'] = $Utente->getNome();
+                $Log ['Cognome'] = $Utente->getCognome(); 
             }
         }
+        return $Log;
+
     }
     
     public function LoginAdmin($Username,$password) {
         
         $AdminDAO = new FAmministratore();
+        $Log=false;
         if($AdminDAO->VerificaUsername($Username))
         {
             if($AdminDAO->VerificaPassword($Username, $password))
@@ -46,6 +51,9 @@ class CLogInOut {
                 $Amministratore = new Amministratore($AttrAmministratore[0]["Password"], $AttrAmministratore[0]["Username"]);
                 $_SESSION['oggetto_admin_loggato']=$Amministratore;
                 $_SESSION['stato_log']='in';
+                $Log= array();
+                $Log ['Username'] = $Amministratore->getUsername();
+                return $Log;
             }
         }
     }

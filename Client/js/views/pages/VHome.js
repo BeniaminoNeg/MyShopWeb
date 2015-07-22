@@ -49,19 +49,19 @@ define (function(require) {
   	  	},
 
   	  	addOne: function (Prodotto) {
-			var Supermercato = this.listaSupermercati.where({Ids: Prodotto.get('SupermercatoId')});
-	    	var view = new VBoxProdotto({
-	    		Prodotto: Prodotto,
-	    		Supermercato: Supermercato['0'],
-	    	});
-	    	view.render();
-	    	this.$el.append(view.el);
+  			  var Supermercato = this.listaSupermercati.where({Ids: Prodotto.get('SupermercatoId')});
+  	    	var view = new VBoxProdotto({
+  	    		Prodotto: Prodotto,
+  	    		Supermercato: Supermercato['0'],
+  	    	});
+  	    	view.render();
+  	    	this.$el.append(view.el);
   	  	},
   	  	
         noProdotti: function(){
      	   //this.$el.append('<div class=\'emptyResult\'><a><img class=\'\' src=\'../img/empty.png\'></a></div>')
      	   this.$el.append('<table id=\'offline\'\'><tr><td valign=\'middle\' align=\'center\'><img src=\'./img/empty.png\'><p>Non ci sono prodotti in questa sezione</p></td></tr></table>');
-        }
+        },
 	});
 	
 	return VHome;

@@ -14,11 +14,16 @@ require_once 'CSessione.php';
 class CRegistrazione {
     
     public function Registrazione($nome,$cognome,$passwd,$email) {
-      
+       
+       $Bool= false;
        $UtenteDAO = new FUtente ();
        if (!$UtenteDAO->VerificaEmail($email)){
-           $UtenteDAO->MemorizzaUtente($passwd, $email, $nome, $cognome);
-       }
+            if(strpos($email, '@') !== false){ //andrebbe sostituito con qlks di migliore
+              $UtenteDAO->MemorizzaUtente($passwd, $email, $nome, $cognome);
+              $Bool=true;
+            }
+       }       
+       return $Bool;
     }
     /**
      * 
@@ -30,13 +35,14 @@ class CRegistrazione {
         
         $Bool=false;
         $UtenteDAO= new FUtente ();
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL) === false )
+        var_dump(filter_var($email, FILTER_VALIDATE_EMAIL));
+        if(filter_var($email, FILTER_VALIDATE_EMAIL))
         {
                 if (!$UtenteDAO->VerificaEmail($email)){//la funz è true se l' email c'è >> voglio invertire il risultao
-                $Bool=true;
+                   $Bool=true;
             }
         }
-        
+        var_dump($Bool);
         return $Bool;
     }
 }
