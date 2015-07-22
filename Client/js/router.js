@@ -61,11 +61,12 @@ define(function(require) {
 			var thisRouter = this;
 			
 			listaProdotti.setProdottiHome();
-			console.log(listaProdotti.url);
 			listaProdotti.fetch().done(function(data) {
-				var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+				var IdsProdotti = listaProdotti.getIdsProdotti();
 				listaSupermercati.setSupHome(IdsProdotti);
+				console.log(listaSupermercati.url)
 				listaSupermercati.fetch().done(function(data) {
+					console.log(listaSupermercati);
 					// create the view
 					var page = new VHome({
 						listaProdotti: listaProdotti,

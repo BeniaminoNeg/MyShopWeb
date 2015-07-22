@@ -149,7 +149,7 @@ class Supermercato {
             if (!is_array($value) && !is_object($value)) {
                 $result[$key] = $value;
             }else if(is_object ($value)){
-                $result[$key]=$value->getAsArray();
+                $result[$key]=$value;
             }
     	}
         return $result;

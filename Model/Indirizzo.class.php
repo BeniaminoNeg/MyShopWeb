@@ -90,16 +90,18 @@ class Indirizzo {
     /**
      * 
      * @return type
-     * Restituisce l' oggetto come un'array
+     * restituisce Un ggetto come un Array
      */
-    public function toArray(){
-        $array = (array) $this;
-        array_walk_recursive($array, function (&$property) {
-            if ($property instanceof Indirizzo) {
-                $property = $property->toArray();
+    public function getAsArray() {
+    $result=array();
+        foreach($this as $key => $value) {
+            if (!is_array($value) && !is_object($value)) {
+                $result[$key] = $value;
+            }else if(is_object ($value)){
+                $result[$key]=$value;
             }
-        });
-        return $array;
+        }
+        return $result;
     }
 }
 ?>
