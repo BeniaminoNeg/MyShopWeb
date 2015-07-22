@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of Indirizzo
  *
@@ -10,41 +9,89 @@
  */
 
 class Indirizzo {
-     
-private $Via;
-private $Città;
-private $NumeroCivico;
-
+    /**
+     *
+     * @var type 
+     * Attributo via
+     */
+    private $Via;
+    /**
+     *
+     * @var type 
+     * Attributo Città
+     */
+    private $Città;
+    /**
+     *
+     * @var type 
+     * Attributo Civico
+     */
+    private $NumeroCivico;
+    /**
+     * 
+     * @param type $Via
+     * @param type $Città
+     * @param type $NumeroCivico
+     * costruttore Indirizzo
+     */
     public function __construct($Via, $Città, $NumeroCivico) {
         $this->Via=$Via;
         $this->Città=$Città;
         $this->NumeroCivico=$NumeroCivico;
     }
-
+    /**
+     * 
+     * @return type
+     * restituisce la via
+     */
     public function getVia() {
         return $this->Via;
     }
-    
+    /**
+     * 
+     * @return type
+     * restituisce la città
+     */
     public function getCittà(){
         return $this->Città;
     }
-    
+    /**
+     * 
+     * @return type
+     * restituisce il numero civico
+     */
     public function getNumeroCivico (){
         return $this->NumeroCivico;
     }
-    
+    /**
+     * 
+     * @param type $Via
+     * imposta la via
+     */
     public function setVia($Via) {
         $this->Via= $Via;      
     }
-    
+    /**
+     * 
+     * @param type $Città
+     * imposta la città
+     */
     public function setCittà($Città) {
         $this->Città=$Città;
     }
-    
+    /**
+     * 
+     * @param type $NumeroCivico
+     * imposta il numero civico
+     */
     public function set($NumeroCivico) {
         $this->NumeroCivico=$NUmeroCivico;
     }
-    
+    /**
+     * 
+     * @return type
+     * Restituisce l' oggetto come un'array
+     */
     public function toArray(){
         $array = (array) $this;
         array_walk_recursive($array, function (&$property) {
@@ -54,17 +101,5 @@ private $NumeroCivico;
         });
         return $array;
     }
-    
-   public function getAsArray() {
-	$result=array();
-    	foreach($this as $key => $value) {
-            if (!is_array($value) && !is_object($value)) {
-                $result[$key] = $value;
-            }else if(is_object ($value)){
-                $result[$key]=$value->getAsArray();
-            }
-    	}
-    return $result;
-   }
 }
 ?>

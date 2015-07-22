@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of FDB
  *
@@ -18,10 +17,10 @@ class FDB {
     protected $Return_Class;
     protected $Auto_Increment=False;
     protected $db;
-   /**
-    * Costruttore Fdb si 
-    * connette al db
-    */
+    /**
+     * Costruttore Fdb si 
+     * connette al db
+     */
     function __construct() {    
         
         $this->connect('localhost', 'root', '', 'my_myshopp');
@@ -80,31 +79,31 @@ class FDB {
         $result = $this->query($query);
         return $result;
     }
-   /**
-    * Query che verifica se 
-    * un valore è uguale ad 
-    * un valore della colonna
-    * della tabella
-    * 
-    * @param type $tabella
-    * @param type $colonna
-    * @param type $value
-    * @return type
-    */
+    /**
+     * Query che verifica se 
+     * un valore è uguale ad 
+     * un valore della colonna
+     * della tabella
+     * 
+     * @param type $tabella
+     * @param type $colonna
+     * @param type $value
+     * @return type
+     */
     public function search_equals($tabella, $colonna, $value) {
         
         $query = "SELECT * FROM $tabella WHERE $colonna = '$value'";
         $result = $this->query($query);
         return $result;
     }
-   /**
-    * Conta gli elementi di
-    * una tabella
-    * 
-    * @param type $colonna
-    * @param type $tabella
-    * @return type
-    */
+    /**
+     * Conta gli elementi di
+     * una tabella
+     * 
+     * @param type $colonna
+     * @param type $tabella
+     * @return type
+     */
     public function Conta($colonna,$tabella) {
         
         $query = "SELECT COUNT($colonna) FROM $tabella";
@@ -189,9 +188,6 @@ class FDB {
         
         $query = "INSERT INTO `$NomeTabella` ($ElencoColonne)Values($TuplaValori)";
         $this->query($query);
-    }
-    
-        public function close() {
     }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of FAmministratore
  *
@@ -12,7 +11,6 @@
 require_once 'FDB.php';
 
 class FAmministratore extends FDB {
-    
     /**
      * Verifica se l'admin
      * è presente sulla
@@ -30,16 +28,16 @@ class FAmministratore extends FDB {
         }
         return $trovato;        
     }
-   /**
-    * Verifica se la password
-    * inserita dall'admin
-    * è presente sulla
-    * Tabella Amministratori
-    * 
-    * @param type $Username
-    * @param type $passwd
-    * @return boolean
-    */
+    /**
+     * Verifica se la password
+     * inserita dall'admin
+     * è presente sulla
+     * Tabella Amministratori
+     * 
+     * @param type $Username
+     * @param type $passwd
+     * @return boolean
+     */
     function VerificaPassword($Username, $passwd) {
         
         $PasswdCorretta=false;

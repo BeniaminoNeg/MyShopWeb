@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of Prodotto
  *
@@ -8,13 +7,42 @@
  * @author Silvia
  * @author Gaetano 
  */
-
 class Prodotto {
-    private $Id; 
+    /**
+     *
+     * @var type 
+     * Attributo id
+     */
+    private $Id;
+    /**
+     *
+     * @var type 
+     * Attributo Nome
+     */
     private $Nome;
+    /**
+     *
+     * @var type 
+     * Attributo Decrizione
+     */
     private $Descrizione;
+    /**
+     *
+     * @var type 
+     * Attributo Prezzo
+     */
     private $Prezzo;
+    /**
+     *
+     * @var type 
+     * Attributo SupermercatoId
+     */
     private $SupermercatoId;  
+    /**
+     *
+     * @var type 
+     * Attributo Categorie
+     */
     private $Categorie;
    /**
     * 
@@ -25,6 +53,7 @@ class Prodotto {
     * @param type $Prezzo
     * @param type $SupermercatoId
     * @param type $Categorie
+    * costruttore di Prodotto
     */
     function __construct($Id, $Nome, $Descrizione, $Prezzo, $SupermercatoId, $Categorie) {
         $this->Id = $Id;
@@ -37,6 +66,7 @@ class Prodotto {
     /**
      * 
      * @return String
+     * Restituisce l'id
      */
     function getId() {
         return $this->Id;
@@ -44,6 +74,7 @@ class Prodotto {
     /**
      * 
      * @return String
+     * Restituisce il Nome
      */
     function getNome() {
         return $this->Nome;
@@ -51,6 +82,7 @@ class Prodotto {
     /**
      * 
      * @return Stringa
+     * Restituisce La Descrizione
      */
     function getDescrizione() {
         return $this->Descrizione;
@@ -58,6 +90,7 @@ class Prodotto {
     /**
      * 
      * @return Intero
+     * Retituisce il Prezzo
      */
     function getPrezzo() {
         return $this->Prezzo;
@@ -65,6 +98,7 @@ class Prodotto {
     /**
      * 
      * @return Stringa
+     * Restituisce l'id del Supermercato
      */
     function getSupermercatoId() {
         return $this->SupermercatoId;
@@ -72,6 +106,7 @@ class Prodotto {
    /**
     * 
     * @return type
+    * Restituisce la Categoria
     */
     function getCategorie(){
         return $this->Categorie;
@@ -79,6 +114,7 @@ class Prodotto {
      /**
      * 
      * @param type $Id
+      * Imposta l'id
      */
     function setId($Id) {
         $this->Id = $Id;
@@ -86,6 +122,7 @@ class Prodotto {
     /**
      * 
      * @param type $Nome
+     * Imposta il Nome
      */
     function setNome($Nome) {
         $this->Nome = $Nome;
@@ -93,6 +130,7 @@ class Prodotto {
     /**
      * 
      * @param type $Descrizione
+     * Imposta la Descrizione
      */
     function setDescrizione($Descrizione) {
         $this->Descrizione = $Descrizione;
@@ -100,6 +138,7 @@ class Prodotto {
     /**
      * 
      * @param type $Prezzo
+     * Imposta il Prezzo
      */
     function setPrezzo($Prezzo) {
         $this->Prezzo = $Prezzo;
@@ -107,38 +146,32 @@ class Prodotto {
     /**
      * 
      * @param type $SupermercatoId
+     * Imposta l'id del Supermercato
      */
     function setSupermercatoId($SupermercatoId) {
         $this->SupermercatoId = $SupermercatoId;
     }
+    /**
+     * 
+     * @param type $Categorie
+     * Imposta La Categoria
+     */
     function setCategorie($Categorie){
         $this->Categorie = $Categorie;
     }
-
     /**
      * 
      * @return type
+     * Restituisce l'oggetto come un Array
      */
-    public function toArray(){
-        $array = (array) $this;
-        array_walk_recursive($array, function (&$property) {
-            if ($property instanceof Prodotto) {
-                $property = $property->toArray();
-            }
-        });
-        return $array;
+    public function getAsArray(){
+        $result=array();
+        foreach($this as $key => $value) {
+                if (!is_array($value)) {
+                        $result[$key]= $value;
+                }
+        }
+        return $result;
     }
-    
-   public function getAsArray() {
-	$result=array();
-    	foreach($this as $key => $value) {
-            if (!is_array($value) && !is_object($value)) {
-                $result[$key] = $value;
-            }else if(is_object ($value)){
-                $result[$key]=$value->getAsArray();
-            }
-    	}
-    return $result;
-   }
 }
 ?>

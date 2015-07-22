@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of FUtente
  *
@@ -10,7 +9,10 @@
  */
 
 class FUtente extends FDB {
- 
+    /**
+     * Eredita il costruttore
+     * di FDB
+     */
      function __construct() {
 	parent::__construct();
     }

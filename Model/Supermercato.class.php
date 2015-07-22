@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of Supermercato
  *
@@ -8,14 +7,33 @@
  * @author Silvia
  * @author Gaetano 
  */
-
 require_once 'Prodotto.class.php';
 require_once 'Indirizzo.class.php';
 
 class Supermercato {
+    /**
+     *
+     * @var type 
+     * Attributo Nome
+     */
     private $Nome;
+    /**
+     *
+     * @var type 
+     * Attributo Catalogo
+     */
     private $Catalogo;
+    /**
+     *
+     * @var type 
+     * Attributo Indirizzo
+     */
     private $Indirizzo;
+    /**
+     *
+     * @var type 
+     * Attributo Ids
+     */
     private $Ids;
     /**
      * 
@@ -23,6 +41,7 @@ class Supermercato {
      * @param type $Logo Immagine
      * @param type $Indirizzo istanza della classe Indirizzo.class
      * @param type $Ids Stringa
+     * Costruttore Supermercato
      */
     function __construct($Nome, $Indirizzo, $Ids) {
         $this->Nome = $Nome;
@@ -33,6 +52,7 @@ class Supermercato {
     /**
      * 
      * @return type String
+     * Restituisce il nome
      */
     function getNome() {
         return $this->Nome;
@@ -40,6 +60,7 @@ class Supermercato {
     /**
      * 
      * @return type Indirizzo
+     * Restituisce l'indirizzo
      */
     function getIndirizzo() {
         return $this->Indirizzo;
@@ -47,6 +68,7 @@ class Supermercato {
     /**
      * 
      * @return type String
+     * Restituisce l'Ids Del supermercato
      */
     function getIds() {
         return $this->Ids;
@@ -54,6 +76,7 @@ class Supermercato {
     /**
      * 
      * @param type $Nome String
+     * Imposta il Nome
      */
     function setNome($Nome) {
         $this->Nome = $Nome;
@@ -61,6 +84,7 @@ class Supermercato {
     /**
      * 
      * @param type $Indirizzo Indirizzo
+     * Imposta l'indirizzo
      */
     function setIndirizzo($Indirizzo) {
         $this->Indirizzo = $Indirizzo;
@@ -68,15 +92,17 @@ class Supermercato {
     /**
      * 
      * @param type $Id String
+     * Imposta l'Ids del Supermercato
      */
     function setIds($Ids) {
-       
         $this->Ids = $Ids;
     }
     /**
      * 
      * @param type $IdProd Stringa
      * @return type Prodotto
+     * Restituisce un prodotto presente
+     * sul Catalogo del Supermercato
      */
     function getProdotto($IdProd)
     {
@@ -95,6 +121,7 @@ class Supermercato {
     /**
      * 
      * @param type $Prodotto Prodotto
+     * Aggiunge un Prodotto nel Catalogo
      */
     function addProdotto($Prodotto) {
         $IdCercato=$Prodotto->Ids;
@@ -106,22 +133,16 @@ class Supermercato {
     /**
      * 
      * @return type Array
+     * Retsituisce il Catalogo
      */
     function getCatalogo() {
         return $this->Catalogo;
     }
-    
-    public function toArray()
-    {
-        $array = (array) $this;
-        array_walk_recursive($array, function (&$property) {
-            if ($property instanceof Supermercato) {
-             $property = $property->toArray();
-            }
-        });
-        return $array;
-    }
-    
+    /**
+     * 
+     * @return type
+     * restituisce Un ggetto come un Array
+     */
     public function getAsArray() {
 	$result=array();
     	foreach($this as $key => $value) {
@@ -131,7 +152,7 @@ class Supermercato {
                 $result[$key]=$value->getAsArray();
             }
     	}
-    return $result;
+        return $result;
     }
 }
 ?>

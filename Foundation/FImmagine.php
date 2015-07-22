@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description of FImmagine
  *
@@ -10,7 +9,6 @@
  */
 
 class FImmagine extends FDB {
-    
     /**
      * Eredita il costruttore
      * di FDB
