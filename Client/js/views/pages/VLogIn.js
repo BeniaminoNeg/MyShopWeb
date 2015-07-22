@@ -12,7 +12,8 @@ define (function(require) {
 			this.template=Utils.templates.login;
 		},
       
-		
+		tagName: 'form',
+		classsName: "input-group",
 
 		events: {
 			'click #btnLoggati': 'Loggati',

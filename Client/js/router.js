@@ -41,6 +41,9 @@ define(function(require) {
 	
 		initialize: function(options) {
 			document.addEventListener('offline', this.onOffline, false);
+	        document.onkeydown = function (e) {
+	            return (e.which || e.keyCode) != 116;
+	        };
 			this.currentView = undefined;
 		},
 		

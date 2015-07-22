@@ -12,6 +12,8 @@ define (function(require) {
 			this.template=Utils.templates.signin;
 		},
       
+		className: "input-group",
+		tagName: 'form',
 		
 
 		events: {
@@ -24,10 +26,29 @@ define (function(require) {
                     var cognome = this.$el.find('#cognome').attr('value');
                     var email = this.$el.find('#email').attr('value');
                     var password = this.$el.find('#password').attr('value');
-                    var data = "nome="+nome+"&cognome="+cognome+"&email="+email+"&password="+password;
-                    var thisView = this;
-                    //console.log(data);
-
+                    
+                    var utente = {
+                    		nome: nome,
+                    		cognome: cognome,
+                    		email: email, 
+                    		password: password,
+                    }
+                    
+                    console.log(utente);
+                    
+                    var signin = $.ajax({
+                    	url: "http://localhost/MyShopWeb/callnojson.php?func=Reg",
+                    	data: utente,
+                    	type: 'POST',
+                    });
+                    login.done(function(response){
+                    	console.log(response);
+                    	Backbone.history.navigate('home' , {
+                    		trigger: true,
+                    	});
+                    })
+                    
+                    /*
                     $.post("http://localhost/MyShopWeb/callnojson.php?func=Reg", data, function(risposta){
                     	console.log('ciao');
                     	console.log(risposta);
@@ -42,12 +63,7 @@ define (function(require) {
                     //$('#formSignin').append(
                       // '<div class="content-padded"> <h1> Registrazione Effettuata con Successo!</h1></div>'
                        // );
-                    
-                Backbone.history.navigate('home' , {
-		        trigger: true,
-		        });
-                   
-                    
+                      */
                 },
        
        
