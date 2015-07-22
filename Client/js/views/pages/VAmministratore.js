@@ -126,7 +126,11 @@ define(function(require){
                     data: dati,
                     type: 'GET',
                     success: function(response){
+<<<<<<< HEAD
                         if(response == 'Prodotto Modificato Con Successo'){
+=======
+                        if(response == 'Prodotto Modificata Con Successo'){
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                             alert(response);
                         }
                     }
@@ -160,6 +164,7 @@ define(function(require){
                 Civico: this.$el.find('#CivicoSupAdd').attr('value'),
                 }
                 Backbone.ajax({
+<<<<<<< HEAD
                     url: "http://localhost/MyShopWeb/callnojson.php?func=AdminAddSup",
                     data: dati,
                     type: 'GET',
@@ -168,11 +173,20 @@ define(function(require){
                             alert(response);
                         }                    
                     }
+=======
+                        url: "http://localhost/MyShopWeb/callnojson.php?func=AdminAddSup",
+                        data: dati,
+        type: 'GET',
+        success: function(response){
+                console.log(response)
+        }
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                 }) 
         },
 
         UpdateSupermercato: function() { 
 
+<<<<<<< HEAD
                 var dati = {
                 Colonna: this.$el.find('#colSupUpdate').attr('value'),
                 Valore: this.$el.find('#valSupUpdate').attr('value'),
@@ -187,58 +201,105 @@ define(function(require){
                             alert(response);
                         }                
                     }
+=======
+                var dati = {dati:{
+                Colonna: this.$el.find('#colSupUpdate').attr('value'),
+                Valore: this.$el.find('#valSupUpdate').attr('value'),
+                ValChiave: this.$el.find('#idSupUpdate').attr('value'), 
+    }}
+                Backbone.ajax({
+                        url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateSup",
+                        data: dati,
+        type: 'GET',
+        success: function(response){
+                console.log(response)
+        }
+
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                 }) 
         },
 
         RemoveSupermercato: function() { 
 
+<<<<<<< HEAD
                 var dati = {
                     Ids: this.$el.find('#idSupRemove').attr('value')
                 }
+=======
+                var dati = {dati:{
+                    Ids: this.$el.find('#idSupRemove').attr('value')
+                }}
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                 Backbone.ajax({
                     url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveProd",
                     data: dati,
                     type: 'GET',
                     success: function(response){
+<<<<<<< HEAD
                         if(response == 'Supermercato Rimosso Con Successo'){
                             alert(response);
                         }
+=======
+                            console.log(response)
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                     }
                 }) 
         },
 
         UpdateUtente: function() { 
 
+<<<<<<< HEAD
                 var dati = {
                     Colonna: this.$el.find('#colUtUpdate').attr('value'),
                     Valore: this.$el.find('#valUtUpdate').attr('value'),
                     ValChiave: this.$el.find('#idUtUpdate').attr('value'), 
                 }
+=======
+                var dati = {dati:{
+                    Colonna: this.$el.find('#colUtUpdate').attr('value'),
+                    Valore: this.$el.find('#valUtUpdate').attr('value'),
+                    ValChiave: this.$el.find('#idUtUpdate').attr('value'), 
+                }}
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                 Backbone.ajax({
                     url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateUtente",
                     data: dati,
                     type: 'GET',
                     success: function(response){
+<<<<<<< HEAD
                         if(response == 'Utente Modificato Con Successo'){
                             alert(response);
                         }
+=======
+                            console.log(response)
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                     }
                 }) 
         },
 
         RemoveUtente: function() { 
 
+<<<<<<< HEAD
                 var dati = {
                     Id: this.$el.find('#idUtRemove').attr('value')
                 }
+=======
+                var dati = {dati:{
+                    Id: this.$el.find('#idUtRemove').attr('value')
+                }}
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                 Backbone.ajax({
                     url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveUtente",
                     data: dati,
                     type: 'GET',
                     success: function(response){
+<<<<<<< HEAD
                         if(response == 'Utente Aggiunto Con Successo'){
                             alert(response);
                         }                   
+=======
+                            console.log(response)
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
                     }
                 }) 
         },

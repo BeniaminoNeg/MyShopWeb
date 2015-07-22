@@ -33,9 +33,13 @@ class CLogInOut {
                 $Log= array();
                 $Log ['Nome'] = $Utente->getNome();
                 $Log ['Cognome'] = $Utente->getCognome(); 
+                return $Log;
             }
         }
+<<<<<<< HEAD
         return $Log;
+=======
+>>>>>>> 59de65585e4ccb8a4b3a009b7cb9f743e4d33fce
     }
     
     public function LoginAdmin($Username,$password) {
