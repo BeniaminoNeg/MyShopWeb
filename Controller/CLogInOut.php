@@ -41,7 +41,7 @@ class CLogInOut {
                 
             }
         }
-        return $Log;
+        return $Log['Nome'];
     }
     /**
      * 
@@ -61,14 +61,6 @@ class CLogInOut {
                 $Amministratore = new Amministratore($AttrAmministratore[0]["Password"], $AttrAmministratore[0]["Username"]);
                 $_SESSION['oggetto_admin_loggato']=$Amministratore;
                 $_SESSION['stato_log']='in';
-<<<<<<< Updated upstream
-                $Log= array();
-                $Log ['Username'] = $Amministratore->getUsername();
-            }
-        }
-            return $Log;
-
-=======
                
                 $Log = $Amministratore->getUsername();
                 
@@ -89,7 +81,7 @@ class CLogInOut {
             
         }
         return $Log;     
->>>>>>> Stashed changes
+
     }
         public function LogOut() {
         $_SESSION['stato_log']='out';

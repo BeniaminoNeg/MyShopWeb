@@ -202,6 +202,16 @@ switch ($FunzioneRichiesta) {
         echo 'Utente Rimosso Con Successo';
     }
         break;
+
+    //func=MailUnica ---->  POST email verrà richiamata durante il riempimento form
+    case "MailUnica":
+    {   
+        //var_dump($_GET['email']);
+        $email= mysql_escape_string($_GET['email']);
+        $Controllore= new CRegistrazione();
+        echo $Controllore->VerificaEmailUnica($email);
+    }
+        break;
     
     default:
     {

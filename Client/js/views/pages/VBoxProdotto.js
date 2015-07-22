@@ -65,7 +65,7 @@ define (function(require) {
 
 			Backbone.ajax({
             	url: "http://localhost/MyShopWeb/call.php?func=AddPref",
-            	type: 'POST',
+            	type: 'GET',
             	data: toFollow,
                 success: function(response){
                 	console.log('aggiunto');
@@ -85,7 +85,7 @@ define (function(require) {
 
 			Backbone.ajax({
             	url: "http://localhost/MyShopWeb/call.php?func=RemPref",
-            	type: 'POST',
+            	type: 'GET',
             	data: toUnfollow,
                 success: function(response){
                 	console.log('rimosso');

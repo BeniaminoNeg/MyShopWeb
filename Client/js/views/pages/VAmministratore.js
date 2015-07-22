@@ -9,9 +9,10 @@ define(function(require){
         initialize: function(options) {
         this.template=Utils.templates.admin;
         },
-
-        tagName: 'div',
-        className: 'bar bar-standard bar-header-secondary scrollable',
+        
+        tagName: 'ul',
+        id: 'tabella',
+        className: 'table-view',
 
         events: {
             'click #BtnAddImg': 'AddImmagine', //Devo vedere gli id e le classi sul template

@@ -114,13 +114,13 @@ define(function(require) {
 		Spotlight: function() {
 			this.structureView.setActiveTabBarElement('nav2');
 
-			var utenteNome = window.localStorage.getItem('utenteNome');
+			var utenteEmail = window.localStorage.getItem('utenteEmail');
 
 			var B = Backbone;
 
 			var thisRouter = this;
 
-			if(utenteNome){
+			if(utenteEmail){
 				
 				Backbone.ajax({
 	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",

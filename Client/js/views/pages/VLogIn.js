@@ -20,10 +20,13 @@ define (function(require) {
 					this.erroreDati = options.erroreDati;}
 			}
 		},
-      
+        tagName: 'ul',
+        id: 'tabella',
+        className: 'table-view',
+        /*
         tagName: 'div',
         className: 'bar bar-standard bar-header-secondary scrollable',
-
+    */
 		events: {
 			'click .loginUtente': 'LogInUtente',
             'click .loginAdmin': 'LogInAdmin',

@@ -84,8 +84,15 @@ define(function(require) {
             Backbone.ajax({
             	url: "http://localhost/MyShopWeb/call.php?func=LogOut",
             	data: utente,
-            	type: 'POST',
+            	type: 'GET',
                 success: function(response){
+                		window.localStorage.setItem('currentFollowed', '');
+				        window.localStorage.setItem('utenteNome', '');
+				        window.localStorage.setItem('utenteCognome', '');
+				        window.localStorage.setItem('utenteEmail', '');
+				        window.localStorage.setItem('utentePassword', '');
+				        window.localStorage.setItem('utenteAdmin', '');	
+				        console.log('svuotato');
                 		alert('Non sei più loggato! Noi siamo tristi :(');
                         /*
                         B.history.navigate('home', {
