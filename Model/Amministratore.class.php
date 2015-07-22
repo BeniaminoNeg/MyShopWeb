@@ -100,3 +100,4 @@ class Amministratore {
         $Fdb->UpdateAttributo("UtenteRegistrato", $Colonna, $Valore, "Email", "$ValChiave");
     }
 }
+?>

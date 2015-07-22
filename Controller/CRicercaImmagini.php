@@ -34,3 +34,4 @@ class CRicercaImmagini  {
         echo '<img src="'.$src.'">'; */
     } 
 }
+?>

@@ -61,7 +61,7 @@ define (function(require) {
 
                         B.history.navigate('loginAppenaRegistrato', {
                             trigger: true,
-                            replace: true,
+                            replace: true
                         }); 
                     } else {
                         B.history.navigate('signin/erroreDati', {

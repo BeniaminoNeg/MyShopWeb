@@ -25,9 +25,9 @@ define (function(require) {
         className: 'bar bar-standard bar-header-secondary scrollable',
 
 		events: {
-			'click .loggati': 'Loggati',
+			'click .loginUtente': 'LogInUtente',
+            'click .loginAdmin': 'LogInAdmin',
             'click .redirect': 'Redirect',
-
 		},
         
 		render: function() {
@@ -40,7 +40,7 @@ define (function(require) {
 			return this;
 		},
 
-        Loggati: function() {
+        LogInUtente: function() {
 
             var utente = {
             		email: this.$el.find('.emailUtente').attr('value'), 
@@ -79,6 +79,47 @@ define (function(require) {
                 }       
             });
 		},
+
+        LogInAdmin: function() {
+
+            var utente = {
+                    email: this.$el.find('.emailAdmin').attr('value'), 
+                    password: this.$el.find('.passwordAdmin').attr('value'),
+            }
+
+            var B = Backbone;
+
+            Backbone.ajax({
+                url: "http://localhost/MyShopWeb/callnojson.php?func=LogIn",
+                data: utente,
+                type: 'POST',
+                success: function(response){
+                    if(response != false){
+                        window.localStorage.setItem('utenteNome', utente['nome']);
+                        window.localStorage.setItem('utenteCognome', utente['cognome']);
+                        window.localStorage.setItem('utenteEmail', utente['email']);
+                        window.localStorage.setItem('utentePassword', utente['password']);
+                        window.localStorage.setItem('utenteAdmin', 'si');
+
+                        B.history.navigate('home', {
+                            trigger: true,
+                            replace: true,
+                        }); 
+                    } else {
+                        B.history.navigate('loginErroreDati', {
+                            trigger: true,
+                            replace: true
+                        });
+                    }
+                }, 
+                error: function(errorType){
+                    B.history.navigate('login', {
+                        trigger: true,
+                        replace: true,
+                    }); 
+                }       
+            });
+        },
 
 		showErrore: function(){
             this.$el.find('#errore').removeClass('displaynone');

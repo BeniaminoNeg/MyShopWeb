@@ -105,3 +105,4 @@ class CAmministratore {
         $Admin->RemoveUtente($Id);        
     } 
 }
+?>

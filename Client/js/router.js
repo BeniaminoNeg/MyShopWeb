@@ -44,6 +44,7 @@ define(function(require) {
 	
 		initialize: function(options) {
 			document.addEventListener('offline', this.onOffline, false);
+			this.svuotaLocalStorage();
 			this.currentView = undefined;
 		},
 		
@@ -109,50 +110,63 @@ define(function(require) {
 		Spotlight: function() {
 			this.structureView.setActiveTabBarElement('nav2');
 
-			var currentFollowed = window.localStorage.getItem('followed');
-
-			var thisRouter = this;
+			var utenteNome = window.localStorage.getItem('utenteNome');
 
 			var B = Backbone;
 
-			Backbone.ajax({
-				url: "http://localhost/MyShopWeb/call.php?func=SpotProdWeb",
-				type: 'POST',
-			    success: function(response){
-			    	console.log(response)
-			        if(response != false){
-			            window.localStorage.setItem('currentFollowed', response);
+			var thisRouter = this;
 
-			            var currentFollowed = window.localStorage.getItem('currentFollowed');
+			if(utenteNome){
+				
+				Backbone.ajax({
+	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
+	            	type: 'GET',
+	                success: function(response){
+	                	console.log(response);
+	                	window.localStorage.setItem('currentFollowed', response);
 
-			            var listaProdotti = new CollProdotti();
-			  			var listaSupermercati = new CollSupermercati();    	   
+						var currentFollowed = window.localStorage.getItem('currentFollowed');
 
-						listaProdotti.setProdottiSpotlight(currentFollowed);
-						listaProdotti.fetch().done(function(data) {
-						  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
-						  listaSupermercati.setSupHome(IdsProdotti);
-						  listaSupermercati.fetch().done(function(data) {
-							  var page = new VHome({
-								  listaProdotti: listaProdotti,
-								  listaSupermercati: listaSupermercati
-							  });
-							  thisRouter.changePage(page);
-						  })
-						});
-			        } else {
-						var page = new VHome({
-						  result : 'empty',
-						});
-						thisRouter.changePage(page);
-			        }
-			    },
-			    error: function(){
-			        B.history.navigate('signin', {
-			            trigger: true,
-			        });
-			    }
-			});
+						console.log(currentFollowed);
+				  
+				  		if(currentFollowed == null || currentFollowed == ''){
+					  		var page = new VHome({
+						  		result : 'empty',
+					  		});
+					  		thisRouter.changePage(page);
+				  		} else {
+						  	var listaProdotti = new CollProdotti();
+						  	var listaSupermercati = new CollSupermercati();   
+
+						  	//entra qui dentro ma si ferma alla prima fetch 	   
+
+						  	listaProdotti.setProdottiSpotlight(currentFollowed);
+						  	listaProdotti.fetch().done(function(data) {
+							  	var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+							  	listaSupermercati.setSupHome(IdsProdotti);
+							  	listaSupermercati.fetch().done(function(data) {
+								  	var page = new VHome({
+									  	listaProdotti: listaProdotti,
+									  	listaSupermercati: listaSupermercati
+								  	});
+								  	thisRouter.changePage(page);
+							  	})
+					  		}); 
+				  		} 	                	
+	                },
+	                error: function(errorType){
+	                	console.log(errorType);
+	                	Backbone.history.navigate('home', {
+	                		trigger: true,
+	                		replace: true
+	                	});
+	                }
+	            });
+		  	} else {
+				Backbone.history.navigate('login', {
+	    			trigger: true
+	    		});
+			}
 		},
 	
 	  Categorie: function() {
@@ -320,10 +334,10 @@ define(function(require) {
 		// load the structure view
 		showStructure: function() {
 			if (!this.structureView) {
-		    this.structureView = new StructureView();
-		    // put the el element of the structure view into the DOM
-		    document.body.appendChild(this.structureView.render().el);
-		    this.structureView.trigger('inTheDOM');
+		    	this.structureView = new StructureView();
+		    	// put the el element of the structure view into the DOM
+		    	document.body.appendChild(this.structureView.render().el);
+		    	this.structureView.trigger('inTheDOM');
 			}
 			// go to first view
 			this.navigate(this.firstView, {trigger: true});
@@ -335,6 +349,16 @@ define(function(require) {
 	    		trigger: true
 	    	});
 		},
+
+		svuotaLocalStorage: function(){
+			window.localStorage.setItem('currentFollowed', '');
+            window.localStorage.setItem('utenteNome', '');
+            window.localStorage.setItem('utenteCognome', '');
+            window.localStorage.setItem('utenteEmail', '');
+            window.localStorage.setItem('utentePassword', '');
+            window.localStorage.setItem('utenteAdmin', '');	
+            console.log('svuotato');
+		}
 	});
 	return AppRouter;
 });

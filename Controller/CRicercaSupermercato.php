@@ -30,3 +30,4 @@ class CRicercaSupermercato {
         return $SupString;
     }
 }
+?>

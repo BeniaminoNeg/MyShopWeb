@@ -27,3 +27,4 @@ class CCategoria {
         return $Json;
     }
 }
+?>

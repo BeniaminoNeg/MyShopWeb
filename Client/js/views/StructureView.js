@@ -16,6 +16,8 @@ define(function(require) {
 			'click #nav5': 'goToRicerca',
             'click #nav6': 'goToSignIn',
             'click #nav7': 'goToLogIn',
+
+            'click #logout': 'LogOut'
 		},
 	
 	    initialize: function(options) {
@@ -74,7 +76,26 @@ define(function(require) {
 			Backbone.history.navigate('login', {
 				trigger: true
 			});
-		},		
+		},
+
+		LogOut: function(e) {
+			var B = Backbone;
+            
+            Backbone.ajax({
+            	url: "http://localhost/MyShopWeb/call.php?func=LogOut",
+            	data: utente,
+            	type: 'POST',
+                success: function(response){
+                        B.history.navigate('home', {
+                            trigger: true,
+                            replace: true
+                        });
+                },
+                error: function(errorType){
+                	console.log(errorType);
+                }
+            });
+		},	
 	
 	    setActiveTabBarElement: function(elementId) {
 	    	// here we assume that at any time at least one tab bar element is active

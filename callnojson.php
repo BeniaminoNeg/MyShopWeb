@@ -44,6 +44,14 @@ switch ($FunzioneRichiesta) {
         echo $Controllore->LogIn($email, $passwd);  
     }
         break;
+        
+    //func=SpotProdWeb   PER WEB: Restituisce i prodotti osservati dell' utente Loggato
+    case "SpotProdWeb": //da sistemare, deve ridarmi una stringa di id del tipo P001,P002,P003
+    {
+        $Controllore= new CSpotlight();
+        echo $Controllore->RicercaProdottiOsservati();
+    }
+        break;
     
     default:
     {
@@ -51,3 +59,4 @@ switch ($FunzioneRichiesta) {
     }
         break;
 }
+?>

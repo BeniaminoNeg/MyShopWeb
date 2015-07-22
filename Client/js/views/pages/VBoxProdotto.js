@@ -25,7 +25,6 @@ define (function(require) {
 		id: 'prodotto',
 
 		events: {
-			//'tap #dettagli': 'Dettagli',
 			'click #tofollow': 'Follow'
 		},
        
@@ -38,69 +37,105 @@ define (function(require) {
 			JSON['Supermercato']['Logo'] = this.Supermercato.get('Logo').toJSON();
 */
 			this.$el.html(this.template(JSON));
-			this.checkPreferitoLocally();
+			this.checkPreferitoWeb();
 			this.getImmagini();
 			return this;
-		},       
-       /*
-		Dettagli: function (e) {
-			if($(this.el).find('#dettagli').attr('class') == 'no') {
-				$(this.el).find('#dettagli').children('.icon').removeClass('icon-down-nav');
-				$(this.el).find('#dettagli').children('.icon').addClass('icon-up-nav');
-				$(this.el).find('#dettagli').children('div').removeClass('displaynone');
-				$(this.el).find('#dettagli').children('div').addClass('displayblock');
-				$(this.el).find('#dettagli').removeClass('no');
-			} else {
-				$(this.el).find('#dettagli').children('.icon').removeClass("icon-up-nav");
-				$(this.el).find('#dettagli').children('.icon').addClass('icon-down-nav');
-				$(this.el).find('#dettagli').children('div').removeClass('displayblock');
-				$(this.el).find('#dettagli').children('div').addClass('displaynone');
-				$(this.el).find('#dettagli').addClass('no');
-			}
 		},
-		*/
        
 		Follow: function (e) {
 			if($(this.el).find('#tofollow').attr('class') == 'followed') {
 				$(this.el).find('#tofollow').removeClass("followed");
-				this.removePreferitoLocally($(this.el).find('#id').text());
+				this.removePreferitoWeb($(this.el).find('#id').text());
 				$(this.el).find('#tofollow').children('span').removeClass('icon icon-star-filled');
 				$(this.el).find('#tofollow').children('span').addClass('icon icon-star');
 			} else {
 				$(this.el).find('#tofollow').addClass('followed');
-				this.addPreferitoLocally($(this.el).find('#id').text());
+				this.addPreferitoWeb($(this.el).find('#id').text());
 				$(this.el).find('#tofollow').children('span').removeClass('icon icon-star');
 				$(this.el).find('#tofollow').children('span').addClass('icon icon-star-filled');
 			}
 		},
        
-		addPreferitoLocally: function(toFollow) {
-			var currentFollowed = window.localStorage.getItem('followed');
-			if (currentFollowed == null){
-				currentFollowed = '';
-			}
-			currentFollowed += toFollow;
-			currentFollowed += ',';
-			window.localStorage.setItem('followed', currentFollowed);
+		addPreferitoWeb: function(toFollow) {
+			toFollow = {
+				Idp: toFollow
+			};
+
+			var B = Backbone;
+
+			Backbone.ajax({
+            	url: "http://localhost/MyShopWeb/call.php?func=AddPref",
+            	type: 'POST',
+            	data: toFollow,
+                success: function(response){
+                	console.log('aggiunto');
+                },
+                error: function(errorType){
+                    console.log(errorType);
+                }
+            });			
         },
         
-        removePreferitoLocally: function(toUnfollow){
-        	var currentFollowed = window.localStorage.getItem('followed');
-        	var ESPR = new RegExp(toUnfollow + '\,');
-        	currentFollowed = currentFollowed.replace(ESPR, '');
-        	window.localStorage.setItem('followed', currentFollowed);
+        removePreferitoWeb: function(toUnfollow){
+			toUnfollow = {
+				Idp: toUnfollow
+			};
+
+			var B = Backbone;
+
+			Backbone.ajax({
+            	url: "http://localhost/MyShopWeb/call.php?func=RemPref",
+            	type: 'POST',
+            	data: toUnfollow,
+                success: function(response){
+                	console.log('rimosso');
+                },
+                error: function(errorType){
+                	console.log(errorType);
+                	/*
+                    B.history.navigate('home', {
+                        trigger: true,
+                    });
+					*/
+                }
+            });
         },
         
-        checkPreferitoLocally: function() {
-        	var currentFollowed = window.localStorage.getItem('followed');
-        	if(currentFollowed != null){
-        		var id = $(this.el).find('#id').text();
-        		if (currentFollowed.search(id) != '-1') {
-        			$(this.el).find('#tofollow').addClass('followed');
-		    		$(this.el).find('#tofollow').children('span').removeClass('icon icon-star');
-		            $(this.el).find('#tofollow').children('span').addClass('icon icon-star-filled');
-        		}
-        	}
+        checkPreferitoWeb: function() {
+	        var utenteNome = window.localStorage.getItem('utenteNome');
+
+	        var B = Backbone;
+
+	        var thisView = this;
+
+			if(utenteNome){	
+	    		Backbone.ajax({
+	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
+	            	type: 'GET',
+	                success: function(response){
+	                	window.localStorage.setItem('currentFollowed', response);  
+
+			    		var currentFollowed = window.localStorage.getItem('currentFollowed');
+
+					    if(currentFollowed != null || currentFollowed == ''){
+							var id = $(thisView.el).find('#id').text();
+							if (currentFollowed.search(id) != '-1') {
+								$(thisView.el).find('#tofollow').addClass('followed');
+								$(thisView.el).find('#tofollow').children('span').removeClass('icon icon-star');
+			        			$(thisView.el).find('#tofollow').children('span').addClass('icon icon-star-filled');
+			        			console.log('modificato');
+							}
+						} 	                	            	
+	                },
+	                error: function(errorType){
+	                	console.log(errorType);
+	                	Backbone.history.navigate('home', {
+	                		trigger: true,
+	                		replace: true
+		    			})
+	                }
+	    		}); 
+	        }
         },
         
         getImmagini: function() {

@@ -172,7 +172,7 @@ switch ($FunzioneRichiesta) {
     //func=AddPref ----->  &Idp=P001 aggiunge preferito
     case "AddPref":
     {
-        $Idp = $_GET["Idp"];
+        $Idp = $_POST["Idp"];
         $Controllore=new CSpotlight();
         $Controllore->addPref($Idp);
     }
@@ -181,7 +181,7 @@ switch ($FunzioneRichiesta) {
     //func=RemPref ----->  &Idp=P001 rimuove preferito
     case "RemPref":
     {
-        $Idp = $_GET["Idp"];
+        $Idp = $_POST["Idp"];
         $Controllore=new CSpotlight();
         $Controllore->remPref($Idp);
     }
@@ -297,13 +297,3 @@ switch ($FunzioneRichiesta) {
 }
 
 ?>
-
-
-
-
-
-        
-        
-
-
-

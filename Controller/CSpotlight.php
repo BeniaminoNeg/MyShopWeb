@@ -33,15 +33,7 @@ class CSpotlight {
         //if (isset($_SESSION ['oggetto_utente_loggato']))
         //{
             $Utente= $_SESSION ['oggetto_utente_loggato'];
-            $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
-            $IdProdotti = explode(",", $StringaIdProdottiOsservati);
-            $CRicercaProdotto=new CRicercaProdotto();
-            $ProdottiOsservati=array();
-            foreach ($IdProdotti as $value) {
-                $ProdottiOsservati[]=$CRicercaProdotto->RicercaPerId($value);
-            }
-            $Json=  json_encode($ProdottiOsservati);
-            return $Json;
+            return $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
         //}
         //else 
         //{

@@ -64,3 +64,4 @@ class FAmministratore extends FDB {
         return $Utente;
     }
 }
+?>
