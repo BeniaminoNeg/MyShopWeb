@@ -17,4 +17,5 @@ define({
     offline: '../templates/offline.html',
     signin: '../templates/signin.html',
     login:'../templates/login.html',
+    admin: '../templates/admin.html'
 });

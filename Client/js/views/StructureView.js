@@ -109,7 +109,11 @@ define(function(require) {
 			if(document.getElementById(id)){
 				document.getElementById(id).remove();
 			}
-		}
+		},
+
+	    showBenvenuto: function(text) {
+			document.getElementById('benvenuto').innerHTML= text;
+	    },
 	});
 	
 	return StructureView;

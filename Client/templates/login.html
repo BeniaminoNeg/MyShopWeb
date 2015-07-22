@@ -1,5 +1,5 @@
 <head>
-<link href="../style/styleSignInLogIn.css" rel="stylesheet" type="text/css" />
+<link href="./style/styleSignInLogIn.css" rel="stylesheet" type="text/css" />
 </head>
 <div id="container">
 <fieldset>
@@ -16,17 +16,16 @@
 <button class='btn btn-negative btn-block redirect' id='ricerca'>Vai alla SignIn </button>
 </fieldset>
 <fieldset>
-	<h1>Per accedere come amministratore </h1>
-  <p><label for="email">Email Admin</label>
-  <input type="email" class="email" placeholder="Inserisci la tua email"></p>
-  <p><label>Password Admin</label>
-  <input type="password" class ="password"  placeholder="Inserisci la tua password">
+    <h1> Per accedere come amministratore </h1>
+  <p><label for="username">Username</label>
+  <input type="username" class="usernameAdmin" placeholder="Inserisci la tua username"></p>
+  <p><label>Password</label>
+  <input type="password" class ="passwordAdmin" value="{{ password }}" placeholder="Inserisci la tua password">
 </p>
 <button class='btn btn-negative btn-block loginAdmin' id='ricerca'>Loggati!</button>
 <div class='displaynone' id='errore'>
   <label>Errore: hai inserito dei dati sbagliati, riprova!</label>
 </div>
-<button class='btn btn-negative btn-block redirect' id='ricerca'>Vai alla SignIn </button>
 </fieldset>
 </div>
 <!--<div class="input-row">

@@ -102,7 +102,6 @@ switch ($FunzioneRichiesta) {
         $passwd= mysql_escape_string($_POST['password']);
         $Controllore= new CLogInOut();
         $Controllore->LogIn($email, $passwd);
-        var_dump($_POST);
     }
         break;
     
@@ -112,7 +111,8 @@ switch ($FunzioneRichiesta) {
         $Username= mysql_escape_string($_POST['username']);
         $password= mysql_escape_string($_POST['password']);
         $Controllore= new CLogInOut();
-        echo $Controllore->LoginAdmin($Username, $password) ; 
+        ($Controllore->LoginAdmin($Username, $password)) ; 
+        var_dump($_SESSION);
     }
         break;
     
@@ -172,7 +172,7 @@ switch ($FunzioneRichiesta) {
     //func=AddPref ----->  &Idp=P001 aggiunge preferito
     case "AddPref":
     {
-        $Idp = $_POST["Idp"];
+        $Idp = $_GET["Idp"];
         $Controllore=new CSpotlight();
         $Controllore->addPref($Idp);
     }
@@ -181,114 +181,11 @@ switch ($FunzioneRichiesta) {
     //func=RemPref ----->  &Idp=P001 rimuove preferito
     case "RemPref":
     {
-        $Idp = $_POST["Idp"];
+        $Idp = $_GET["Idp"];
         $Controllore=new CSpotlight();
         $Controllore->remPref($Idp);
     }
         break;
-    
-    //func=AdminAddImg funzione per amministratore
-    case "AdminAddImg":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->AddImmagine($Dati);
-    }
-        break;
-    
-    //func=AdminUpdateImg funzione per amministratore
-    case "AdminUpdateImg":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->UpdateImmagine($Dati);
-    }
-        break;
-    
-    //func=AdminRemoveImg funzione per amministratore
-    case "AdminRemoveImg":
-    {
-        $Id =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->RemoveImmagine($Id);
-    }
-        break;
-    
-    //func=AdminAddProd funzione per amministratore
-    case "AdminAddProd":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->AddProdotto($Dati);
-    }
-        break;
-    
-    //func=AdminUpdateProd funzione per amministratore
-    case "AdminUpdateProd":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->UpdateProdotto($Dati);
-    }
-        break;
-    
-    //func=AdminRemoveProd funzione per amministratore
-    case "AdminRemoveProd":
-    {
-        $Id =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->RemoveProdotto($Id);
-    }
-        break;
-    
-    //func=AdminAddSup funzione per amministratore
-    case "AdminAddSup":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->AddSupermercato($Dati );
-    }
-        break;
-    
-    //func=AdminUpdateSup funzione per amministratore
-    case "AdminUpdateSup":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->UpdateSupermercato($Dati);
-    }
-        break;
-    
-    //func=AdminRemoveSup funzione per amministratore
-    case "AdminRemoveSup":
-    {
-        $Id =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->RemoveSupermercato($Id);
-    }
-        break;
-    
-    //func=AdminUpdateUtente funzione per amministratore
-    case "AdminUpdateUtente":
-    {
-        $Dati =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->UpdateUtente($Dati);
-    }
-        break;
-    
-    //func=AdminRemoveUtente funzione per amministratore
-    case "AdminRemoveUtente":
-    {
-        $Id =  mysql_escape_string($_GET['dati']);
-        $Controllore= new CAmministratore();
-        $Controllore->RemoveUtente($Id);
-    }
-        break;
-    
-    
-    
-    
     default:
     {
         echo "PAGE NOT FOUND - MYSHOP - PROGETTO DI PROGRAMMAZIONE WEB";
@@ -297,3 +194,13 @@ switch ($FunzioneRichiesta) {
 }
 
 ?>
+
+
+
+
+
+        
+        
+
+
+
