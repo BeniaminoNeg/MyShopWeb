@@ -17,7 +17,7 @@ define(function(require) {
             'click #nav6': 'goToSignIn',
             'click #nav7': 'goToLogIn',
 
-            'click #logout': 'LogOut'
+            'click #nav10': 'LogOut'
 		},
 	
 	    initialize: function(options) {
@@ -79,11 +79,12 @@ define(function(require) {
 		},
 
 		LogOut: function(e) {
+
+			var thisView = this;
 			var B = Backbone;
             
             Backbone.ajax({
-            	url: "http://localhost/MyShopWeb/call.php?func=LogOut",
-            	data: utente,
+            	url: "http://myshopp.altervista.org/callnojson.php?func=LogOut",
             	type: 'GET',
                 success: function(response){
                 		window.localStorage.setItem('currentFollowed', '');
@@ -93,13 +94,13 @@ define(function(require) {
 				        window.localStorage.setItem('utentePassword', '');
 				        window.localStorage.setItem('utenteAdmin', '');	
 				        console.log('svuotato');
+				        thisView.showTabNonLoggato();
                 		alert('Non sei più loggato! Noi siamo tristi :(');
-                        /*
+                        
                         B.history.navigate('home', {
                             trigger: true,
                             replace: true
                         });
-						*/
                 },
                 error: function(errorType){
                 	console.log(errorType);
@@ -121,9 +122,192 @@ define(function(require) {
 			}
 		},
 
-	    showBenvenuto: function(text) {
-			document.getElementById('benvenuto').innerHTML= text;
+		showTabNonLoggato: function(){
+			this.showHome();
+			this.showSpotlight();
+			this.showCategorie();
+			this.showMarkets();
+			this.showRicerca();
+			this.showSignIn();
+			this.showLogIn();
+			this.hidePannelloAdmin();
+			this.hideBenvenuto();
+			this.hideLogOut();
+		},
+
+		showTabUtente: function(nome){
+			this.showHome();
+			this.showSpotlight();
+			this.showCategorie();
+			this.showMarkets();
+			this.showRicerca();
+			this.hideSignIn();
+			this.hideLogIn();
+			this.hidePannelloAdmin();
+			this.showBenvenuto(nome);
+			this.showLogOut();
+		},
+
+		showTabAdmin: function(nome){
+			this.hideHome();
+			this.hideSpotlight();
+			this.hideCategorie();
+			this.hideMarkets();
+			this.hideRicerca();
+			this.hideSignIn();
+			this.hideLogIn();
+			this.showPannelloAdmin();
+			this.showBenvenuto(nome);
+			this.showLogOut();
+		},
+
+//Hide methods		
+
+	    hideHome: function(){
+	    	if($(this.el).find('#nav1').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav1').css('pointer-events', 'none');
+				$(this.el).find('#nav1').children('span').addClass('displaynone');
+			}
 	    },
+
+	    hideSpotlight: function(){
+	    	if($(this.el).find('#nav2').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav2').css('pointer-events', 'none');
+				$(this.el).find('#nav2').children('span').addClass('displaynone');
+			}
+	    },
+
+	    hideCategorie: function(){
+	    	if($(this.el).find('#nav3').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav3').css('pointer-events', 'none');
+				$(this.el).find('#nav3').children('span').addClass('displaynone');
+			}
+	    },
+
+	    hideMarkets: function(){
+	    	if($(this.el).find('#nav4').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav4').css('pointer-events', 'none');
+				$(this.el).find('#nav4').children('span').addClass('displaynone');
+			}
+	    },
+
+	    hideRicerca: function(){
+	    	if($(this.el).find('#nav5').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav5').css('pointer-events', 'none');
+				$(this.el).find('#nav5').children('span').addClass('displaynone');
+			}
+	    },
+
+	    hideSignIn: function(){
+	    	if($(this.el).find('#nav6').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav6').css('pointer-events', 'none');
+				$(this.el).find('#nav6').children('span').addClass('displaynone');
+			}
+	    },    
+
+	    hideLogIn: function(){
+	    	if($(this.el).find('#nav7').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav7').css('pointer-events', 'none');
+				$(this.el).find('#nav7').children('span').addClass('displaynone');
+			}
+	    },	    
+
+	    hidePannelloAdmin: function(){
+	    	if($(this.el).find('#nav8').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav8').css('pointer-events', 'none');
+				$(this.el).find('#nav8').children('span').addClass('displaynone');
+			}
+	    },
+
+	    hideBenvenuto: function(){
+	    	if($(this.el).find('#nav9').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav9').css('pointer-events', 'none');
+				$(this.el).find('#nav9').children('span').addClass('displaynone');
+				$(this.el).find('#nav9').children('span').text('');
+			}
+	    },
+
+	   	hideLogOut: function(){
+	    	if($(this.el).find('#nav10').css('pointer-events') != 'none'){
+		    	$(this.el).find('#nav10').css('pointer-events', 'none');
+				$(this.el).find('#nav10').children('span').addClass('displaynone');
+			}
+	    },
+
+//Show methods
+
+	    showHome: function(){
+	    	if($(this.el).find('#nav1').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav1').css('pointer-events', 'auto');
+				$(this.el).find('#nav1').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showSpotlight: function(){
+	    	if($(this.el).find('#nav2').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav2').css('pointer-events', 'auto');
+				$(this.el).find('#nav2').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showCategorie: function(){
+	    	if($(this.el).find('#nav3').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav3').css('pointer-events', 'auto');
+				$(this.el).find('#nav3').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showMarkets: function(){
+	    	if($(this.el).find('#nav4').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav4').css('pointer-events', 'auto');
+				$(this.el).find('#nav4').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showRicerca: function(){
+	    	if($(this.el).find('#nav5').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav5').css('pointer-events', 'auto');
+				$(this.el).find('#nav5').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showSignIn: function(){
+	    	if($(this.el).find('#nav6').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav6').css('pointer-events', 'auto');
+				$(this.el).find('#nav6').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showLogIn: function(){
+	    	if($(this.el).find('#nav7').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav7').css('pointer-events', 'auto');
+				$(this.el).find('#nav7').children('span').removeClass('displaynone');
+			}
+	    },	    
+
+	    showPannelloAdmin: function(){
+	    	if($(this.el).find('#nav8').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav8').css('pointer-events', 'auto');
+				$(this.el).find('#nav8').children('span').removeClass('displaynone');
+			}
+	    },
+
+	    showBenvenuto: function(nome){
+	    	if($(this.el).find('#nav9').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav9').css('pointer-events', 'auto');
+				$(this.el).find('#nav9').children('span').removeClass('displaynone');
+				$(this.el).find('#nav9').children('span').text(nome);
+			}
+	    },
+
+	   	showLogOut: function(){
+	    	if($(this.el).find('#nav10').css('pointer-events') != 'auto'){
+		    	$(this.el).find('#nav10').css('pointer-events', 'auto');
+				$(this.el).find('#nav10').children('span').removeClass('displaynone');
+			}
+	    }
+
+
 	});
 	
 	return StructureView;

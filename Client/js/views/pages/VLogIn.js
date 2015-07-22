@@ -10,8 +10,10 @@ define (function(require) {
         
         utente: '',
         erroreDati: '',
+        structureView: '',
 
 		initialize: function(options) {
+            this.structureView = options.structureView;
 			this.template = Utils.templates.login;
 			if(options != undefined){
 				if(options.utente != undefined){
@@ -50,18 +52,21 @@ define (function(require) {
             		password: this.$el.find('.passwordUtente').attr('value'),
             }
 
+            var thisView = this;
             var B = Backbone;
 
             Backbone.ajax({
-            	url: "http://localhost/MyShopWeb/callnojson.php?func=LogIn",
+            	url: "http://myshopp.altervista.org/callnojson.php?func=LogIn",
             	data: utente,
             	type: 'POST',
                 success: function(response){
                     if(response != false){
+                        window.localStorage.setItem('utenteNome', response);
                         window.localStorage.setItem('utenteEmail', utente['email']);
                         window.localStorage.setItem('utentePassword', utente['password']);
-                        console.log(response);
-                        window.localStorage.setItem('utenteNome', response['nome']);
+                        window.localStorage.setItem('utenteAdmin', 'no');
+
+                        thisView.structureView.showTabUtente('Salve, ' + response);
 
                         B.history.navigate('home', {
                             trigger: true,
@@ -90,17 +95,22 @@ define (function(require) {
                     password: this.$el.find('.passwordAdmin').attr('value'),
             }
 
+            var thisView = this;
             var B = Backbone;
 
             Backbone.ajax({
-                url: "http://localhost/MyShopWeb/callnojson.php?func=LogInAdmin",
+                url: "http://myshopp.altervista.org/callnojson.php?func=LogInAdmin",
                 data: utente,
                 type: 'POST',
                 success: function(response){
                     if(response != false){
+                        window.localStorage.setItem('utenteNome', response);
+                        window.localStorage.setItem('utenteCognome', response);
                         window.localStorage.setItem('utenteEmail', utente['email']);
                         window.localStorage.setItem('utentePassword', utente['password']);
                         window.localStorage.setItem('utenteAdmin', 'si');
+
+                        thisView.structureView.showTabAdmin('Salve, Capo');
 
                         B.history.navigate('admin', {
                             trigger: true,

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class FUtente</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class FUtente</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-vars">Vars</a>
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Description of FUtente</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> beniamino</li>
+				<li><span class="field">author:</span> juan</li>
+				<li><span class="field">author:</span> Silvia</li>
+				<li><span class="field">author:</span> Gaetano</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Foundation---FUtente.php.html">/Foundation/FUtente.php</a> (line <span class="field">11</span>)
+		</p>
+		
+				
+		<pre><a href="../default/FDB.html">FDB</a>
+   |
+   --FUtente</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-vars">Vars</a>
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																												
+												<div class="method-definition">
+											<span class="method-result">FUtente</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addPreferito" title="details" class="method-name">addPreferito</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$IdpPreferito</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">type</span>
+										<a href="#GetUtenteByMail" title="details" class="method-name">GetUtenteByMail</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$mail</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#MemorizzaUtente" title="details" class="method-name">MemorizzaUtente</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$Password</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Email</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Nome</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Cognome</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removePreferito" title="details" class="method-name">removePreferito</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$IdpPreferito</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#VerificaEmail" title="details" class="method-name">VerificaEmail</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#VerificaPassword" title="details" class="method-name">VerificaPassword</a>
+											(<span class="var-type">type</span>&nbsp;<span class="var-name">$mail</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$passwd</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+										<h4>Inherited Variables</h4>
+				<A NAME='inherited_vars'><!-- --></A>
+									<p>Inherited from <span class="classname"><a href="../default/FDB.html">FDB</a></span></p>
+					<blockquote>
+													<span class="var-title">
+								<span class="var-name"><a href="../default/FDB.html#var$Auto_Increment">FDB::$Auto_Increment</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../default/FDB.html#var$db">FDB::$db</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../default/FDB.html#var$Key">FDB::$Key</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../default/FDB.html#var$Return_Class">FDB::$Return_Class</a></span><br>
+							</span>
+													<span class="var-title">
+								<span class="var-name"><a href="../default/FDB.html#var$Table">FDB::$Table</a></span><br>
+							</span>
+											</blockquote> 
+										
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-vars">Vars</a>
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">16</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Eredita il costruttore</p>
+<p class="description"><p>di FDB</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">FUtente</span>
+		<span class="method-name">
+			__construct
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../default/FDB.html#method__construct">FDB::__construct()</a></dt>
+						<dd>Costruttore Fdb si</dd>
+					</dl>
+			
+	</div>
+<a name="methodaddPreferito" id="addPreferito"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addPreferito</span> (line <span class="line-number">84</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Aggiunge i prodotti osservati</p>
+<p class="description"><p>nella corrispondente colonna  della Tabella UtenteRegistrato</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addPreferito
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$IdpPreferito</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$IdpPreferito</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodGetUtenteByMail" id="GetUtenteByMail"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">GetUtenteByMail</span> (line <span class="line-number">56</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Restituisce la tupla</p>
+<p class="description"><p>della Tabella UtenteRegistrato  tramite l'email</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">type</span>
+		<span class="method-name">
+			GetUtenteByMail
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$mail</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$mail</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodMemorizzaUtente" id="MemorizzaUtente"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">MemorizzaUtente</span> (line <span class="line-number">44</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Inserisce l'utente nella  Tabella UtenteRegistrato</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			MemorizzaUtente
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$Password</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Email</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Nome</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$Cognome</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$Password</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$Email</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$Nome</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$Cognome</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremovePreferito" id="removePreferito"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">removePreferito</span> (line <span class="line-number">104</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Rimuove i prodotti osservati</p>
+<p class="description"><p>dalla corrispondente colonna</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removePreferito
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$IdpPreferito</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$IdpPreferito</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodVerificaEmail" id="VerificaEmail"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">VerificaEmail</span> (line <span class="line-number">27</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Verifica se l'email  dell'utente è presente  sulla Tabella UtenteRegistrato</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> vede se nel database c'è l' email del parametro</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			VerificaEmail
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodVerificaPassword" id="VerificaPassword"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">VerificaPassword</span> (line <span class="line-number">67</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Verifica se la password inserita dall' utente</p>
+<p class="description"><p>corrisponde a quella sulla Tabella UtenteRegistrato</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			VerificaPassword
+		</span>
+					(<span class="var-type">type</span>&nbsp;<span class="var-name">$mail</span>, <span class="var-type">type</span>&nbsp;<span class="var-name">$passwd</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$mail</span>			</li>
+					<li>
+				<span class="var-type">type</span>
+				<span class="var-name">$passwd</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../default/FDB.html">FDB</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../default/FDB.html#method__construct">FDB::__construct()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodAddTupla">FDB::AddTupla()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodconnect">FDB::connect()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodConta">FDB::Conta()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodEliminaTupla">FDB::EliminaTupla()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodputintoDB">FDB::putintoDB()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodquery">FDB::query()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodsearchColonnaSelect">FDB::searchColonnaSelect()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodsearch_contains">FDB::search_contains()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodsearch_equals">FDB::search_equals()</a></span><br>
+													<span class="method-name"><a href="../default/FDB.html#methodUpdateAttributo">FDB::UpdateAttributo()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Wed, 22 Jul 2015 22:15:54 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

@@ -64,7 +64,7 @@ define (function(require) {
 			var B = Backbone;
 
 			Backbone.ajax({
-            	url: "http://localhost/MyShopWeb/call.php?func=AddPref",
+            	url: "http://myshopp.altervista.org/call.php?func=AddPref",
             	type: 'GET',
             	data: toFollow,
                 success: function(response){
@@ -84,7 +84,7 @@ define (function(require) {
 			var B = Backbone;
 
 			Backbone.ajax({
-            	url: "http://localhost/MyShopWeb/call.php?func=RemPref",
+            	url: "http://myshopp.altervista.org/call.php?func=RemPref",
             	type: 'GET',
             	data: toUnfollow,
                 success: function(response){
@@ -110,7 +110,7 @@ define (function(require) {
 
 			if(utenteNome){	
 	    		Backbone.ajax({
-	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
+	            	url: "http://myshopp.altervista.org/callnojson.php?func=SpotProdWeb",
 	            	type: 'GET',
 	                success: function(response){
 	                	window.localStorage.setItem('currentFollowed', response);  
@@ -159,7 +159,7 @@ define (function(require) {
         	var thisView = this;
         	$.getJSON(url, function(data) {
         		$(thisView.el).find('#imgProd').attr('src', data);
-        		url = 'http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=' + ids;
+        		url = 'http://myshopp.altervista.org/index.php?func=GetImmagine&Id=' + ids;
             	$.getJSON(url, function(data) {
             		$(thisView.el).find('#imgSup').attr('src', data);
             	})

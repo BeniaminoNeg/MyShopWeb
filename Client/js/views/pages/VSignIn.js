@@ -50,7 +50,7 @@ define (function(require) {
             var B = Backbone;
             
             Backbone.ajax({
-            	url: "http://localhost/MyShopWeb/callnojson.php?func=Reg",
+            	url: "http://myshopp.altervista.org/callnojson.php?func=Reg",
             	data: utente,
             	type: 'POST',
                 success: function(response){
@@ -92,7 +92,7 @@ define (function(require) {
                 email: this.$el.find('.emailUtente').attr('value')
             }
             Backbone.ajax({
-                url: "http://localhost/MyShopWeb/callnojson.php?func=MailUnica",
+                url: "http://myshopp.altervista.org/callnojson.php?func=MailUnica",
                 data: email,
                 type: 'GET',
                 success: function(response){

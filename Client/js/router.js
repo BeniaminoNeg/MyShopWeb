@@ -23,6 +23,7 @@ define(function(require) {
 			// the default is the structure view  
 			//SINISTRA path della view DESTRA FUNZIONE definita dentro al ROUTER
 			'': 'showStructure', 
+			'check': 'Check',
 			'home':'Home',
 			'spotlight':'Spotlight',
 			'categorie': 'Categorie',
@@ -41,14 +42,56 @@ define(function(require) {
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
-	
-		firstView: 'home',
+
+		firstView: 'check',
 	
 		initialize: function(options) {
 			document.addEventListener('offline', this.onOffline, false);
-			this.svuotaLocalStorage();
 			this.ControllaCookie();
 			this.currentView = undefined;
+		},
+
+		Check: function(){
+			var thisRouter = this;
+            var B = Backbone;
+
+            Backbone.ajax({
+                url: "http://myshopp.altervista.org/callnojson.php?func=checkLoggato",
+                type: 'GET',
+                success: function(response){
+                    if(response != false){
+                    	console.log(response);
+                    	console.log(window.localStorage.getItem('utenteNome'));
+                    	if(response == window.localStorage.getItem('utenteNome')){
+                    		console.log('sono gia loggato con lo stesso account');
+                    	}
+                    	if(window.localStorage.getItem('utenteAdmin') == 'si'){
+	                        thisRouter.structureView.showTabAdmin('Salve, Capo');
+	                        B.history.navigate('admin', {
+	                            trigger: true,
+	                            replace: true,
+                        	}); 
+
+                    	} else {
+	                        thisRouter.structureView.showTabUtente('Salve, ' + response);
+ 	                        B.history.navigate('home', {
+	                            trigger: true,
+	                            replace: true,
+                        	});            				
+                    	}
+                    } else {
+                    	thisRouter.svuotaLocalStorage();
+                    	thisRouter.structureView.showTabNonLoggato();
+                        B.history.navigate('home', {
+                            trigger: true,
+                            replace: true,
+                    	});                  	
+                    }
+                }, 
+                error: function(errorType){
+                	console.log(errorType);
+                }       
+            });
 		},
 
 		Home: function() {
@@ -124,7 +167,7 @@ define(function(require) {
 			if(utenteEmail){
 				
 				Backbone.ajax({
-	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
+	            	url: "http://myshopp.altervista.org/callnojson.php?func=SpotProdWeb",
 	            	type: 'GET',
 	                success: function(response){
 	                	console.log(response);
@@ -302,7 +345,9 @@ define(function(require) {
         LogIn: function() {
             this.structureView.setActiveTabBarElement('nav7');
     		
-            var page = new VLogIn();
+            var page = new VLogIn({
+            	structureView: this.structureView
+            });
             this.changePage(page);
         },
 
@@ -318,6 +363,7 @@ define(function(require) {
 
             var page = new VLogIn({
             	utente: utente,
+            	structureView: this.structureView
             });
             this.changePage(page);
         },
@@ -326,13 +372,14 @@ define(function(require) {
         	this.structureView.setActiveTabBarElement('nav7');
 
             var page = new VLogIn({
-            	erroreDati: 'sbagliato'
+            	erroreDati: 'sbagliato',
+            	structureView: this.structureView
             });
             this.changePage(page);
         },
 
         Admin: function(){
-        	this.structureView.showBenvenuto('Benvenuto Admin');
+        	this.structureView.setActiveTabBarElement('nav8');
             var page = new VAmministratore({
             });
             this.changePage(page);
@@ -367,9 +414,7 @@ define(function(require) {
 			{
 				alert("Attenzione i cookie non sono attivati, attiva i cookie per non incorrere in errori durante la navigazione");
 			}
-		},
-		
-		
+		},	
 
 		svuotaLocalStorage: function(){
 			window.localStorage.setItem('currentFollowed', '');

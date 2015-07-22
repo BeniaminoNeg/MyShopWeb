@@ -7,7 +7,8 @@ define(function(require){
         constructorName: 'VAmministratore',
 
         initialize: function(options) {
-        this.template=Utils.templates.admin;
+            this.template=Utils.templates.admin;
+            console.log(Utils.templates.admin);
         },
         
         tagName: 'ul',
@@ -44,7 +45,7 @@ define(function(require){
                 }
 
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminAddImg",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminAddImg",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -63,7 +64,7 @@ define(function(require){
                     ValChiave: this.$el.find('#idImgUpdate').attr('value'), 
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateImg",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminUpdateImg",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -80,7 +81,7 @@ define(function(require){
                     Id : this.$el.find('#IdImgRemove').attr('value')
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveImg",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminRemoveImg",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -104,7 +105,7 @@ define(function(require){
                 }
                 console.log(dati);
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminAddProd",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminAddProd",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -123,7 +124,7 @@ define(function(require){
                     ValChiave: this.$el.find('#idProdUpdate').attr('value'), 
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateProd",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminUpdateProd",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -140,7 +141,7 @@ define(function(require){
                     Id: this.$el.find('#idProdRemove').attr('value')
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveProd",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminRemoveProd",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -161,7 +162,7 @@ define(function(require){
                 Civico: this.$el.find('#CivicoSupAdd').attr('value'),
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminAddSup",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminAddSup",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -179,7 +180,7 @@ define(function(require){
                 ValChiave: this.$el.find('#idSupUpdate').attr('value'), 
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateSup",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminUpdateSup",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -196,7 +197,7 @@ define(function(require){
                     Ids: this.$el.find('#idSupRemove').attr('value')
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveProd",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminRemoveProd",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -214,7 +215,7 @@ define(function(require){
                     ValChiave: this.$el.find('#idUtUpdate').attr('value'), 
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminUpdateUtente",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminUpdateUtente",
                     data: dati,
                     type: 'GET',
                     success: function(response){
@@ -231,7 +232,7 @@ define(function(require){
                     Id: this.$el.find('#idUtRemove').attr('value')
                 }
                 Backbone.ajax({
-                    url: "http://localhost/MyShopWeb/callnojson.php?func=AdminRemoveUtente",
+                    url: "http://myshopp.altervista.org/callnojson.php?func=AdminRemoveUtente",
                     data: dati,
                     type: 'GET',
                     success: function(response){

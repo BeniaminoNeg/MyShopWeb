@@ -76,9 +76,9 @@ class CLogInOut {
         $Log= false;
         if (isset($_SESSION['oggetto_admin_loggato']))
         {
-            $Log = $_SESSION ['oggetto_admin_loggato'] ->getNome();
-            
-            
+            $Log = $_SESSION ['oggetto_admin_loggato'] ->getUsername();
+        } else if(isset($_SESSION['oggetto_utente_loggato'])){
+            $Log = $_SESSION ['oggetto_utente_loggato'] ->getNome();
         }
         return $Log;     
 

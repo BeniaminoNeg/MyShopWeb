@@ -46,7 +46,14 @@ switch ($FunzioneRichiesta) {
         echo $Controllore->LogIn($email, $passwd);  
     }
         break;
-        
+    //Effettua il login
+    case "checkLoggato":
+    {
+        header('Content-Type: text/html');
+        $Controllore= new CLogInOut();
+        echo $Controllore->isLoggato();  
+    }
+        break;
     //func=SpotProdWeb   PER WEB: Restituisce i prodotti osservati dell' utente Loggato
     case "SpotProdWeb": //da sistemare, deve ridarmi una stringa di id del tipo P001,P002,P003
     {
