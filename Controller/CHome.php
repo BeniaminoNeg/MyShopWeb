@@ -30,7 +30,7 @@ class CHome {
             $Indicicasuali []=  rand(1, $risultato );          
         }
         $Indicicasuali=array_unique($Indicicasuali);
-        while(count($Indicicasuali)<5)
+        while(count($Indicicasuali)<6)
         {
             $Indicicasuali [] = rand(1, $risultato );
             $Indicicasuali=array_unique($Indicicasuali);

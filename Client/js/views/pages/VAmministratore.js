@@ -109,7 +109,7 @@ define(function(require){
                     data: dati,
                     type: 'GET',
                     success: function(response){
-                        if(response == 'Prodotto Rimosso Con Successo'){
+                        if(response == 'Prodotto Aggiunto Con Successo'){
                             alert(response);
                         }
                     }
@@ -128,7 +128,7 @@ define(function(require){
                     data: dati,
                     type: 'GET',
                     success: function(response){
-                        if(response == 'Prodotto Modificata Con Successo'){
+                        if(response == 'Prodotto Modificato Con Successo'){
                             alert(response);
                         }
                     }
@@ -236,7 +236,7 @@ define(function(require){
                     data: dati,
                     type: 'GET',
                     success: function(response){
-                        if(response == 'Utente Aggiunto Con Successo'){
+                        if(response == 'Utente Rimosso Con Successo'){
                             alert(response);
                         }                   
                     }
