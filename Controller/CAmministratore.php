@@ -24,21 +24,17 @@ class CAmministratore {
      * 
      * @param type $Dati stringa con i dati dell' immagine
      */
-    function AddImmagine($Dati) {
+    function AddImmagine($Id, $Size, $Type, $Immagine_originale) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->AddImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3]);
+        $Admin->AddImmagine($Id, $Size, $Type, $Immagine_originale);
     }
     /**
      * 
      * @param type $Dati stringa
      */
-    function UpdateImmagine($Dati) {
+    function UpdateImmagine($Colonna, $Valore, $ValChiave) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->UpdateImmagine($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateImmagine($Colonna, $Valore, $ValChiave);
     }
     /**
      * 
@@ -52,21 +48,17 @@ class CAmministratore {
      * 
      * @param type $Dati stringa da suddividere per array
      */
-    function AddProdotto($Dati) {
+    function AddProdotto($Id, $Nome, $Descrizione, $Prezzo, $Ids, $Categoria) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->AddProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4], $ArrayDati[5]);        
+        $Admin->AddProdotto($Id, $Nome, $Descrizione, $Prezzo, $Ids, $Categoria);        
     }
     /**
      * 
      * @param type $Dati stringa da suddividere per array
      */
-    function UpdateProdotto($Dati) {
+    function UpdateProdotto($Colonna, $Valore, $ValChiave) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->UpdateProdotto($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateProdotto($Colonna, $Valore, $ValChiave);
     }
     
     function RemoveProdotto($Id) {
@@ -74,18 +66,14 @@ class CAmministratore {
         $Admin->RemoveProdotto($Id);        
     }
     
-    function AddSupermercato($Dati) {
+    function AddSupermercato($Ids, $Nome, $Via, $Città, $Civico) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->AddSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2], $ArrayDati[3], $ArrayDati[4]);
+        $Admin->AddSupermercato($Ids, $Nome, $Via, $Città, $Civico);
     }
     
-    function UpdateSupermercato($Dati) {
+    function UpdateSupermercato($Colonna, $Valore, $ValChiave) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->UpdateSupermercato($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateSupermercato($Colonna, $Valore, $ValChiave);
     }
     
     function RemoveSupermercato($Id) {
@@ -93,16 +81,13 @@ class CAmministratore {
         $Admin->RemoveSupermercato($Id);        
     }
     
-    function UpdateUtente($Dati) {
+    function UpdateUtente($Colonna, $Valore, $ValChiave) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $ArrayDati = array();
-        $ArrayDati = explode(",", $Dati);
-        $Admin->UpdateUtente($ArrayDati[0], $ArrayDati[1], $ArrayDati[2]);
+        $Admin->UpdateUtente($Colonna, $Valore, $ValChiave);
     }
     
-    function RemoveUtente($Id) {
+    function RemoveUtente($Email) {
         $Admin= $_SESSION ['oggetto_admin_loggato'];
-        $Admin->RemoveUtente($Id);        
+        $Admin->RemoveUtente($Email);        
     } 
 }
-?>

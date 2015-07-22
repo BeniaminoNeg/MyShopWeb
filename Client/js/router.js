@@ -14,7 +14,8 @@ define(function(require) {
 	var VOffline = require('views/pages/VOffline');
     var VSignIn = require('views/pages/VSignIn');
     var VLogIn = require('views/pages/VLogIn');
-	
+    var VAmministratore = require('views/pages/VAmministratore');
+
 	var AppRouter = Backbone.Router.extend({
 		constructorName: 'AppRouter',
 	
@@ -35,7 +36,8 @@ define(function(require) {
             'signinErroreDati': 'SignInErroreDati',
             'login':'LogIn',
             'loginAppenaRegistrato': 'LogInConDati',
-            'loginErroreDati': 'LogInErroriDati'
+            'loginErroreDati': 'LogInErroriDati',
+            'admin': 'Admin'
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
@@ -322,6 +324,13 @@ define(function(require) {
 
             var page = new VLogIn({
             	erroreDati: 'sbagliato'
+            });
+            this.changePage(page);
+        },
+
+        Admin: function(){
+        	this.structureView.showBenvenuto('Benvenuto Admin');
+            var page = new VAmministratore({
             });
             this.changePage(page);
         },

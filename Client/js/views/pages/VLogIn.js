@@ -55,8 +55,6 @@ define (function(require) {
             	type: 'POST',
                 success: function(response){
                     if(response != false){
-                        window.localStorage.setItem('utenteNome', utente['nome']);
-                        window.localStorage.setItem('utenteCognome', utente['cognome']);
                         window.localStorage.setItem('utenteEmail', utente['email']);
                         window.localStorage.setItem('utentePassword', utente['password']);
 
@@ -83,25 +81,23 @@ define (function(require) {
         LogInAdmin: function() {
 
             var utente = {
-                    email: this.$el.find('.emailAdmin').attr('value'), 
+                    username: this.$el.find('.usernameAdmin').attr('value'), 
                     password: this.$el.find('.passwordAdmin').attr('value'),
             }
 
             var B = Backbone;
 
             Backbone.ajax({
-                url: "http://localhost/MyShopWeb/callnojson.php?func=LogIn",
+                url: "http://localhost/MyShopWeb/callnojson.php?func=LogInAdmin",
                 data: utente,
                 type: 'POST',
                 success: function(response){
                     if(response != false){
-                        window.localStorage.setItem('utenteNome', utente['nome']);
-                        window.localStorage.setItem('utenteCognome', utente['cognome']);
                         window.localStorage.setItem('utenteEmail', utente['email']);
                         window.localStorage.setItem('utentePassword', utente['password']);
                         window.localStorage.setItem('utenteAdmin', 'si');
 
-                        B.history.navigate('home', {
+                        B.history.navigate('admin', {
                             trigger: true,
                             replace: true,
                         }); 

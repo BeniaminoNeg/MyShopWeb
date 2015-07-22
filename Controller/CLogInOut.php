@@ -36,7 +36,6 @@ class CLogInOut {
             }
         }
         return $Log;
-
     }
     
     public function LoginAdmin($Username,$password) {
@@ -53,9 +52,10 @@ class CLogInOut {
                 $_SESSION['stato_log']='in';
                 $Log= array();
                 $Log ['Username'] = $Amministratore->getUsername();
-                return $Log;
             }
         }
+            return $Log;
+
     }
         public function LogOut() {
         $_SESSION['stato_log']='out';
