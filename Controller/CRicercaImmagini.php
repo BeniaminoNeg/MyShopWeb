@@ -4,11 +4,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- * Description of CRicercaImmaginiLoghi
+
+ /**
+ * Description of CRegistrazione
  *
+ * @author beniamino
  * @author juan
+ * @author Silvia
+ * @author Gaetano
  */
+
   foreach (glob("File/*.txt") as $filename){
   require_once $filename;}
   foreach (glob("Model/*.php") as $filename){
@@ -17,7 +22,13 @@
   foreach (glob("Foundation/*.php") as $filename){
     require_once $filename;
 }
+
 class CRicercaImmagini  {
+    /**
+     * 
+     * @param type $Id identifica l' immagine
+     * @return type json dell' immagine
+     */
     public function RicercaImmagine($Id) {
         
         $Immagine=new Immagine();

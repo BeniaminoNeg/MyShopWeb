@@ -35,14 +35,12 @@ class CRegistrazione {
         
         $Bool=false;
         $UtenteDAO= new FUtente ();
-        var_dump(filter_var($email, FILTER_VALIDATE_EMAIL));
         if(filter_var($email, FILTER_VALIDATE_EMAIL))
         {
                 if (!$UtenteDAO->VerificaEmail($email)){//la funz è true se l' email c'è >> voglio invertire il risultao
                    $Bool=true;
             }
         }
-        var_dump($Bool);
         return $Bool;
     }
 }

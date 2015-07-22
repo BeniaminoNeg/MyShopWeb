@@ -15,7 +15,10 @@ require_once 'CRicercaProdotto.php';
 require_once 'CRicercaSupermercato.php';
 
 class CHome {
-    
+    /**
+     * 
+     * @return type json dell' array dei prodotti della home
+     */
     public function ProdottiInEvidenza(){
         
         
@@ -44,7 +47,11 @@ class CHome {
         $JsonRisultato= json_encode($ArrayProdotti);
         return $JsonRisultato;
     }
-    
+    /**
+     * 
+     * @param type $StringIdS ids dei supermercati cercati
+     * @return type jason di array dei supermeracti cercati
+     */
     public function RicercaSupermercatiPerIds($StringIdS) {
         $ArrayIdS= array();
         $ArrayIdS=  explode(",", $StringIdS);

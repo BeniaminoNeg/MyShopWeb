@@ -10,7 +10,7 @@
  */
 
 class CSessione {
-    //put your code here
+    
      public function Session(){
         session_start();
         ini_set('session.name', "PHPSESSID_MYSHOP");

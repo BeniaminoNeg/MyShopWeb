@@ -25,6 +25,7 @@ $Sess->Session();
 $FunzioneRichiesta=  mysql_escape_string($_GET ["func"]);
 
 switch ($FunzioneRichiesta) {
+    //Registra l' utente
     case "Reg":
     {
         $nome= mysql_escape_string($_POST['nome']);
@@ -35,6 +36,7 @@ switch ($FunzioneRichiesta) {
         echo $Controllore->Registrazione($nome, $cognome, $passwd, $email);
     }
         break;
+    //Effettua il login
     case "LogIn":
     {
         header('Content-Type: text/html');
@@ -198,6 +200,16 @@ switch ($FunzioneRichiesta) {
         $Controllore= new CAmministratore();
         $Controllore->RemoveUtente($Email);
         echo 'Utente Rimosso Con Successo';
+    }
+        break;
+
+    //func=MailUnica ---->  POST email verrà richiamata durante il riempimento form
+    case "MailUnica":
+    {   
+        //var_dump($_GET['email']);
+        $email= mysql_escape_string($_GET['email']);
+        $Controllore= new CRegistrazione();
+        echo $Controllore->VerificaEmailUnica($email);
     }
         break;
     

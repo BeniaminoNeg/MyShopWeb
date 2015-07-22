@@ -18,7 +18,11 @@ foreach (glob("Foundation/*.php") as $filename){
 }
 
 class CSpotlight {
-
+/**
+ * 
+ * @param type $Email chiave per identificare univocamente l' utente
+ * @return \Utente
+ */
     function RicercaUtente($Email) {
         $UtenteDAO = new FUtente();
         $UtenteDB = $UtenteDAO->GetUtenteByMail($Email);
@@ -30,17 +34,14 @@ class CSpotlight {
      * @return type Json dei prodotti osservati
      */
     function RicercaProdottiOsservati() {
-        //if (isset($_SESSION ['oggetto_utente_loggato']))
-        //{
             $Utente= $_SESSION ['oggetto_utente_loggato'];
             return $StringaIdProdottiOsservati=$Utente->getProdottiOsservati();
-        //}
-        //else 
-        //{
-          //  echo 'SESSIONE SCADUTA'; //RIMEDIO PROVVISORIO
-        //}
     }
-    
+    /**
+     * Utilizzata dall' App 
+     * @param type $ArrayIdString
+     * @return type prodotti seguiti dall' utente App
+     */
     function RicercaProdottiById($ArrayIdString) {
         $ArrayId= array();
         $ArrayId= explode(",", $ArrayIdString);
@@ -52,7 +53,10 @@ class CSpotlight {
         $Json=  json_encode($ProdottiOsservati);
         return $Json;
     }
-    
+    /**
+     * Utilizzata dal Web
+     * @param type $Idp  Id dl prodotto da seguire
+     */
     function addPref ($Idp) {
         $Utente= $_SESSION ['oggetto_utente_loggato'];
         $email=$Utente->getEmail();
@@ -60,7 +64,10 @@ class CSpotlight {
         $UtenteDAO->addPreferito($Idp, $email);
         $this->updateOggettoSessione($email); 
     }
-    
+    /**
+     * Utilizzata dal Web
+     * @param type $Idp  Id del prodotto da seguire
+     */
     function remPref ($Idp) {
         $Utente= $_SESSION ['oggetto_utente_loggato'];
         $email=$Utente->getEmail();
@@ -68,7 +75,11 @@ class CSpotlight {
         $UtenteDAO->removePreferito($Idp, $email);
         $this->updateOggettoSessione($email);
     }
-    
+    /**
+     * Se l' utente modifica i preferiti durante la sessione, occore che si modifichino anche i dati in 
+     * sessione oltre che quelli presenti nel db
+     * @param type $email 
+     */
     function updateOggettoSessione($email) {
         $UtenteDAO= new FUtente();
         $Risult=$UtenteDAO->searchColonnaSelect("UtenteRegistrato", "Prodottiosservati", "Email", $email);

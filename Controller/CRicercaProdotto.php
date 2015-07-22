@@ -20,7 +20,11 @@ foreach (glob("Foundation/*.php") as $filename){
 class CRicercaProdotto {
     function __construct() {
     }
-    
+    /**
+     * 
+     * @param type $nome nome da trovare nel db
+     * @return type json del prodotto
+     */
     function RicercaPerNome($nome) {
         
        
@@ -38,7 +42,11 @@ class CRicercaProdotto {
         $JSonRisultato=  json_encode($ArrayProdString);
         return $JSonRisultato;
     }
-    
+    /**
+     * 
+     * @param type $Id chiave per trovare nel db
+     * @return type jason del oggetto prodotto
+     */
     function RicercaPerId($Id){
         header('Content-Type: application/json; charset=UTF-8');
         $ProdottoDAO=new FProdotto();
@@ -47,7 +55,11 @@ class CRicercaProdotto {
         $ProdString = $Prodotto->getAsArray();
         return $ProdString;
     }
-    
+    /**
+     * 
+     * @param type $Categoria
+     * @return type jason di un array di prodotti
+     */
     function RicercaPerCategoria($Categoria){//lo chiama ccategoria
         
         header('Content-Type: application/json; charset=UTF-8');
@@ -63,7 +75,11 @@ class CRicercaProdotto {
         }
         return $ArrayProdString;
     }
-    
+    /**
+     * 
+     * @param type $Ids chiave
+     * @return type json di array di prodotti
+     */
     function RicercaPerIds($Ids) {//lo chiama Cmarket
         
         header('Content-Type: application/json; charset=UTF-8');

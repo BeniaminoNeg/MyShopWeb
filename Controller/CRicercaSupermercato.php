@@ -18,7 +18,11 @@ foreach (glob("Foundation/*.php") as $filename){
 }
 
 class CRicercaSupermercato {
-
+    /**
+     * 
+     * @param type $Ids chiave per accedere alla tupla
+     * @return type json di un array di supermercati
+     */
     function RicercaPerIds($Ids) {
        
         header('Content-Type: application/json; charset=UTF-8');

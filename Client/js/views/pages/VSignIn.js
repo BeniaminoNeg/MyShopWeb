@@ -17,12 +17,13 @@ define (function(require) {
             }
 		},
       
-        tagName: 'div',
-        className: 'bar bar-standard bar-header-secondary scrollable',
+        tagName: 'ul',
+        id: 'tabella',
+        className: 'table-view',
 		
 		events: {
 			'click .registrati': 'Registrati',
-            'keydown .email': 'checkEmail', //bisogna trovare l'evento giusto
+            'blur .emailUtente': 'checkEsistenzaEmail', 
             'click .redirect': 'Redirect',
 		},
         
@@ -86,17 +87,22 @@ define (function(require) {
         },
 
         checkEsistenzaEmail: function(){
-            console.log('ciao');
+            console.log(this.$el.find('.emailUtente').attr('value'));
+            var email = {
+                email: this.$el.find('.emailUtente').attr('value')
+            }
             Backbone.ajax({
-                url: "http://localhost/MyShopWeb/call.php?func=MailUnica",
-                data: this.$el.find('.emailUtente').attr('value'),
-                type: 'POST',
+                url: "http://localhost/MyShopWeb/callnojson.php?func=MailUnica",
+                data: email,
+                type: 'GET',
                 success: function(response){
                             if(response == false){
-                                console.log(response);
-
+                                alert('email già usata');
                             }
-                        }    
+                        } ,
+                error: function(errorType){
+                    console.log(errorType);
+                }
             });
         },
 
