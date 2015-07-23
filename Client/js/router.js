@@ -56,7 +56,7 @@ define(function(require) {
             var B = Backbone;
 
             Backbone.ajax({
-                url: "http://myshopp.altervista.org/callnojson.php?func=checkLoggato",
+                url: "http://localhost/MyShopWeb/callnojson.php?func=checkLoggato",
                 type: 'GET',
                 success: function(response){
                     if(response != false){
@@ -167,7 +167,7 @@ define(function(require) {
 			if(utenteEmail){
 				
 				Backbone.ajax({
-	            	url: "http://myshopp.altervista.org/callnojson.php?func=SpotProdWeb",
+	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
 	            	type: 'GET',
 	                success: function(response){
 	                	console.log(response);
@@ -211,6 +211,7 @@ define(function(require) {
 	                }
 	            });
 		  	} else {
+		  		alert('Per accedere alla Spotlight ed accedere ai prodotti seguiti bisogna effettuare il LogIn')
 				Backbone.history.navigate('login', {
 	    			trigger: true
 	    		});

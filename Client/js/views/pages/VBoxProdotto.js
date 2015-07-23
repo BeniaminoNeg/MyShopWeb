@@ -14,11 +14,17 @@ define (function(require) {
 		Supermercato: MSupermercato,
 		ImmagineProd: MImmagine,
 		ImmagineSup: MImmagine,
+
+		Loggato: false,
       
 		initialize: function(options) {
 			this.template =Utils.templates.prodotto;
 			this.Prodotto = options.Prodotto;
 			this.Supermercato = options.Supermercato;
+
+			if(window.localStorage.getItem('utenteNome') != ''){
+				this.Loggato = true;
+			}
 		},
       
 		tagName: 'div',
@@ -43,16 +49,20 @@ define (function(require) {
 		},
        
 		Follow: function (e) {
-			if($(this.el).find('#tofollow').attr('class') == 'followed') {
-				$(this.el).find('#tofollow').removeClass("followed");
-				this.removePreferitoWeb($(this.el).find('#id').text());
-				$(this.el).find('#tofollow').children('span').removeClass('icon icon-star-filled');
-				$(this.el).find('#tofollow').children('span').addClass('icon icon-star');
+			if(this.Loggato){
+				if($(this.el).find('#tofollow').attr('class') == 'followed') {
+					$(this.el).find('#tofollow').removeClass("followed");
+					this.removePreferitoWeb($(this.el).find('#id').text());
+					$(this.el).find('#tofollow').children('span').removeClass('icon icon-star-filled');
+					$(this.el).find('#tofollow').children('span').addClass('icon icon-star');
+				} else {
+					$(this.el).find('#tofollow').addClass('followed');
+					this.addPreferitoWeb($(this.el).find('#id').text());
+					$(this.el).find('#tofollow').children('span').removeClass('icon icon-star');
+					$(this.el).find('#tofollow').children('span').addClass('icon icon-star-filled');
+				}
 			} else {
-				$(this.el).find('#tofollow').addClass('followed');
-				this.addPreferitoWeb($(this.el).find('#id').text());
-				$(this.el).find('#tofollow').children('span').removeClass('icon icon-star');
-				$(this.el).find('#tofollow').children('span').addClass('icon icon-star-filled');
+				alert('Per poter aggiungere questo prodotto ai tuoi preferiti devi prima effettuare il LogIn');
 			}
 		},
        
@@ -64,7 +74,7 @@ define (function(require) {
 			var B = Backbone;
 
 			Backbone.ajax({
-            	url: "http://myshopp.altervista.org/call.php?func=AddPref",
+            	url: "http://localhost/MyShopWeb/call.php?func=AddPref",
             	type: 'GET',
             	data: toFollow,
                 success: function(response){
@@ -84,7 +94,7 @@ define (function(require) {
 			var B = Backbone;
 
 			Backbone.ajax({
-            	url: "http://myshopp.altervista.org/call.php?func=RemPref",
+            	url: "http://localhost/MyShopWeb/call.php?func=RemPref",
             	type: 'GET',
             	data: toUnfollow,
                 success: function(response){
@@ -110,7 +120,7 @@ define (function(require) {
 
 			if(utenteNome){	
 	    		Backbone.ajax({
-	            	url: "http://myshopp.altervista.org/callnojson.php?func=SpotProdWeb",
+	            	url: "http://localhost/MyShopWeb/callnojson.php?func=SpotProdWeb",
 	            	type: 'GET',
 	                success: function(response){
 	                	window.localStorage.setItem('currentFollowed', response);  
@@ -159,7 +169,7 @@ define (function(require) {
         	var thisView = this;
         	$.getJSON(url, function(data) {
         		$(thisView.el).find('#imgProd').attr('src', data);
-        		url = 'http://myshopp.altervista.org/index.php?func=GetImmagine&Id=' + ids;
+        		url = 'http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=' + ids;
             	$.getJSON(url, function(data) {
             		$(thisView.el).find('#imgSup').attr('src', data);
             	})

@@ -56,7 +56,7 @@ define (function(require) {
             var B = Backbone;
 
             Backbone.ajax({
-            	url: "http://myshopp.altervista.org/callnojson.php?func=LogIn",
+            	url: "http://localhost/MyShopWeb/callnojson.php?func=LogIn",
             	data: utente,
             	type: 'POST',
                 success: function(response){
@@ -99,7 +99,7 @@ define (function(require) {
             var B = Backbone;
 
             Backbone.ajax({
-                url: "http://myshopp.altervista.org/callnojson.php?func=LogInAdmin",
+                url: "http://localhost/MyShopWeb/callnojson.php?func=LogInAdmin",
                 data: utente,
                 type: 'POST',
                 success: function(response){

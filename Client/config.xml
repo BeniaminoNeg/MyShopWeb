@@ -4,7 +4,7 @@
     <description>
     	Applicazione per tracciare i prodotti in offerta nei supermercati
     </description>
-    <author email="" href="http://myshopp.altervista.org/">root</author>
+    <author email="" href="http://localhost/MyShopWeb/">root</author>
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />

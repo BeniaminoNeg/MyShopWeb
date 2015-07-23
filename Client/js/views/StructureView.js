@@ -84,7 +84,7 @@ define(function(require) {
 			var B = Backbone;
             
             Backbone.ajax({
-            	url: "http://myshopp.altervista.org/callnojson.php?func=LogOut",
+            	url: "http://localhost/MyShopWeb/callnojson.php?func=LogOut",
             	type: 'GET',
                 success: function(response){
                 		window.localStorage.setItem('currentFollowed', '');
